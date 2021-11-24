@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('Find')),
           BottomNavigationBarItem(icon: Icon(null), title: Text('Cart')),
           BottomNavigationBarItem(icon: Icon(Icons.photo_filter), title: Text('Zone')),
-          BottomNavigationBarItem(icon: Icon(Icons.face), title: Text('Ucenter')),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), title: Text('Ucenter')),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
