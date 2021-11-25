@@ -1,3 +1,4 @@
+import 'package:buaacourse/screens/home/course.dart';
 import 'package:buaacourse/screens/home/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,9 +9,9 @@ import 'package:buaacourse/constants.dart';
 //底部的索引
 int _selectedIndex = 2;
 // 创建数组引入页面
-List pageList = [User(),User(),User(),User(),User()];
+List pageList = [User(),Course(),User(),User(),User()];
 
-class HomeScreen extends StatelessWidget {
+class HomePageState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,14 +63,19 @@ class HomeScreen extends StatelessWidget {
       unselectedFontSize: 12.0,
       selectedFontSize: 18.0,
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-        BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('Find')),
-        BottomNavigationBarItem(icon: Icon(null), title: Text('Cart')),
-        BottomNavigationBarItem(icon: Icon(Icons.photo_filter), title: Text('Zone')),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), title: Text('Ucenter')),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Find'),
+        BottomNavigationBarItem(icon: Icon(null), label: 'Cart'),
+        BottomNavigationBarItem(icon: Icon(Icons.photo_filter), label: 'Zone'),
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: 'Ucenter'),
       ],
       currentIndex: _selectedIndex,
-      onTap: _onItemTapped,
+      onTap: (int index){
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      // onTap: _onItemTapped,
     );
   }
 
@@ -96,9 +102,5 @@ class HomeScreen extends StatelessWidget {
         _selectedIndex = 2;
       },
     );
-  }
-
-  void _onItemTapped(int index) {
-      _selectedIndex = index;
   }
 }
