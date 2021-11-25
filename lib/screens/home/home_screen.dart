@@ -1,3 +1,4 @@
+import 'package:buaacourse/screens/home/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,7 +8,7 @@ import 'package:buaacourse/constants.dart';
 //底部的索引
 int _selectedIndex = 2;
 // 创建数组引入页面
-List pglist = [];
+List pageList = [User(),User(),User(),User(),User()];
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -17,6 +18,7 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: buildBottomNavigationBar(),
       floatingActionButton: buildFloatingActionButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: pageList[_selectedIndex],
     );
   }
 
@@ -97,6 +99,6 @@ class HomeScreen extends StatelessWidget {
   }
 
   void _onItemTapped(int index) {
-    _selectedIndex = index;
+      _selectedIndex = index;
   }
 }
