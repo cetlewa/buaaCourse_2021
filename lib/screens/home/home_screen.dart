@@ -1,4 +1,6 @@
+import 'package:buaacourse/main.dart';
 import 'package:buaacourse/screens/home/course.dart';
+import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/home/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -7,18 +9,18 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:buaacourse/constants.dart';
 
 //底部的索引
-int _selectedIndex = 2;
+int _selectedIndex = 0;
 // 创建数组引入页面
-List pageList = [User(),Course(),User(),User(),User()];
+List pageList = [Home(),Course(),User(),User(),User()];
 
-class HomePageState extends State {
+class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
       bottomNavigationBar: buildBottomNavigationBar(),
       floatingActionButton: buildFloatingActionButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: pageList[_selectedIndex],
     );
   }
@@ -63,11 +65,11 @@ class HomePageState extends State {
       unselectedFontSize: 12.0,
       selectedFontSize: 18.0,
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Find'),
-        BottomNavigationBarItem(icon: Icon(null), label: 'Cart'),
-        BottomNavigationBarItem(icon: Icon(Icons.photo_filter), label: 'Zone'),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: 'Ucenter'),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
+        BottomNavigationBarItem(icon: Icon(Icons.wysiwyg_outlined), label: '还没想好'),
+        // BottomNavigationBarItem(icon: Icon(null), label: 'Cart'),
+        BottomNavigationBarItem(icon: Icon(Icons.assignment_turned_in_outlined), label: '也还没想好'),
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: '信息列表'),
       ],
       currentIndex: _selectedIndex,
       onTap: (int index){
@@ -90,16 +92,16 @@ class HomePageState extends State {
           ]
       ),
       onPressed: (){
-        // Fluttertoast.showToast(
-        //     msg: "This is Center Short Toast",
-        //     toastLength: Toast.LENGTH_SHORT,
-        //     gravity: ToastGravity.CENTER,
-        //     timeInSecForIosWeb: 1,
-        //     backgroundColor: Colors.red,
-        //     textColor: Colors.white,
-        //     fontSize: 16.0
-        // );
         _selectedIndex = 2;
+        Fluttertoast.showToast(
+            msg: "This is Center Short Toast",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
       },
     );
   }
