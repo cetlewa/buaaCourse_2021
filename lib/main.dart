@@ -1,3 +1,4 @@
+import 'package:buaacourse/screens/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:buaacourse/constants.dart';
 import 'package:buaacourse/screens/home/home_screen.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

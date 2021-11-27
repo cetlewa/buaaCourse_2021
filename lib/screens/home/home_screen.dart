@@ -2,6 +2,7 @@ import 'package:buaacourse/main.dart';
 import 'package:buaacourse/screens/home/course.dart';
 import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/home/user.dart';
+import 'package:buaacourse/screens/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,7 +12,7 @@ import 'package:buaacourse/constants.dart';
 //底部的索引
 int _selectedIndex = 0;
 // 创建数组引入页面
-List pageList = [Home(),Course(),User(),User(),User()];
+List pageList = [Home(),Course(),LoginPage(),User(),User()];
 
 class HomePageState extends State<HomePage> {
   @override
@@ -19,7 +20,7 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: buildAppBar(),
       bottomNavigationBar: buildBottomNavigationBar(),
-      floatingActionButton: buildFloatingActionButton(),
+      // floatingActionButton: buildFloatingActionButton(),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: pageList[_selectedIndex],
     );
