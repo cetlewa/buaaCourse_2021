@@ -31,13 +31,14 @@ class _BuildUserBodyState extends State<BuildUserBody> {
           Expanded(
               flex: 2,
               child: DataTable(
-                  sortColumnIndex: 1,
+                  sortColumnIndex: 2,
                   sortAscending: _sortAscending,
                   columns: [
                     DataColumn(label: Text('姓名')),
                     DataColumn(label: Text('性别')),
                     DataColumn(
                         label: Text('学号'),
+                        numeric: true,
                         onSort: (int columnIndex, bool ascending){
                           setState(() {
                             _sortAscending = ascending;
