@@ -1,121 +1,176 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-
+class Login extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return _LoginPageState();
+  _Login createState() => new _Login();
+}
+
+class _Login extends State<Login> {
+  //获取Key用来获取Form表单组件
+  GlobalKey<FormState> loginKey = new GlobalKey<FormState>();
+  String userName = "";
+  String password = "";
+  bool isShowPassWord = false;
+
+  void login(){
+    //读取当前的Form状态
+    var loginForm = loginKey.currentState;
+    //验证Form表单
+    if(loginForm!.validate()){
+      loginForm.save();
+      print('userName: ' + userName + ' password: ' + password);
+    }
   }
-}
 
-var leftRightPadding = 30.0;
-var topBottomPadding = 4.0;
-var textTips = const TextStyle(fontSize: 16.0, color: Colors.black);
-var hintTips = const TextStyle(fontSize: 15.0, color: Colors.black26);
-const LOGO = "assets/images/Login.jpg";
-
-var _userPassController = TextEditingController();
-var _userNameController = TextEditingController();
-
-class _LoginPageState extends State<LoginPage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: _BuildAppBar(),
-        body: _BuildBody(),
-    );
+  void showPassWord() {
+    setState(() {
+      isShowPassWord = !isShowPassWord;
+    });
   }
-}
-
-AppBar _BuildAppBar() {
-  return AppBar(
-    title: const Center(
-      child: Text("欢迎使用BUAA-COURSE"),
-    ),
-  );
-}
-
-class _BuildBody extends StatelessWidget{
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(
-                leftRightPadding, 30.0, leftRightPadding, 10.0),
-            child: Image.asset(LOGO),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(
-                leftRightPadding, 30.0, leftRightPadding, topBottomPadding),
-            child: TextField(
-              style: hintTips,
-              controller: _userNameController,
-              decoration: const InputDecoration(hintText: "请输入学号"),
-              obscureText: true,
+  Widget build(BuildContext context){
+    return new MaterialApp(
+      title: 'Form表单示例',
+      home: new Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: new Column(
+          children: <Widget>[
+            new Container(
+                padding: EdgeInsets.only(top: 100.0, bottom: 10.0),
+                child: new Text(
+                  'LOGO',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 53, 53, 53),
+                      fontSize: 50.0
+                  ),
+                )
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(
-                leftRightPadding, 30.0, leftRightPadding, topBottomPadding),
-            child: TextField(
-              style: hintTips,
-              controller: _userPassController,
-              decoration: const InputDecoration(hintText: "请输入用户密码"),
-              obscureText: true,
-            ),
-          ),
-          Container(
-            width: 360.0,
-            margin: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
-            padding: EdgeInsets.fromLTRB(leftRightPadding,
-                topBottomPadding, leftRightPadding, topBottomPadding),
-            child: Card(
-              color: Colors.blue,
-              elevation: 6.0,
-              child: FlatButton(
-                  onPressed: () {
-                    print("the pass is " + _userNameController.text);
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      '马上登录',
-                      style:
-                      TextStyle(color: Colors.white, fontSize: 16.0),
+            new Container(
+              padding: const EdgeInsets.all(16.0),
+              child: new Form(
+                key: loginKey,
+                autovalidate: true,
+                child: new Column(
+                  children: <Widget>[
+                    new Container(
+                      decoration: new BoxDecoration(
+                          border: new Border(
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 240, 240, 240),
+                                  width: 1.0
+                              )
+                          )
+                      ),
+                      child: new TextFormField(
+                        decoration: new InputDecoration(
+                          labelText: '请输入手机号',
+                          labelStyle: new TextStyle( fontSize: 15.0, color: Color.fromARGB(255, 93, 93, 93)),
+                          border: InputBorder.none,
+                          // suffixIcon: new IconButton(
+                          //   icon: new Icon(
+                          //     Icons.close,
+                          //     color: Color.fromARGB(255, 126, 126, 126),
+                          //   ),
+                          //   onPressed: () {
+
+                          //   },
+                          // ),
+                        ),
+                        keyboardType: TextInputType.phone,
+                        onSaved: (value) {
+                          userName = value!;
+                        },
+                        validator: (phone) {
+                          // if(phone.length == 0){
+                          //   return '请输入手机号';
+                          // }
+                        },
+                        onFieldSubmitted: (value) {
+
+                        },
+                      ),
                     ),
-                  )),
-            ),
-          ),
-          Container(
-            width: 360.0,
-            margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-            padding: EdgeInsets.fromLTRB(leftRightPadding,
-                topBottomPadding, leftRightPadding, topBottomPadding),
-            child: Card(
-              color: Colors.blue,
-              elevation: 6.0,
-              child: FlatButton(
-                  onPressed: () {
-                    print("the password is " + _userPassController.text);
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      '没有账号？点击注册',
-                      style:
-                      TextStyle(color: Colors.white, fontSize: 16.0),
+                    new Container(
+                      decoration: new BoxDecoration(
+                          border: new Border(
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 240, 240, 240),
+                                  width: 1.0
+                              )
+                          )
+                      ),
+                      child: new TextFormField(
+                        decoration:  new InputDecoration(
+                            labelText: '请输入密码',
+                            labelStyle: new TextStyle( fontSize: 15.0, color: Color.fromARGB(255, 93, 93, 93)),
+                            border: InputBorder.none,
+                            suffixIcon: new IconButton(
+                              icon: new Icon(
+                                isShowPassWord ? Icons.visibility : Icons.visibility_off,
+                                color: Color.fromARGB(255, 126, 126, 126),
+                              ),
+                              onPressed: showPassWord,
+                            )
+                        ),
+                        obscureText: !isShowPassWord,
+                        onSaved: (value) {
+                          password = value!;
+                        },
+                      ),
                     ),
-                  )),
-            ),
-          ),
-        ],
+                    new Container(
+                      height: 45.0,
+                      margin: EdgeInsets.only(top: 40.0),
+                      child: new SizedBox.expand(
+                        child: new RaisedButton(
+                          onPressed: login,
+                          color: Color.fromARGB(255, 61, 203, 128),
+                          child: new Text(
+                            '登录',
+                            style: TextStyle(
+                                fontSize: 14.0,
+                                color: Color.fromARGB(255, 255, 255, 255)
+                            ),
+                          ),
+                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(45.0)),
+                        ),
+                      ),
+                    ),
+                    new Container(
+                      margin: EdgeInsets.only(top: 30.0),
+                      padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          new Container(
+                            child:  Text(
+                              '注册账号',
+                              style: TextStyle(
+                                  fontSize: 13.0,
+                                  color: Color.fromARGB(255, 53, 53, 53)
+                              ),
+                            ),
+
+                          ),
+
+                          Text(
+                            '忘记密码？',
+                            style: TextStyle(
+                                fontSize: 13.0,
+                                color: Color.fromARGB(255, 53, 53, 53)
+                            ),
+                          ),
+                        ],
+                      ) ,
+                    ),
+
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
-
 }

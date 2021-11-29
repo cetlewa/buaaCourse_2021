@@ -47,6 +47,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.4
+  flutter_screenutil: ^5.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,6 +65,9 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/images/Login.jpg
+    - assets/login/image_01.png
+    - assets/login/image_02.png
+    - assets/login/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -90,3 +94,19 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: CustomIcons
+      fonts:
+        - asset: assets/login/CustomIcons.ttf
+
+    - family: Poppins-Bold
+      fonts:
+        - asset: assets/login/Poppins-Bold.ttf
+
+    - family: Poppins-Medium
+      fonts:
+        - asset: assets/login/Poppins-Medium.ttf
+
+    - family: Mansalva-Regular
+      fonts:
+        - asset: assets/login/Mansalva-Regular.ttf
