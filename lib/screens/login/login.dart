@@ -29,15 +29,15 @@ class _Login extends State<Login> {
   }
   @override
   Widget build(BuildContext context){
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Form表单示例',
-      home: new Scaffold(
+      home: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: new Column(
+        body: Column(
           children: <Widget>[
-            new Container(
-                padding: EdgeInsets.only(top: 100.0, bottom: 10.0),
-                child: new Text(
+            Container(
+                padding: const EdgeInsets.only(top: 100.0, bottom: 10.0),
+                child: const Text(
                   'LOGO',
                   style: TextStyle(
                       color: Color.fromARGB(255, 53, 53, 53),
@@ -45,26 +45,26 @@ class _Login extends State<Login> {
                   ),
                 )
             ),
-            new Container(
+            Container(
               padding: const EdgeInsets.all(16.0),
-              child: new Form(
+              child: Form(
                 key: loginKey,
                 autovalidate: true,
-                child: new Column(
+                child: Column(
                   children: <Widget>[
-                    new Container(
-                      decoration: new BoxDecoration(
-                          border: new Border(
+                    Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
                               bottom: BorderSide(
                                   color: Color.fromARGB(255, 240, 240, 240),
                                   width: 1.0
                               )
                           )
                       ),
-                      child: new TextFormField(
-                        decoration: new InputDecoration(
-                          labelText: '请输入手机号',
-                          labelStyle: new TextStyle( fontSize: 15.0, color: Color.fromARGB(255, 93, 93, 93)),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: '请输入学号',
+                          labelStyle: TextStyle( fontSize: 15.0, color: Color.fromARGB(255, 93, 93, 93)),
                           border: InputBorder.none,
                           // suffixIcon: new IconButton(
                           //   icon: new Icon(
@@ -90,24 +90,24 @@ class _Login extends State<Login> {
                         },
                       ),
                     ),
-                    new Container(
-                      decoration: new BoxDecoration(
-                          border: new Border(
+                    Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
                               bottom: BorderSide(
                                   color: Color.fromARGB(255, 240, 240, 240),
                                   width: 1.0
                               )
                           )
                       ),
-                      child: new TextFormField(
-                        decoration:  new InputDecoration(
+                      child: TextFormField(
+                        decoration:  InputDecoration(
                             labelText: '请输入密码',
-                            labelStyle: new TextStyle( fontSize: 15.0, color: Color.fromARGB(255, 93, 93, 93)),
+                            labelStyle: const TextStyle( fontSize: 15.0, color: Color.fromARGB(255, 93, 93, 93)),
                             border: InputBorder.none,
-                            suffixIcon: new IconButton(
-                              icon: new Icon(
+                            suffixIcon: IconButton(
+                              icon: Icon(
                                 isShowPassWord ? Icons.visibility : Icons.visibility_off,
-                                color: Color.fromARGB(255, 126, 126, 126),
+                                color: const Color.fromARGB(255, 126, 126, 126),
                               ),
                               onPressed: showPassWord,
                             )
@@ -118,32 +118,32 @@ class _Login extends State<Login> {
                         },
                       ),
                     ),
-                    new Container(
+                    Container(
                       height: 45.0,
                       margin: EdgeInsets.only(top: 40.0),
-                      child: new SizedBox.expand(
-                        child: new RaisedButton(
+                      child: SizedBox.expand(
+                        child: RaisedButton(
                           onPressed: login,
-                          color: Color.fromARGB(255, 61, 203, 128),
-                          child: new Text(
+                          color: const Color.fromARGB(255, 61, 203, 128),
+                          child: const Text(
                             '登录',
                             style: TextStyle(
                                 fontSize: 14.0,
                                 color: Color.fromARGB(255, 255, 255, 255)
                             ),
                           ),
-                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(45.0)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0)),
                         ),
                       ),
                     ),
-                    new Container(
+                    Container(
                       margin: EdgeInsets.only(top: 30.0),
                       padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                      child: new Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          new Container(
-                            child:  Text(
+                          Container(
+                            child:  const Text(
                               '注册账号',
                               style: TextStyle(
                                   fontSize: 13.0,
@@ -153,7 +153,7 @@ class _Login extends State<Login> {
 
                           ),
 
-                          Text(
+                          const Text(
                             '忘记密码？',
                             style: TextStyle(
                                 fontSize: 13.0,
@@ -163,7 +163,6 @@ class _Login extends State<Login> {
                         ],
                       ) ,
                     ),
-
                   ],
                 ),
               ),
