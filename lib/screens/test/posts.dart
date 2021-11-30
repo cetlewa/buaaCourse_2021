@@ -1,4 +1,5 @@
 import 'package:buaacourse/screens/test/http_service.dart';
+import 'package:buaacourse/screens/test/post_detail.dart';
 import 'package:buaacourse/screens/test/post_model.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,12 @@ class PostsPage extends StatelessWidget {
                   .map((Post post) => ListTile(
                         title: Text(post.title),
                         subtitle: Text(post.id.toString()),
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => PostDetail(
+                                    post: post,
+                                  )),
+                        ),
                       ))
                   .toList(),
             );
