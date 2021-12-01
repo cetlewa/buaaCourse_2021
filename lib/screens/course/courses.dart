@@ -23,7 +23,7 @@ class Courses extends StatelessWidget{
         ),
       ),
       body: FutureBuilder(
-        future: httpservice.getPosts(),
+        future: httpservice.getCourses(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if(snapshot.hasData){
             List<Course> courses = snapshot.data;
@@ -34,9 +34,9 @@ class Courses extends StatelessWidget{
                   child: Icon(Icons.assignment),
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text(course.name + "-" + course.id),
-                subtitle: Text(course.teacher + "-" + course.point.toString()
-                    + "-" + course.selected.toString() + "/" + course.capacity.toString()),
+                title: Text(course.courseName + "-" + course.courseId),
+                subtitle: Text(course.courseTeacher + "-" + course.coursePoint.toString()
+                    + "-" + course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (context) => CourseDetail(

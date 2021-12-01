@@ -1,13 +1,13 @@
 {
-  "id": "B3J063860",
-  "name": "Android平台开发技术",
-  "property": "必修/选修",
-  "campus": "学院路校区/沙河校区",
-  "teacher": "李莹",
-  "type": "博雅类/核心专业类/一般专业类/核心通识类/一般通识类",
-  "college": "计算机学院",
-  "point": 1.5,
-  "selected": 40,
-  "capacity": 80,
-  "introduction": "好课毫克好客浩克好课豪客好渴耗课毫克好客浩克好课豪客好渴耗课毫克好客浩克好课豪客好渴耗课"
+  "courseId": "B3J063860",
+  "courseName": "Android平台开发技术",
+  "courseAttribute": "必修/选修",
+  "courseLocation": "学院路校区/沙河校区",
+  "courseTeacher": "李莹",
+  "courseType": "博雅类/核心专业类/一般专业类/核心通识类/一般通识类",
+  "courseSchool": "计算机学院",
+  "coursePoint": 1.5,
+  "courseSelected": 40,
+  "courseCapacity": 80,
+  "courseIntroduction": "好课毫克好客浩克好课豪客好渴耗课毫克好客浩克好课豪客好渴耗课毫克好客浩克好课豪客好渴耗课"
 }

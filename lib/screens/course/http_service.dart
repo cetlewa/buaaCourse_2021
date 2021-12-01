@@ -4,9 +4,9 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 class Httpservice {
-  final String postsUrl = "https://jsonplaceholder.typicode.com/posts";
+  final String postsUrl = "http://127.0.0.1:5000/";
 
-  Future<List<Post>> getPosts() async{
+  Future<List<Post>> getCourses() async{
     Response response = await get(Uri.parse(postsUrl));
 
     if(response.statusCode == 200) {

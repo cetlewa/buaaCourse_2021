@@ -27,7 +27,7 @@ class PostsPage extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: httpservice.getPosts(),
+        future: httpservice.getCourses(),
         builder: (BuildContext context, AsyncSnapshot<List<Post>> snapshot) {
           if (snapshot.hasData) {
             List<Post>? posts = snapshot.data;

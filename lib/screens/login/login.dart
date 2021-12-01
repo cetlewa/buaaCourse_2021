@@ -14,7 +14,6 @@ class _Login extends State<Login> {
   TextEditingController _userIdController = TextEditingController();
   TextEditingController _passWordController = TextEditingController();
   bool isShowPassWord = false;
-  bool _loginSuccess = false;
 
   void checkLoginInfo(){
     //验证Form表单
@@ -43,53 +42,47 @@ class _Login extends State<Login> {
       }
       else {
         //验证通过提交数据
-        // _checkUserInfo();
-
-        if(_userIdController.text == "000" && _passWordController.text == "zzk"){
-          _loginSuccess = true;
-        }
-        if (_loginSuccess){
-          Fluttertoast.showToast(
-              msg: "欢迎使用(*^▽^*)",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Color.fromARGB(255, 61, 182, 203),
-              textColor: Colors.white,
-              fontSize: 16.0
-          );
-          Navigator.pushNamed(context, "home_screen_homePage");
-        }
-        else {
-          Fluttertoast.showToast(
-              msg: "账号密码出错了呢~",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Color.fromARGB(255, 61, 182, 203),
-              textColor: Colors.white,
-              fontSize: 16.0
-          );
-        }
+        _checkUserInfo();
         print('userId: ' + _userIdController.text + ' password: ' + _passWordController.text);
       }
     }
   }
 
   _checkUserInfo() async {
-    //TODO:Url
-    var loginUrl="https://jsonplaceholder.typicode.com/posts";
+    var loginUrl="http://127.0.0.1:5000/login";
 
     var result = await post(
         Uri.parse(loginUrl),
         body: json.encode(
             {
               "userId": "${_userIdController.text}",
-              "passWord": "${_passWordController.text}"
+              "userPwd": "${_passWordController.text}"
             })
     );
     if (result.statusCode == 200) {
-      _loginSuccess = json.decode(result.body)["success"];
+      if(json.decode(result.body)["success"]){
+        Fluttertoast.showToast(
+            msg: "欢迎使用(*^▽^*)",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Color.fromARGB(255, 61, 182, 203),
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+        Navigator.pushNamed(context, "home_screen_homePage");
+      }
+      else{
+        Fluttertoast.showToast(
+            msg: "账号密码出错了呢~",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Color.fromARGB(255, 61, 182, 203),
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+      }
     }
     else {
       print(result.statusCode);

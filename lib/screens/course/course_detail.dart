@@ -22,23 +22,23 @@ class CourseDetail extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   title: Text("Course"),
-                  subtitle: Text(course.name + "-" + course.id),
+                  subtitle: Text(course.courseName + "-" + course.courseId),
                 ),
                 ListTile(
                   title: Text("Teacher"),
-                  subtitle: Text(course.teacher + "-" + course.teacher),
+                  subtitle: Text(course.courseTeacher + "-" + course.courseSchool),
                 ),
                 ListTile(
                   title: Text("Property"),
-                  subtitle: Text(course.property + "-" + course.type + "-" + course.campus),
+                  subtitle: Text(course.courseAttribute + "-" + course.courseType + "-" + course.courseLocation),
                 ),
                 ListTile(
                   title: Text("Introduction"),
-                  subtitle: Text(course.introduction),
+                  subtitle: Text(course.courseIntroduction),
                 ),
                 ListTile(
                   title: Text("Select/capacity"),
-                  subtitle: Text(course.selected.toString() + "/" + course.capacity.toString()),
+                  subtitle: Text(course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                 ),
               ],
             ),

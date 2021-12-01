@@ -1,55 +1,55 @@
 class Course {
-  final String id; //课程代码 B3J063860
-  final String name; //课程名称 Android平台开发技术
-  final String property; //课程性质 选修/必修
-  final String campus; //校区 学院路校区/沙河校区
-  final String teacher; //课程教师 李莹
-  final String type; //课程类别 博雅类/核心专业类/一般专业类/核心通识类/一般通识类
-  final String college; //开课院系 计算机学院
-  final int point; //学分 1.5
-  final int selected; //已选 40
-  final int capacity; //容量 80
-  final String introduction; //课程介绍
+  final String courseId; //课程代码 B3J063860
+  final String courseName; //课程名称 Android平台开发技术
+  final String courseAttribute; //课程性质 选修/必修
+  final String courseLocation; //校区 学院路校区/沙河校区
+  final String courseTeacher; //课程教师 李莹
+  final String courseType; //课程类别 博雅类/核心专业类/一般专业类/核心通识类/一般通识类
+  final String courseSchool; //开课院系 计算机学院
+  final int coursePoint; //学分 1.5
+  final int courseSelected; //已选 40
+  final int courseCapacity; //容量 80
+  final String courseIntroduction; //课程介绍
 
   Course(
-    this.id,
-    this.name,
-    this.property,
-    this.campus,
-    this.teacher,
-    this.type,
-    this.college,
-    this.point,
-    this.selected,
-    this.capacity,
-    this.introduction,
+    this.courseId,
+    this.courseName,
+    this.courseAttribute,
+    this.courseLocation,
+    this.courseTeacher,
+    this.courseType,
+    this.courseSchool,
+    this.coursePoint,
+    this.courseSelected,
+    this.courseCapacity,
+    this.courseIntroduction,
   );
 
   Course.fromJson(Map<String, dynamic> json)
-      : id = json["id"],
-        name = json["name"],
-        property = json["property"],
-        campus = json["campus"],
-        teacher = json["teacher"],
-        type = json["type"],
-        college = json["college"],
-        point = json["point"],
-        selected = json["selected"],
-        capacity = json["capacity"],
-        introduction = json["introduction"];
+      : courseId = json["courseId"],
+        courseName = json["courseName"],
+        courseAttribute = json["courseAttribute"],
+        courseLocation = json["courseLocation"],
+        courseTeacher = json["courseTeacher"],
+        courseType = json["courseType"],
+        courseSchool = json["courseSchool"],
+        coursePoint = json["coursePoint"],
+        courseSelected = json["courseSelected"],
+        courseCapacity = json["courseCapacity"],
+        courseIntroduction = json["courseIntroduction"];
 
   Map<String, dynamic> toJson() =>
       <String, dynamic>{
-        "id": id,
-        "name": name,
-        "property": property,
-        "campus": campus,
-        "teacher": teacher,
-        "type": type,
-        "college": college,
-        "point": point,
-        "selected": selected,
-        "capacity": capacity,
-        "introduction": introduction,
+        "courseId": courseId,
+        "courseName": courseName,
+        "courseAttribute": courseAttribute,
+        "courseLocation": courseLocation,
+        "courseTeacher": courseTeacher,
+        "courseType": courseType,
+        "courseSchool": courseSchool,
+        "coursePoint": coursePoint,
+        "courseSelected": courseSelected,
+        "courseCapacity": courseCapacity,
+        "courseIntroduction": courseIntroduction,
       };
 }
