@@ -1,8 +1,8 @@
 import 'package:buaacourse/main.dart';
-import 'package:buaacourse/screens/home/course.dart';
 import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/home/user.dart';
 import 'package:buaacourse/screens/login/login.dart';
+import 'package:buaacourse/screens/test/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +12,7 @@ import 'package:buaacourse/constants.dart';
 //底部的索引
 int _selectedIndex = 0;
 // 创建数组引入页面
-List pageList = [Home(),Course(),Login(),User(),User()];
+List pageList = [Home(),PostsPage(),Login(),User(),User()];
 
 class HomePageState extends State<HomePage> {
   @override
@@ -29,26 +29,16 @@ class HomePageState extends State<HomePage> {
   //顶部AppBar
   AppBar buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset("assets/icons/back.svg"),
-        onPressed: () {},
-      ),
+      // leading: IconButton(
+      //   icon: SvgPicture.asset("assets/icons/back.svg"),
+      //   onPressed: () {},
+      // ),
       actions: <Widget>[
         IconButton(
           icon: SvgPicture.asset(
             "assets/icons/search.svg",
-            // By default our  icon color is white
-            color: kTextColor,
-          ),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/cart.svg",
-            // By default our  icon color is white
-            color: kTextColor,
           ),
           onPressed: () {},
         ),
@@ -67,9 +57,8 @@ class HomePageState extends State<HomePage> {
       selectedFontSize: 18.0,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
-        BottomNavigationBarItem(icon: Icon(Icons.wysiwyg_outlined), label: '还没想好'),
-        // BottomNavigationBarItem(icon: Icon(null), label: 'Cart'),
-        BottomNavigationBarItem(icon: Icon(Icons.assignment_turned_in_outlined), label: '也还没想好'),
+        BottomNavigationBarItem(icon: Icon(Icons.wysiwyg_outlined), label: '课程列表'),
+        BottomNavigationBarItem(icon: Icon(Icons.assignment_turned_in_outlined), label: '我的课表'),
         BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: '信息列表'),
       ],
       currentIndex: _selectedIndex,

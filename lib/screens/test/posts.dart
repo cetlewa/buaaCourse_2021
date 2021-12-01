@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:buaacourse/screens/test/http_service.dart';
+import 'package:buaacourse/screens/course/http_service.dart';
 import 'package:buaacourse/screens/test/post_detail.dart';
 import 'package:buaacourse/screens/test/post_model.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +12,9 @@ class PostsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Posts"),
-      ),
+      // appBar: AppBar(
+      //   title: const Text("Posts"),
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _postData();

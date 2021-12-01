@@ -7,7 +7,9 @@ class Course {
   final String type; //课程类别 博雅类/核心专业类/一般专业类/核心通识类/一般通识类
   final String college; //开课院系 计算机学院
   final int point; //学分 1.5
+  final int selected; //已选 40
   final int capacity; //容量 80
+  final String introduction; //课程介绍
 
   Course(
     this.id,
@@ -18,7 +20,9 @@ class Course {
     this.type,
     this.college,
     this.point,
+    this.selected,
     this.capacity,
+    this.introduction,
   );
 
   Course.fromJson(Map<String, dynamic> json)
@@ -30,7 +34,9 @@ class Course {
         type = json["type"],
         college = json["college"],
         point = json["point"],
-        capacity = json["capacity"];
+        selected = json["selected"],
+        capacity = json["capacity"],
+        introduction = json["introduction"];
 
   Map<String, dynamic> toJson() =>
       <String, dynamic>{
@@ -42,6 +48,8 @@ class Course {
         "type": type,
         "college": college,
         "point": point,
+        "selected": selected,
         "capacity": capacity,
+        "introduction": introduction,
       };
 }
