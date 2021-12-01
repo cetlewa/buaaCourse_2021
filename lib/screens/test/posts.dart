@@ -62,10 +62,10 @@ class PostsPage extends StatelessWidget {
 }
 
 _postData() async{
-  var apiUrl="http://127.0.0.1:5000/login";
+  var apiUrl="https://jsonplaceholder.typicode.com/posts";
 
-  var result = await post(Uri.parse(apiUrl), body: {'username': '蔡明生', 'gender': '女'});
-  if (result.statusCode == 200) {
+  var result = await post(Uri.parse(apiUrl), body: json.encode({"username": "cms", "gender": "c"}));
+  if (result.statusCode == 201) {
     print(json.decode(result.body));
   }
   else {

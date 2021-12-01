@@ -1,0 +1,8 @@
+{
+  "studentId": "19373529",
+  "name": "朱祖坤",
+  "college": "计算机学院",
+  "identity": "学生/教室",
+  "courses": ["course1", "course2"],
+  "comments": ["comment1", "comment2"]
+}
