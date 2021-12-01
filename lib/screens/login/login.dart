@@ -45,7 +45,6 @@ class _Login extends State<Login> {
         //验证通过提交数据
         // _checkUserInfo();
 
-        // print("userId:" + _userIdController.text + " passWord:" + _passWordController.text);
         if(_userIdController.text == "000" && _passWordController.text == "zzk"){
           _loginSuccess = true;
         }
@@ -209,22 +208,30 @@ class _Login extends State<Login> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
-                            child:  const Text(
-                              '注册账号',
+                            child:  RaisedButton(
+                              onPressed: router2Register,
+                              color: const Color.fromARGB(255, 61, 182, 203),
+                              child: const Text(
+                                '注册账号',
+                                style: TextStyle(
+                                    fontSize: 13.0,
+                                    color: Color.fromARGB(255, 53, 53, 53)
+                                ),
+                              ),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0)),
+                            ),
+                          ),
+                          RaisedButton(
+                            onPressed: router2Register,
+                            color: const Color.fromARGB(255, 61, 182, 203),
+                            child: const Text(
+                              '忘记密码？',
                               style: TextStyle(
                                   fontSize: 13.0,
                                   color: Color.fromARGB(255, 53, 53, 53)
                               ),
                             ),
-
-                          ),
-
-                          const Text(
-                            '忘记密码？',
-                            style: TextStyle(
-                                fontSize: 13.0,
-                                color: Color.fromARGB(255, 53, 53, 53)
-                            ),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0)),
                           ),
                         ],
                       ) ,
@@ -237,5 +244,9 @@ class _Login extends State<Login> {
         ),
       ),
     );
+  }
+
+  void router2Register() {
+    Navigator.pushNamed(context, "register_page");
   }
 }
