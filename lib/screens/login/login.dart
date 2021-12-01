@@ -43,7 +43,12 @@ class _Login extends State<Login> {
       }
       else {
         //验证通过提交数据
-        _checkUserInfo();
+        // _checkUserInfo();
+
+        // print("userId:" + _userIdController.text + " passWord:" + _passWordController.text);
+        if(_userIdController.text == "000" && _passWordController.text == "zzk"){
+          _loginSuccess = true;
+        }
         if (_loginSuccess){
           Fluttertoast.showToast(
               msg: "欢迎使用(*^▽^*)",
@@ -54,6 +59,7 @@ class _Login extends State<Login> {
               textColor: Colors.white,
               fontSize: 16.0
           );
+          Navigator.pushNamed(context, "home_screen_homePage");
         }
         else {
           Fluttertoast.showToast(
