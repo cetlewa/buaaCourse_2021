@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
         "home_screen_homePage":(context) => HomePage(),
         "register_page":(context) => Register(),
       },
-      home: Test(),
-      // home: PostsPage(),
+      home: Login(),
+      // home: Test(),
     );
   }
 }

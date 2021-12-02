@@ -20,7 +20,6 @@ class _Register extends State<Register> {
   TextEditingController _userSchoolController = TextEditingController();
   bool isShowPassWord1 = false;
   bool isShowPassWord2 = false;
-  bool registerSuccess = false;
 
   void post4Register () {
     if((_registerKey.currentState as FormState).validate()){
@@ -29,6 +28,11 @@ class _Register extends State<Register> {
       }
       else if(_userNameController.text == ""){
         toast("别害羞嘛，让我看看你的名字o(￣ヘ￣o＃)");
+      }
+      else if(_passWordController1.text == "" ||
+          _passWordController2.text == "" ||
+          _passWordController1.text != _passWordController2.text){
+        toast("您的密码输入出错啦o(一︿一+)o");
       }
       else if(_userTelController.text == ""){
         toast("没有看见您的电话呢o(￣ヘ￣o＃)");
@@ -40,15 +44,7 @@ class _Register extends State<Register> {
         toast("没有看见您的学院呢o(￣ヘ￣o＃)");
       }
       else{
-        if(_passWordController1.text == "" ||
-            _passWordController2.text == "" ||
-            _passWordController1.text != _passWordController2.text){
-          toast("您的密码输入出错啦o(一︿一+)o");
-        }
-        else{
-          // _postData();
-          Navigator.pushNamed(context, "home_screen_homePage");
-        }
+        // _postData();
       }
     }
   }
@@ -70,9 +66,12 @@ class _Register extends State<Register> {
         )
     );
     if (result.statusCode == 200) {
-      registerSuccess = json.decode(result.body)["success"];
+      if(json.decode(result.body)["success"]){
+        Navigator.pushNamed(context, "home_screen_homePage");
+      }
     }
     else {
+      toast("当前学号已被注册！");
       print(result.statusCode);
     }
   }
