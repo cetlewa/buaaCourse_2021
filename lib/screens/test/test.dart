@@ -36,6 +36,7 @@ class Test extends StatelessWidget{
                       // subtitle: Text(course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                     ),
                     Card(
+                      color: Colors.red,
                       child: ListTile(
                         selected: true,
                         title: Text("Select/capacity"),

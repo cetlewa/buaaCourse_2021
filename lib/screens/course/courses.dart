@@ -29,19 +29,21 @@ class Courses extends StatelessWidget{
             List<Course> courses = snapshot.data;
 
             return ListView(
-              children: courses.map((Course course) => ListTile(
-                leading: const CircleAvatar(
-                  child: Icon(Icons.assignment),
-                ),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text(course.courseName + "-" + course.courseId),
-                subtitle: Text(course.courseTeacher + "-" + course.coursePoint.toString()
-                    + "-" + course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (context) => CourseDetail(
-                        course: course,
-                      )),
+              children: courses.map((Course course) => Card(
+                child: ListTile(
+                  leading: const CircleAvatar(
+                    child: Icon(Icons.assignment),
+                  ),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                  title: Text(course.courseName + "-" + course.courseId),
+                  subtitle: Text(course.courseTeacher + "-" + course.coursePoint.toString()
+                      + "-" + course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (context) => CourseDetail(
+                          course: course,
+                        )),
+                  ),
                 ),
               )).toList(),
             );
