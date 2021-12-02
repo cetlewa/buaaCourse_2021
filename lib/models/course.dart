@@ -6,7 +6,7 @@ class Course {
   final String courseTeacher; //课程教师 李莹
   final String courseType; //课程类别 博雅类/核心专业类/一般专业类/核心通识类/一般通识类
   final String courseSchool; //开课院系 计算机学院
-  final int coursePoint; //学分 1.5
+  final double coursePoint; //学分 1.5
   final int courseSelected; //已选 40
   final int courseCapacity; //容量 80
   final String courseIntroduction; //课程介绍

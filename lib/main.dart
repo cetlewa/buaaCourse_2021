@@ -1,5 +1,6 @@
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
+import 'package:buaacourse/screens/test/test.dart';
 import 'package:flutter/material.dart';
 import 'package:buaacourse/constants.dart';
 import 'package:buaacourse/screens/home/home_screen.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         "home_screen_homePage":(context) => HomePage(),
         "register_page":(context) => Register(),
       },
-      home: Login(),
+      home: Test(),
       // home: PostsPage(),
     );
   }
