@@ -3,6 +3,7 @@ import 'package:buaacourse/screens/course/courses.dart';
 import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/home/user.dart';
 import 'package:buaacourse/screens/login/login.dart';
+import 'package:buaacourse/screens/test/testUserInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +13,7 @@ import 'package:buaacourse/constants.dart';
 //底部的索引
 int _selectedIndex = 0;
 // 创建数组引入页面
-List pageList = [Home(),Courses(),Login(),User(),User()];
+List pageList = [Home(),Courses(),Login(),TestUserInfo(),User()];
 
 class HomePageState extends State<HomePage> {
   @override

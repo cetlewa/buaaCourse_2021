@@ -40,6 +40,18 @@ class CourseDetail extends StatelessWidget {
                   title: Text("Select/capacity"),
                   subtitle: Text(course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                 ),
+                ListTile(
+                  leading: TextButton.icon(
+                    icon: Icon(Icons.article),
+                    label: Text("评论"),
+                    onPressed: (){},
+                  ),
+                  trailing: TextButton.icon(
+                    icon: Icon(Icons.article),
+                    label: Text("选课"),
+                    onPressed: (){},
+                  ),
+                ),
               ],
             ),
           ),

@@ -35,14 +35,26 @@ class Test extends StatelessWidget{
                       title: Text("Select/capacity"),
                       // subtitle: Text(course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                     ),
-                    Card(
-                      color: Colors.red,
-                      child: ListTile(
-                        selected: true,
-                        title: Text("Select/capacity"),
-                        // trailing: Icon(Icons.keyboard_arrow_right),
+                    ListTile(
+                      leading: TextButton.icon(
+                        icon: Icon(Icons.article),
+                        label: Text("评论"),
+                        onPressed: (){},
+                      ),
+                      trailing: TextButton.icon(
+                        icon: Icon(Icons.article),
+                        label: Text("选课"),
+                        onPressed: (){},
                       ),
                     ),
+                    // Card(
+                    //   color: Colors.red,
+                    //   child: ListTile(
+                    //     selected: true,
+                    //     title: Text("Select/capacity"),
+                    //     // trailing: Icon(Icons.keyboard_arrow_right),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
