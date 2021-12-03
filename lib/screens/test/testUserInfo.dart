@@ -21,65 +21,81 @@ class TestUserInfo extends StatelessWidget{
     return Container(
       child: Column(
         children: <Widget>[
-          Container(
-            color: Colors.lightBlueAccent,
-            child: ListTile(
-              title: Text("列表1"),
-              // iconName: "img/me_buy.png",
-              // onPressed: () {},
-            ),
-          ),
-          Container(
-            color: Colors.lightBlueAccent,
-            child: ListTile(
-              title: Text("列表2"),
-              // iconName: "img/me_feedback.png",
-              // onPressed: () {},
-            ),
-          ),
-          Container(
-            color: Colors.lightBlueAccent,
-            child: ListTile(
-              title: Text("列表3"),
-              // iconName: "img/me_coupon.png",
-              // onPressed: () {},
-            ),
-          ),
-          SizedBox(height: 24.0),
-          Container(
-            color: Colors.lightBlueAccent,
-            child: ListTile(
-              title: Text("列表4"),
-              // iconName: "img/me_date.png",
-              // onPressed: () {},
+          Card(
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("列表1"),
+                    // iconName: "img/me_buy.png",
+                    // onPressed: () {},
+                  ),
+                ),
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("列表2"),
+                    // iconName: "img/me_feedback.png",
+                    // onPressed: () {},
+                  ),
+                ),
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("列表3"),
+                    // iconName: "img/me_coupon.png",
+                    // onPressed: () {},
+                  ),
+                ),
+              ],
             ),
           ),
           SizedBox(height: 24.0),
-          Container(
-            color: Colors.lightBlueAccent,
-            child: ListTile(
-              title: Text("列表5"),
-              // iconName: "img/me_action.png",
-              // onPressed: () {},
+          Card(
+            child: Container(
+              color: Colors.lightBlueAccent,
+              child: ListTile(
+                title: Text("列表4"),
+                // iconName: "img/me_date.png",
+                // onPressed: () {},
+              ),
             ),
           ),
           SizedBox(height: 24.0),
-          Container(
-            color: Colors.lightBlueAccent,
-            child: ListTile(
-              title: Text("设置"),
-              // iconName: "img/me_setting.png",
-              // onPressed: () {
-              // },
+          Card(
+            child: Container(
+              color: Colors.lightBlueAccent,
+              child: ListTile(
+                title: Text("列表5"),
+                // iconName: "img/me_action.png",
+                // onPressed: () {},
+              ),
             ),
           ),
-          Container(
-            color: Colors.lightBlueAccent,
-            child: ListTile(
-              title: Text("About"),
-              // iconName: 'img/me_feedback.png',
-              // onPressed: () {
-              // },
+          SizedBox(height: 24.0),
+          Card(
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("设置"),
+                    // iconName: "img/me_setting.png",
+                    // onPressed: () {
+                    // },
+                  ),
+                ),
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("About"),
+                    // iconName: 'img/me_feedback.png',
+                    // onPressed: () {
+                    // },
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -96,31 +112,34 @@ class MeHeader extends StatelessWidget {
     return GestureDetector(
       onTap: () {
       },
-      child: Container(
-        padding: EdgeInsets.fromLTRB(20, 30, 15, 15),
-        child: Row(
-          children: <Widget>[
-            CircleAvatar(
-              radius: 40,
-              backgroundImage: AssetImage('assets/images/placeholder_avatar.png'),
-            ),
-            SizedBox(width: 25),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    '登录',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  // SizedBox(height: 10),
-                  // buildItems(),
-                ],
+      child: Card(
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+        child: Container(
+          padding: EdgeInsets.fromLTRB(20, 30, 15, 15),
+          child: Row(
+            children: <Widget>[
+              CircleAvatar(
+                radius: 40,
+                backgroundImage: AssetImage('assets/images/placeholder_avatar.png'),
               ),
-            )
-          ],
+              SizedBox(width: 25),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      '登录',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    // SizedBox(height: 10),
+                    // buildItems(),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }
