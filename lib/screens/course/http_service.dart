@@ -1,11 +1,11 @@
 import 'package:buaacourse/models/course.dart';
 import 'package:http/http.dart';
+import 'package:buaacourse/main.dart';
 
 import 'dart:convert';
 
 class Httpservice {
-  final String postsUrl =
-      "https://service-dj0lsdex-1308473899.bj.apigw.tencentcs.com/release/queryAllCourse";
+  final String postsUrl = Global.baseUrl + "queryAllCourse";
 
   Future<List<Course>> getCourses() async {
     Response response = await get(Uri.parse(postsUrl));

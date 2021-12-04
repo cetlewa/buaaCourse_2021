@@ -10,7 +10,7 @@ class User extends StatelessWidget{
         child: ListView(
           children: <Widget>[
             MeHeader(),
-            SizedBox(height: 10, ),
+            SizedBox(height: 5,),
             buildCells(context),
           ],
         ),
@@ -20,35 +20,36 @@ class User extends StatelessWidget{
 
   Widget buildCells(BuildContext context) {
     return Container(
-      child: Global.globalUser.userId == "" ?
-              Column(
-                children: <Widget>[
-                  Card(
-                    child: Column(
-                      children: [
-                        Container(
-                          color: Colors.white,
-                          child: ListTile(
-                            title: Text("设置"),
-                            // iconName: "img/me_setting.png",
-                            // onPressed: () {
-                            // },
-                          ),
-                        ),
-                        Container(
-                          color: Colors.white,
-                          child: ListTile(
-                            title: Text("About"),
-                            // iconName: 'img/me_feedback.png',
-                            // onPressed: () {
-                            // },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ) :
+      child:
+              // Global.globalUser.userId == "" ?
+              // Column(
+              //   children: <Widget>[
+              //     Card(
+              //       child: Column(
+              //         children: [
+              //           Container(
+              //             color: Colors.white,
+              //             child: ListTile(
+              //               title: Text("设置"),
+              //               // iconName: "img/me_setting.png",
+              //               // onPressed: () {
+              //               // },
+              //             ),
+              //           ),
+              //           Container(
+              //             color: Colors.white,
+              //             child: ListTile(
+              //               title: Text("About"),
+              //               // iconName: 'img/me_feedback.png',
+              //               // onPressed: () {
+              //               // },
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ],
+              // ) :
               Column(
         children: <Widget>[
           Card(
@@ -87,7 +88,7 @@ class User extends StatelessWidget{
               ],
             ),
           ),
-          SizedBox(height: 24.0),
+          SizedBox(height: 6.0),
           Card(
             child: Container(
               color: Colors.white,
@@ -98,21 +99,29 @@ class User extends StatelessWidget{
               ),
             ),
           ),
-          SizedBox(height: 24.0),
-          Card(
-            child: Container(
-              color: Colors.white,
-              child: ListTile(
-                title: Text("列表5"),
-                // iconName: "img/me_action.png",
-                // onPressed: () {},
-              ),
-            ),
-          ),
-          SizedBox(height: 24.0),
+          // SizedBox(height: 4.0),
+          // Card(
+          //   child: Container(
+          //     color: Colors.white,
+          //     child: ListTile(
+          //       title: Text("列表5"),
+          //       // iconName: "img/me_action.png",
+          //       // onPressed: () {},
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(height: 2.0),
           Card(
             child: Column(
               children: [
+                Container(
+                  color: Colors.white,
+                  child: ListTile(
+                    title: Text("列表5"),
+                    // iconName: "img/me_action.png",
+                    // onPressed: () {},
+                  ),
+                ),
                 Container(
                   color: Colors.white,
                   child: ListTile(

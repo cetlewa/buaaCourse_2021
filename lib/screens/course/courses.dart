@@ -30,6 +30,7 @@ class Courses extends StatelessWidget{
 
             return ListView(
               children: courses.map((Course course) => Card(
+                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
                 child: ListTile(
                   leading: const CircleAvatar(
                     child: Icon(Icons.assignment),
