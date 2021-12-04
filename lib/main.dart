@@ -1,14 +1,13 @@
 import 'package:buaacourse/models/user.dart';
-import 'package:buaacourse/screens/home/home.dart';
+import 'package:buaacourse/screens/comment/comment.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
-import 'package:buaacourse/screens/my_course/myCourse.dart';
-import 'package:buaacourse/screens/test/test.dart';
-import 'package:buaacourse/screens/test/testUserInfo.dart';
 import 'package:buaacourse/screens/user/userInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:buaacourse/constants.dart';
 import 'package:buaacourse/screens/home/home_screen.dart';
+
+import 'newLogin/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,9 +28,10 @@ class MyApp extends StatelessWidget {
         "home_screen_homePage": (context) => HomePage(),
         "register_page": (context) => Register(),
         "userinfo_page": (context) => UserInfo(),
+        "comments_page": (context) => ShowComment(),
       },
       // home: Login(),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

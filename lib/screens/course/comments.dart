@@ -41,11 +41,11 @@ class Comments extends StatelessWidget {
 class Httpservice {
   final String postsUrl = Global.baseUrl + "queryCourseComments";
 
-  Future<List<Comment>> getComments(Course course) async {
+  Future<List<Comment>> getComments(String courseId) async {
     Response response = await post(
         Uri.parse(postsUrl),
         body: json.encode({
-          "courseId": course.courseId,
+          "courseId": courseId,
         }),
     );
 

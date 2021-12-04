@@ -1,15 +1,12 @@
 import 'dart:convert';
-import 'package:buaacourse/models/comment.dart';
 import 'package:buaacourse/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:buaacourse/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
-import 'comments.dart';
 
 class CourseDetail extends StatelessWidget {
   final Course course;
-  final Httpservice httpservice = Httpservice();
 
   CourseDetail({
     required this.course,
@@ -28,31 +25,31 @@ class CourseDetail extends StatelessWidget {
             children: <Widget>[
               Card(
                 child:
-                // Global.globalUser.userId == "" ?
-                //       Column(
-                //   children: <Widget>[
-                //     ListTile(
-                //       title: Text("Course"),
-                //       subtitle: Text(course.courseName + "-" + course.courseId),
-                //     ),
-                //     ListTile(
-                //       title: Text("Teacher"),
-                //       subtitle: Text(course.courseTeacher + "-" + course.courseSchool),
-                //     ),
-                //     ListTile(
-                //       title: Text("Property"),
-                //       subtitle: Text(course.courseAttribute + "-" + course.courseType + "-" + course.courseLocation),
-                //     ),
-                //     ListTile(
-                //       title: Text("Introduction"),
-                //       subtitle: Text(course.courseIntroduction),
-                //     ),
-                //     ListTile(
-                //       title: Text("Select/capacity"),
-                //       subtitle: Text(course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
-                //     ),
-                //   ],
-                // ) :
+                Global.globalUser.userId == "" ?
+                      Column(
+                  children: <Widget>[
+                    ListTile(
+                      title: Text("Course"),
+                      subtitle: Text(course.courseName + "-" + course.courseId),
+                    ),
+                    ListTile(
+                      title: Text("Teacher"),
+                      subtitle: Text(course.courseTeacher + "-" + course.courseSchool),
+                    ),
+                    ListTile(
+                      title: Text("Property"),
+                      subtitle: Text(course.courseAttribute + "-" + course.courseType + "-" + course.courseLocation),
+                    ),
+                    ListTile(
+                      title: Text("Introduction"),
+                      subtitle: Text(course.courseIntroduction),
+                    ),
+                    ListTile(
+                      title: Text("Select/capacity"),
+                      subtitle: Text(course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
+                    ),
+                  ],
+                ) :
                 Column(
                   children: <Widget>[
                     ListTile(
@@ -79,7 +76,9 @@ class CourseDetail extends StatelessWidget {
                       leading: TextButton.icon(
                         icon: Icon(Icons.article),
                         label: Text("评论"),
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.of(context).pushNamed("comments_page", arguments: course.courseId);
+                        },
                       ),
                       trailing: TextButton.icon(
                         icon: Icon(Icons.article),
@@ -91,37 +90,6 @@ class CourseDetail extends StatelessWidget {
                     ),
                   ],
                 ) ,
-              ),
-              FutureBuilder(
-                future: httpservice.getComments(course),
-                  builder:(BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                    if(snapshot.hasData){
-                      List<Comment> comments = snapshot.data;
-
-                      return ListView(
-                        children: comments.map((Comment comment) => Card(
-                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                          child: ListTile(
-                            leading: const CircleAvatar(
-                              child: Icon(Icons.assignment),
-                            ),
-                            trailing: Icon(Icons.keyboard_arrow_right),
-                            title: Text("Comment Text"),
-                            subtitle: Text(comment.commentText),
-                            onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => Comments(
-                                    comment: comment,
-                                  )),
-                            ),
-                          ),
-                        )).toList(),
-                      );
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  },
               ),
             ],
           ),

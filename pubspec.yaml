@@ -37,6 +37,7 @@ dependencies:
   flutter_svg: ^0.23.0+1
   fluttertoast: ^8.0.8
   shared_preferences: ^2.0.9
+  font_awesome_flutter: ^9.2.0
 
 dev_dependencies:
   flutter_test:
@@ -67,7 +68,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/images/placeholder_avatar.png
-    - assets/images/marketing.png
+    - assets/images/login_logo.png
 #    - assets/images/Login.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -95,3 +96,15 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: WorkSansSemiBold
+      fonts:
+        - asset: assets/fonts/Work_Sans/WorkSans-SemiBold.ttf
+
+    - family: WorkSansBold
+      fonts:
+        - asset: assets/fonts/Work_Sans/WorkSans-Bold.ttf
+
+    - family: WorkSansMedium
+      fonts:
+        - asset: assets/fonts/Work_Sans/WorkSans-Medium.ttf
