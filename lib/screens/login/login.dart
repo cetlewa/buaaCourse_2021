@@ -77,108 +77,130 @@ class _Login extends State<Login> {
       title: 'Form表单示例',
       home: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(
-          children: <Widget>[
-            Container(
-                padding: const EdgeInsets.only(top: 100.0, bottom: 10.0),
-                child: const Text(
-                  'LOGO',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 53, 53, 53), fontSize: 50.0),
-                )),
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: Form(
-                key: _loginKey,
-                autovalidate: true,
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color: Color.fromARGB(255, 240, 240, 240),
-                                  width: 1.0))),
-                      child: TextFormField(
-                        controller: _userIdController,
-                        decoration: InputDecoration(
-                          labelText: '请输入学号',
-                          labelStyle: TextStyle(
-                              fontSize: 15.0,
-                              color: Color.fromARGB(255, 93, 93, 93)),
-                          border: InputBorder.none,
-                          suffixIcon: IconButton(
-                            icon: const Icon(
-                              Icons.close,
-                              color: Color.fromARGB(255, 126, 126, 126),
-                            ),
-                            onPressed: () {
-                              _userIdController.text = "";
-                            },
-                          ),
-                        ),
-                        keyboardType: TextInputType.number,
-                        // validator: (v) {
-                        //   return v!.trim().length > 0 ? null : "用户名不能为空";
-                        // },
-                      ),
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color: Color.fromARGB(255, 240, 240, 240),
-                                  width: 1.0))),
-                      child: TextFormField(
-                        controller: _passWordController,
-                        decoration: InputDecoration(
-                            labelText: '请输入密码',
-                            labelStyle: const TextStyle(
+        body: Container(
+          // width: double.infinity,
+          // decoration: BoxDecoration(
+          //   color: Color(0xFFF5F4EF),
+          //   image: DecorationImage(
+          //     image: AssetImage("assets/images/marketing.png"),
+          //     // alignment: Alignment.topRight,
+          //   ),
+          // ),
+          child: Column(
+            children: <Widget>[
+              Container(
+                  padding: const EdgeInsets.only(top: 100.0, bottom: 10.0),
+                  child: const Text(
+                    'LOGO',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 53, 53, 53), fontSize: 50.0),
+                  )),
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                child: Form(
+                  key: _loginKey,
+                  autovalidate: true,
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: Color.fromARGB(255, 240, 240, 240),
+                                    width: 1.0))),
+                        child: TextFormField(
+                          controller: _userIdController,
+                          decoration: InputDecoration(
+                            labelText: '请输入学号',
+                            labelStyle: TextStyle(
                                 fontSize: 15.0,
                                 color: Color.fromARGB(255, 93, 93, 93)),
                             border: InputBorder.none,
                             suffixIcon: IconButton(
-                              icon: Icon(
-                                isShowPassWord
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: const Color.fromARGB(255, 126, 126, 126),
+                              icon: const Icon(
+                                Icons.close,
+                                color: Color.fromARGB(255, 126, 126, 126),
                               ),
-                              onPressed: showPassWord,
-                            )),
-                        obscureText: !isShowPassWord,
-                      ),
-                    ),
-                    Container(
-                      height: 45.0,
-                      margin: EdgeInsets.only(top: 40.0),
-                      child: SizedBox.expand(
-                        child: RaisedButton(
-                          onPressed: checkLoginInfo,
-                          color: const Color.fromARGB(255, 61, 182, 203),
-                          child: const Text(
-                            '登录',
-                            style: TextStyle(
-                                fontSize: 14.0,
-                                color: Color.fromARGB(255, 255, 255, 255)),
+                              onPressed: () {
+                                _userIdController.text = "";
+                              },
+                            ),
                           ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(45.0)),
+                          keyboardType: TextInputType.number,
+                          // validator: (v) {
+                          //   return v!.trim().length > 0 ? null : "用户名不能为空";
+                          // },
                         ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 30.0),
-                      padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            child: RaisedButton(
+                      Container(
+                        decoration: const BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: Color.fromARGB(255, 240, 240, 240),
+                                    width: 1.0))),
+                        child: TextFormField(
+                          controller: _passWordController,
+                          decoration: InputDecoration(
+                              labelText: '请输入密码',
+                              labelStyle: const TextStyle(
+                                  fontSize: 15.0,
+                                  color: Color.fromARGB(255, 93, 93, 93)),
+                              border: InputBorder.none,
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  isShowPassWord
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: const Color.fromARGB(255, 126, 126, 126),
+                                ),
+                                onPressed: showPassWord,
+                              )),
+                          obscureText: !isShowPassWord,
+                        ),
+                      ),
+                      Container(
+                        height: 45.0,
+                        margin: EdgeInsets.only(top: 40.0),
+                        child: SizedBox.expand(
+                          child: RaisedButton(
+                            onPressed: checkLoginInfo,
+                            color: const Color.fromARGB(255, 61, 182, 203),
+                            child: const Text(
+                              '登录',
+                              style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Color.fromARGB(255, 255, 255, 255)),
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(45.0)),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 30.0),
+                        padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                              child: RaisedButton(
+                                onPressed: router2Register,
+                                color: const Color.fromARGB(255, 61, 182, 203),
+                                child: const Text(
+                                  '注册账号',
+                                  style: TextStyle(
+                                      fontSize: 13.0,
+                                      color: Color.fromARGB(255, 53, 53, 53)),
+                                ),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(45.0)),
+                              ),
+                            ),
+                            RaisedButton(
                               onPressed: router2Register,
                               color: const Color.fromARGB(255, 61, 182, 203),
                               child: const Text(
-                                '注册账号',
+                                '忘记密码？',
                                 style: TextStyle(
                                     fontSize: 13.0,
                                     color: Color.fromARGB(255, 53, 53, 53)),
@@ -186,27 +208,15 @@ class _Login extends State<Login> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(45.0)),
                             ),
-                          ),
-                          RaisedButton(
-                            onPressed: router2Register,
-                            color: const Color.fromARGB(255, 61, 182, 203),
-                            child: const Text(
-                              '忘记密码？',
-                              style: TextStyle(
-                                  fontSize: 13.0,
-                                  color: Color.fromARGB(255, 53, 53, 53)),
-                            ),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(45.0)),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

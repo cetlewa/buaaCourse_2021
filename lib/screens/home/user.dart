@@ -21,55 +21,61 @@ class User extends StatelessWidget{
   Widget buildCells(BuildContext context) {
     return Container(
       child:
-              // Global.globalUser.userId == "" ?
-              // Column(
-              //   children: <Widget>[
-              //     Card(
-              //       child: Column(
-              //         children: [
-              //           Container(
-              //             color: Colors.white,
-              //             child: ListTile(
-              //               title: Text("设置"),
-              //               // iconName: "img/me_setting.png",
-              //               // onPressed: () {
-              //               // },
-              //             ),
-              //           ),
-              //           Container(
-              //             color: Colors.white,
-              //             child: ListTile(
-              //               title: Text("About"),
-              //               // iconName: 'img/me_feedback.png',
-              //               // onPressed: () {
-              //               // },
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //   ],
-              // ) :
+              Global.globalUser.userId == "" ?
+              Column(
+                children: <Widget>[
+                  Card(
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                    child: Column(
+                      children: [
+                        Container(
+                          color: Colors.white,
+                          child: ListTile(
+                            title: Text("设置"),
+                            // iconName: "img/me_setting.png",
+                            // onPressed: () {
+                            // },
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white,
+                          child: ListTile(
+                            title: Text("About"),
+                            // iconName: 'img/me_feedback.png',
+                            // onPressed: () {
+                            // },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ) :
               Column(
         children: <Widget>[
           Card(
             child: Column(
               children: [
-                Card(
-                  child: Container(
-                    color: Colors.white,
-                    child: ListTile(
-                      title: Text("列表1"),
-                      // iconName: "img/me_buy.png",
-                      // onPressed: () {},
+                GestureDetector(
+                  child: Card(
+                    child: Container(
+                      color: Colors.white,
+                      child: ListTile(
+                        title: Text("个人信息"),
+                        // iconName: "img/me_buy.png",
+                        // onPressed: () {},
+                      ),
                     ),
                   ),
+                  onTap: (){
+                    Navigator.pushNamed(context, "userinfo_page");
+                  },
                 ),
                 Card(
                   child: Container(
                     color: Colors.white,
                     child: ListTile(
-                      title: Text("列表2"),
+                      title: Text("已选课程"),
                       // iconName: "img/me_feedback.png",
                       // onPressed: () {},
                     ),
@@ -79,8 +85,18 @@ class User extends StatelessWidget{
                   child: Container(
                     color: Colors.white,
                     child: ListTile(
-                      title: Text("列表3"),
+                      title: Text("我的收藏"),
                       // iconName: "img/me_coupon.png",
+                      // onPressed: () {},
+                    ),
+                  ),
+                ),
+                Card(
+                  child: Container(
+                    color: Colors.white,
+                    child: ListTile(
+                      title: Text("我的评论"),
+                      // iconName: "img/me_date.png",
                       // onPressed: () {},
                     ),
                   ),
@@ -89,16 +105,6 @@ class User extends StatelessWidget{
             ),
           ),
           SizedBox(height: 6.0),
-          Card(
-            child: Container(
-              color: Colors.white,
-              child: ListTile(
-                title: Text("列表4"),
-                // iconName: "img/me_date.png",
-                // onPressed: () {},
-              ),
-            ),
-          ),
           // SizedBox(height: 4.0),
           // Card(
           //   child: Container(
@@ -117,7 +123,7 @@ class User extends StatelessWidget{
                 Container(
                   color: Colors.white,
                   child: ListTile(
-                    title: Text("列表5"),
+                    title: Text("没有想好"),
                     // iconName: "img/me_action.png",
                     // onPressed: () {},
                   ),

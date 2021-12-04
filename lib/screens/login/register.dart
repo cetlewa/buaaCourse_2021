@@ -21,6 +21,7 @@ class _Register extends State<Register> {
   TextEditingController _userSchoolController = TextEditingController();
   bool isShowPassWord1 = false;
   bool isShowPassWord2 = false;
+  bool _switchSelected = false;
 
   void post4Register() {
     if ((_registerKey.currentState as FormState).validate()) {
@@ -95,12 +96,30 @@ class _Register extends State<Register> {
           child: Column(
             children: <Widget>[
               Container(
-                  padding: const EdgeInsets.only(top: 40.0, bottom: 10.0),
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
                   child: const Text(
                     'LOGO',
                     style: TextStyle(
                         color: Color.fromARGB(255, 53, 53, 53), fontSize: 50.0),
                   )),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                      child: TextButton(
+                    child: Text("学生"),
+                    onPressed: (){
+
+                    },
+                  )),
+                  Expanded(
+                    flex: 1,
+                      child: TextButton(
+                    child: Text("老师"),
+                    onPressed: (){},
+                  )),
+                ],
+              ),
               Container(
                 padding: const EdgeInsets.all(16.0),
                 child: Form(
