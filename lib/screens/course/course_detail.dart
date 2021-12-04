@@ -106,8 +106,8 @@ class CourseDetail extends StatelessWidget {
                               child: Icon(Icons.assignment),
                             ),
                             trailing: Icon(Icons.keyboard_arrow_right),
-                            title: Text("Comment Body"),
-                            subtitle: Text(comment.body),
+                            title: Text("Comment Text"),
+                            subtitle: Text(comment.commentText),
                             onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
                                   builder: (context) => Comments(

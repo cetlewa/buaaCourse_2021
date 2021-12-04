@@ -24,8 +24,12 @@ class Comments extends StatelessWidget {
         child: Column(
           children: <Widget>[
             ListTile(
-              title: Text("Title"),
-              subtitle: Text(comment.body),
+              title: Text("Comment User"),
+              subtitle: Text(comment.userName),
+            ),
+            ListTile(
+              title: Text("Comment Text"),
+              subtitle: Text(comment.commentText),
             ),
           ],
         ),
@@ -35,7 +39,7 @@ class Comments extends StatelessWidget {
 }
 
 class Httpservice {
-  final String postsUrl = Global.baseUrl + "queryAllComment";
+  final String postsUrl = Global.baseUrl + "queryComment";
 
   Future<List<Comment>> getComments(Course course) async {
     Response response = await post(
