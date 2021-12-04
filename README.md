@@ -26,8 +26,13 @@ samples, guidance on mobile development, and a full API reference.
   * screens：各个页面
     * course：有关课程列表的页面（含有http请求）
     * home：主页面（包含主页面导航）
+      * home.dart、home_detail.dart、home_http.datr为首页代码
+      * home_screen.dart是整体样式（底部导航）
+      * user.dart是用户页面
     * login：登录和注册页面（含有http请求）
+  * my_course：我的课表页面，现在有很大问题：数据为写死的展示数据
+  * test：没用的测试文件，测试时直接新建，然后直接用在main里打开即可测试
   * constants：有各种全局常量（颜色等）
   * main：整个app的入口
 * pubspec.yaml：依赖
-* README：一个帅哥写的说明文档，**阅读代码前必看**！
+* README：一个没什么用的说明文档，**阅读代码前必看**！
