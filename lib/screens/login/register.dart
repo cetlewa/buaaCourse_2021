@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
+import 'package:buaacourse/main.dart';
 import 'dart:convert';
 
 class Register extends StatefulWidget {
@@ -57,6 +58,7 @@ class _Register extends State<Register> {
         })));
     if (result.statusCode == 200) {
       if (json.decode(result.body)["success"]) {
+        Global.globalUser.userId = "${_userIdController.text}";
         Navigator.pushNamed(context, "home_screen_homePage");
       }
     } else {

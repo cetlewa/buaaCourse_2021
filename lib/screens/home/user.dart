@@ -1,3 +1,4 @@
+import 'package:buaacourse/main.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:flutter/material.dart';
 
@@ -127,10 +128,19 @@ class MeHeader extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        '登录',
-                        style: TextStyle(fontSize: 18),
-                      ),
+                      Global.globalUser.userId == "000" ?
+                      Container(
+                        child: GestureDetector(
+                          child: Text(
+                            '登录',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          onTap: (){
+                            Navigator.pushNamed(context, "login_page");
+                          },
+                        ),
+                  )
+                          : Text(Global.globalUser.userId) ,
                       // SizedBox(height: 10),
                       // buildItems(),
                     ],

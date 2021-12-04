@@ -1,3 +1,4 @@
+import 'package:buaacourse/models/user.dart';
 import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
@@ -38,4 +39,8 @@ class HomePage extends StatefulWidget {
   State<StatefulWidget> createState() {
     return HomePageState();
   }
+}
+
+class Global {
+  static User globalUser = User("000", "userName", "userPwd", "userGender", "userSchool", "userGrade", "userLocation", "userTel", "userMail");
 }

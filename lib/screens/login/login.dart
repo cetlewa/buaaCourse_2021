@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:buaacourse/main.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -19,32 +20,27 @@ class _Login extends State<Login> {
     //验证Form表单
     if ((_loginKey.currentState as FormState).validate()) {
       if (_userIdController.text == "") {
-        Fluttertoast.showToast(
-            msg: "没有看见您的学号呢o(￣ヘ￣o＃)",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.white,
-            textColor: Colors.red,
-            fontSize: 16.0);
+        toast("没有看见您的学号呢o(￣ヘ￣o＃)");
       } else if (_passWordController.text == "") {
-        Fluttertoast.showToast(
-            msg: "没有检测到您的密码呢o(一︿一+)o",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.white,
-            textColor: Colors.red,
-            fontSize: 16.0);
+        toast("没有检测到您的密码呢o(一︿一+)o");
       } else {
         //验证通过提交数据
         _checkUserInfo();
-        print('userId: ' +
-            _userIdController.text +
-            ' password: ' +
-            _passWordController.text);
+        print('userId: ' + _userIdController.text +
+            ' password: ' + _passWordController.text);
       }
     }
+  }
+
+  void toast(String string) {
+    Fluttertoast.showToast(
+        msg: string,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.white,
+        textColor: Colors.red,
+        fontSize: 16.0);
   }
 
   _checkUserInfo() async {
@@ -58,24 +54,11 @@ class _Login extends State<Login> {
         }));
     if (result.statusCode == 200) {
       if (json.decode(result.body)["success"]) {
-        Fluttertoast.showToast(
-            msg: "欢迎使用(*^▽^*)",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Color.fromARGB(255, 61, 182, 203),
-            textColor: Colors.white,
-            fontSize: 16.0);
+        Global.globalUser.userId = "${_userIdController.text}";
+        toast("欢迎使用(*^▽^*)");
         Navigator.pushNamed(context, "home_screen_homePage");
       } else {
-        Fluttertoast.showToast(
-            msg: "账号密码出错了呢~",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Color.fromARGB(255, 61, 182, 203),
-            textColor: Colors.white,
-            fontSize: 16.0);
+        toast("账号密码出错了呢~");
       }
     } else {
       print(result.statusCode);
