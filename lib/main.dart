@@ -1,6 +1,7 @@
 import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
+import 'package:buaacourse/screens/my_course/myCourse.dart';
 import 'package:buaacourse/screens/test/test.dart';
 import 'package:buaacourse/screens/test/testUserInfo.dart';
 import 'package:flutter/material.dart';

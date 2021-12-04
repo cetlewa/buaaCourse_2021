@@ -1,8 +1,11 @@
 {
-  "studentId": "19373529",
-  "name": "朱祖坤",
-  "college": "计算机学院",
-  "identity": "学生/教室",
-  "courses": ["course1", "course2"],
-  "comments": ["comment1", "comment2"]
+  "userId": "19373529",
+  "userName": "朱祖坤",
+  "userPwd": "zzk",
+  "userGender": "男",
+  "userSchool": "计算机学院",
+  "userGrade": "大三",
+  "userLocation": "学院路校区",
+  "userTel": "12345678901",
+  "userMail": "19373529@buaa.edu.cn"
 }

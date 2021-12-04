@@ -1,100 +1,145 @@
-import 'package:flutter/cupertino.dart';
+import 'package:buaacourse/screens/login/login.dart';
 import 'package:flutter/material.dart';
 
-class User extends StatelessWidget {
+class User extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BuildUserBody(),
-    );
-  }
-}
-
-var _sortAscending = true;
-
-class _BuildUserBodyState extends State<BuildUserBody> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // padding: const EdgeInsets.all(32.0),
-      child: new Column(
-        children: <Widget>[
-          Expanded(
-            child: Center(
-              child: Icon(
-                Icons.account_circle_outlined,
-                color: Colors.blueGrey,
-                size: 100.0,
-              ),
-            ),
-          ),
-          Expanded(
-              flex: 2,
-              child: DataTable(
-                  sortColumnIndex: 2,
-                  sortAscending: _sortAscending,
-                  columns: [
-                    DataColumn(label: Text('姓名')),
-                    DataColumn(label: Text('性别')),
-                    DataColumn(
-                        label: Text('学号'),
-                        numeric: true,
-                        onSort: (int columnIndex, bool ascending){
-                          setState(() {
-                            _sortAscending = ascending;
-                            if(ascending){
-                              data.sort((a, b) => a.sid.compareTo(b.sid));
-                            }else {
-                              data.sort((a, b) => b.sid.compareTo(a.sid));
-                            }
-                          });
-                        }),
-                  ],
-                  rows: data.map((user) {
-                    return DataRow(cells: [
-                      DataCell(Text('${user.name}')),
-                      DataCell(Text('${user.gender}')),
-                      DataCell(Text('${user.sid}')),
-                    ]);
-                  }).toList()),
-          ),
-
-          // Expanded(
-          //   child: Text(
-          //     "line1",
-          //     style: new TextStyle(
-          //       fontSize: 32.0,
-          //     ),
-          //   ),
-          // ),
-        ],
+      body: Container(
+        child: ListView(
+          children: <Widget>[
+            MeHeader(),
+            SizedBox(height: 10, ),
+            buildCells(context),
+          ],
+        ),
       ),
     );
   }
 
-}
-
-class BuildUserBody extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _BuildUserBodyState();
+  Widget buildCells(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Card(
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("列表1"),
+                    // iconName: "img/me_buy.png",
+                    // onPressed: () {},
+                  ),
+                ),
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("列表2"),
+                    // iconName: "img/me_feedback.png",
+                    // onPressed: () {},
+                  ),
+                ),
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("列表3"),
+                    // iconName: "img/me_coupon.png",
+                    // onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 24.0),
+          Card(
+            child: Container(
+              color: Colors.lightBlueAccent,
+              child: ListTile(
+                title: Text("列表4"),
+                // iconName: "img/me_date.png",
+                // onPressed: () {},
+              ),
+            ),
+          ),
+          SizedBox(height: 24.0),
+          Card(
+            child: Container(
+              color: Colors.lightBlueAccent,
+              child: ListTile(
+                title: Text("列表5"),
+                // iconName: "img/me_action.png",
+                // onPressed: () {},
+              ),
+            ),
+          ),
+          SizedBox(height: 24.0),
+          Card(
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("设置"),
+                    // iconName: "img/me_setting.png",
+                    // onPressed: () {
+                    // },
+                  ),
+                ),
+                Container(
+                  color: Colors.lightBlueAccent,
+                  child: ListTile(
+                    title: Text("About"),
+                    // iconName: 'img/me_feedback.png',
+                    // onPressed: () {
+                    // },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
-
-
 }
 
-class UserInfo {
-  UserInfo(this.name, this.gender, this.sid);
+class MeHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // var user = UserManager.currentUser;
 
-  final String name;
-  final String gender;
-  final int sid;
+    return GestureDetector(
+        onTap: () {
+        },
+        child: Card(
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(20, 30, 15, 15),
+            child: Row(
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 40,
+                  backgroundImage: AssetImage('assets/images/placeholder_avatar.png'),
+                ),
+                SizedBox(width: 25),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        '登录',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      // SizedBox(height: 10),
+                      // buildItems(),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        )
+    );
+  }
 }
-
-List<UserInfo> data=[
-  UserInfo("蔡明生", "女", 19373533),
-  UserInfo("刘博一", "男", 19373427),
-  UserInfo("曾育群", "男", 19373630),
-  UserInfo("朱祖坤", "男", 19373529),
-];
-

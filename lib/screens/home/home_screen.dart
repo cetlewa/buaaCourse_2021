@@ -14,7 +14,7 @@ import 'package:buaacourse/constants.dart';
 //底部的索引
 int _selectedIndex = 0;
 // 创建数组引入页面
-List pageList = [Home(),Courses(),MyCourse(),TestUserInfo()];
+List pageList = [Home(),Courses(),SyllabusPage(),User()];
 
 class HomePageState extends State<HomePage> {
   @override
