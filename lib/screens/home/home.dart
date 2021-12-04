@@ -1,5 +1,4 @@
 import 'package:buaacourse/models/homenews.dart';
-import 'package:buaacourse/models/homenews.dart';
 import 'package:buaacourse/screens/home/home_detail.dart';
 import 'package:buaacourse/screens/home/home_http.dart';
 import 'package:flutter/cupertino.dart';

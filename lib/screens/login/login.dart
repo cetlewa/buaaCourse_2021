@@ -44,8 +44,7 @@ class _Login extends State<Login> {
   }
 
   _checkUserInfo() async {
-    var loginUrl =
-        "https://service-dj0lsdex-1308473899.bj.apigw.tencentcs.com/release/login";
+    var loginUrl = Global.baseUrl + "login";
 
     var result = await post(Uri.parse(loginUrl),
         body: json.encode({

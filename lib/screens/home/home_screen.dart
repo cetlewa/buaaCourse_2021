@@ -37,10 +37,6 @@ class HomePageState extends State<HomePage> {
       //   icon: SvgPicture.asset("assets/icons/back.svg"),
       //   onPressed: () {},
       // ),
-      title: IconButton(
-          icon: Icon(Icons.android_outlined),
-          onPressed: () {}
-      ),
       actions: <Widget>[
         IconButton(
           icon: SvgPicture.asset(
@@ -65,7 +61,7 @@ class HomePageState extends State<HomePage> {
         BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
         BottomNavigationBarItem(icon: Icon(Icons.wysiwyg_outlined), label: '课程列表'),
         BottomNavigationBarItem(icon: Icon(Icons.assignment_turned_in_outlined), label: '我的课表'),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: '信息列表'),
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: '我'),
       ],
       currentIndex: _selectedIndex,
       onTap: (int index){

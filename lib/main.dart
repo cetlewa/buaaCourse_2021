@@ -42,5 +42,8 @@ class HomePage extends StatefulWidget {
 }
 
 class Global {
-  static User globalUser = User("000", "userName", "userPwd", "userGender", "userSchool", "userGrade", "userLocation", "userTel", "userMail");
+  static User globalUser = User("", "userName", "userPwd", "userGender",
+      "userSchool", "userGrade", "userLocation", "userTel", "userMail");
+
+  static String baseUrl = "https://service-dj0lsdex-1308473899.bj.apigw.tencentcs.com/release/";
 }

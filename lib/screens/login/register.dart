@@ -45,8 +45,7 @@ class _Register extends State<Register> {
   }
 
   _postData() async {
-    var loginUrl =
-        "https://service-dj0lsdex-1308473899.bj.apigw.tencentcs.com/release/register";
+    var loginUrl = Global.baseUrl + "register";
 
     var result = await post(Uri.parse(loginUrl),
         body: utf8.encode(json.encode({
