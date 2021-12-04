@@ -4,7 +4,8 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 class Httpservice {
-  final String postsUrl = "http://127.0.0.1:5000/";
+  final String postsUrl =
+      "https://service-dj0lsdex-1308473899.bj.apigw.tencentcs.com/release/queryAllCourse";
 
   Future<List<Course>> getCourses() async {
     Response response = await get(Uri.parse(postsUrl));

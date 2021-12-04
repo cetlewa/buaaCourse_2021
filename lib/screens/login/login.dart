@@ -15,10 +15,10 @@ class _Login extends State<Login> {
   TextEditingController _passWordController = TextEditingController();
   bool isShowPassWord = false;
 
-  void checkLoginInfo(){
+  void checkLoginInfo() {
     //验证Form表单
     if ((_loginKey.currentState as FormState).validate()) {
-      if(_userIdController.text == ""){
+      if (_userIdController.text == "") {
         Fluttertoast.showToast(
             msg: "没有看见您的学号呢o(￣ヘ￣o＃)",
             toastLength: Toast.LENGTH_SHORT,
@@ -26,10 +26,8 @@ class _Login extends State<Login> {
             timeInSecForIosWeb: 1,
             backgroundColor: Colors.white,
             textColor: Colors.red,
-            fontSize: 16.0
-        );
-      }
-      else if(_passWordController.text == ""){
+            fontSize: 16.0);
+      } else if (_passWordController.text == "") {
         Fluttertoast.showToast(
             msg: "没有检测到您的密码呢o(一︿一+)o",
             toastLength: Toast.LENGTH_SHORT,
@@ -37,30 +35,29 @@ class _Login extends State<Login> {
             timeInSecForIosWeb: 1,
             backgroundColor: Colors.white,
             textColor: Colors.red,
-            fontSize: 16.0
-        );
-      }
-      else {
+            fontSize: 16.0);
+      } else {
         //验证通过提交数据
         _checkUserInfo();
-        print('userId: ' + _userIdController.text + ' password: ' + _passWordController.text);
+        print('userId: ' +
+            _userIdController.text +
+            ' password: ' +
+            _passWordController.text);
       }
     }
   }
 
   _checkUserInfo() async {
-    var loginUrl="http://127.0.0.1:5000/login";
+    var loginUrl =
+        "https://service-dj0lsdex-1308473899.bj.apigw.tencentcs.com/release/login";
 
-    var result = await post(
-        Uri.parse(loginUrl),
-        body: json.encode(
-            {
-              "userId": "${_userIdController.text}",
-              "userPwd": "${_passWordController.text}"
-            })
-    );
+    var result = await post(Uri.parse(loginUrl),
+        body: json.encode({
+          "userId": "${_userIdController.text}",
+          "userPwd": "${_passWordController.text}"
+        }));
     if (result.statusCode == 200) {
-      if(json.decode(result.body)["success"]){
+      if (json.decode(result.body)["success"]) {
         Fluttertoast.showToast(
             msg: "欢迎使用(*^▽^*)",
             toastLength: Toast.LENGTH_SHORT,
@@ -68,11 +65,9 @@ class _Login extends State<Login> {
             timeInSecForIosWeb: 1,
             backgroundColor: Color.fromARGB(255, 61, 182, 203),
             textColor: Colors.white,
-            fontSize: 16.0
-        );
+            fontSize: 16.0);
         Navigator.pushNamed(context, "home_screen_homePage");
-      }
-      else{
+      } else {
         Fluttertoast.showToast(
             msg: "账号密码出错了呢~",
             toastLength: Toast.LENGTH_SHORT,
@@ -80,11 +75,9 @@ class _Login extends State<Login> {
             timeInSecForIosWeb: 1,
             backgroundColor: Color.fromARGB(255, 61, 182, 203),
             textColor: Colors.white,
-            fontSize: 16.0
-        );
+            fontSize: 16.0);
       }
-    }
-    else {
+    } else {
       print(result.statusCode);
     }
   }
@@ -94,8 +87,9 @@ class _Login extends State<Login> {
       isShowPassWord = !isShowPassWord;
     });
   }
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Form表单示例',
@@ -108,11 +102,8 @@ class _Login extends State<Login> {
                 child: const Text(
                   'LOGO',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 53, 53, 53),
-                      fontSize: 50.0
-                  ),
-                )
-            ),
+                      color: Color.fromARGB(255, 53, 53, 53), fontSize: 50.0),
+                )),
             Container(
               padding: const EdgeInsets.all(16.0),
               child: Form(
@@ -125,15 +116,14 @@ class _Login extends State<Login> {
                           border: Border(
                               bottom: BorderSide(
                                   color: Color.fromARGB(255, 240, 240, 240),
-                                  width: 1.0
-                              )
-                          )
-                      ),
+                                  width: 1.0))),
                       child: TextFormField(
                         controller: _userIdController,
                         decoration: InputDecoration(
                           labelText: '请输入学号',
-                          labelStyle: TextStyle( fontSize: 15.0, color: Color.fromARGB(255, 93, 93, 93)),
+                          labelStyle: TextStyle(
+                              fontSize: 15.0,
+                              color: Color.fromARGB(255, 93, 93, 93)),
                           border: InputBorder.none,
                           suffixIcon: IconButton(
                             icon: const Icon(
@@ -156,24 +146,24 @@ class _Login extends State<Login> {
                           border: Border(
                               bottom: BorderSide(
                                   color: Color.fromARGB(255, 240, 240, 240),
-                                  width: 1.0
-                              )
-                          )
-                      ),
+                                  width: 1.0))),
                       child: TextFormField(
                         controller: _passWordController,
-                        decoration:  InputDecoration(
+                        decoration: InputDecoration(
                             labelText: '请输入密码',
-                            labelStyle: const TextStyle( fontSize: 15.0, color: Color.fromARGB(255, 93, 93, 93)),
+                            labelStyle: const TextStyle(
+                                fontSize: 15.0,
+                                color: Color.fromARGB(255, 93, 93, 93)),
                             border: InputBorder.none,
                             suffixIcon: IconButton(
                               icon: Icon(
-                                isShowPassWord ? Icons.visibility : Icons.visibility_off,
+                                isShowPassWord
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
                                 color: const Color.fromARGB(255, 126, 126, 126),
                               ),
                               onPressed: showPassWord,
-                            )
-                        ),
+                            )),
                         obscureText: !isShowPassWord,
                       ),
                     ),
@@ -188,10 +178,10 @@ class _Login extends State<Login> {
                             '登录',
                             style: TextStyle(
                                 fontSize: 14.0,
-                                color: Color.fromARGB(255, 255, 255, 255)
-                            ),
+                                color: Color.fromARGB(255, 255, 255, 255)),
                           ),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(45.0)),
                         ),
                       ),
                     ),
@@ -202,17 +192,17 @@ class _Login extends State<Login> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
-                            child:  RaisedButton(
+                            child: RaisedButton(
                               onPressed: router2Register,
                               color: const Color.fromARGB(255, 61, 182, 203),
                               child: const Text(
                                 '注册账号',
                                 style: TextStyle(
                                     fontSize: 13.0,
-                                    color: Color.fromARGB(255, 53, 53, 53)
-                                ),
+                                    color: Color.fromARGB(255, 53, 53, 53)),
                               ),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(45.0)),
                             ),
                           ),
                           RaisedButton(
@@ -222,13 +212,13 @@ class _Login extends State<Login> {
                               '忘记密码？',
                               style: TextStyle(
                                   fontSize: 13.0,
-                                  color: Color.fromARGB(255, 53, 53, 53)
-                              ),
+                                  color: Color.fromARGB(255, 53, 53, 53)),
                             ),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(45.0)),
                           ),
                         ],
-                      ) ,
+                      ),
                     ),
                   ],
                 ),

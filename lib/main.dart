@@ -13,7 +13,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,21 +23,19 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        "login_page":(context) => Login(),
-        "home_screen_homePage":(context) => HomePage(),
-        "register_page":(context) => Register(),
+        "login_page": (context) => Login(),
+        "home_screen_homePage": (context) => HomePage(),
+        "register_page": (context) => Register(),
       },
-      // home: Login(),
-      home: HomePage(),
+      home: Login(),
+      // home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return HomePageState();
   }
-
 }
-
