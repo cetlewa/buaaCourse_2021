@@ -3,15 +3,37 @@ import 'package:buaacourse/models/course.dart';
 import 'package:buaacourse/screens/course/comments.dart';
 import 'package:flutter/material.dart';
 
-class ShowComment extends StatelessWidget{
+class ShowComment extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _ShowComment();
+
+}
+
+class _ShowComment extends State<ShowComment>{
   final Httpservice httpservice = Httpservice();
 
   @override
   Widget build(BuildContext context) {
-    String course = (ModalRoute.of(context)!.settings.arguments).toString();
+    String courseId = (ModalRoute.of(context)!.settings.arguments).toString();
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.add)
+            ]
+        ),
+        onPressed: () async {
+          await Navigator.of(context).pushNamed("add_comment", arguments: courseId).then((newCourseId) {
+            setState(() {
+              print(newCourseId.toString());
+              courseId = newCourseId.toString();
+            });
+          });
+        },
+      ),
       body: FutureBuilder(
-        future: httpservice.getComments(course),
+        future: httpservice.getComments(courseId),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if(snapshot.hasData){
             List<Comment> comments = snapshot.data;
@@ -29,7 +51,7 @@ class ShowComment extends StatelessWidget{
                   // onTap: () => Navigator.of(context).push(
                   //   MaterialPageRoute(
                   //       builder: (context) => CourseDetail(
-                  //         course: course,
+                  //         courseId: courseId,
                   //       )),
                   // ),
                 ),

@@ -1,7 +1,10 @@
 import 'package:buaacourse/models/user.dart';
+import 'package:buaacourse/screens/comment/add_comment.dart';
 import 'package:buaacourse/screens/comment/comment.dart';
+import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
+import 'package:buaacourse/screens/test/testTextField.dart';
 import 'package:buaacourse/screens/user/userInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:buaacourse/constants.dart';
@@ -29,9 +32,11 @@ class MyApp extends StatelessWidget {
         "register_page": (context) => Register(),
         "userinfo_page": (context) => UserInfo(),
         "comments_page": (context) => ShowComment(),
+        "add_comment": (context) => AddComments(),
       },
-      // home: Login(),
-      home: LoginPage(),
+      home: HomePage(),
+      // home: LoginPage(),
+      // home: TestText(),
     );
   }
 }

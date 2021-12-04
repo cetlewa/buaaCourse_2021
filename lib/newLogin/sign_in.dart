@@ -64,7 +64,7 @@ class _SignInState extends State<SignIn> {
                               color: Colors.black,
                               size: 22.0,
                             ),
-                            hintText: 'Email Address',
+                            hintText: 'UserId',
                             hintStyle: TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                           ),
