@@ -3,6 +3,6 @@ from sqlalchemy import Column, VARCHAR, Integer
 
 class StuComTea(Object):
     __tablename__ = "StuComTea"
-    stuId = Column(VARCHAR(20), primary_key=True)
-    comId = Column(Integer, autoincrement=True)
+    stuId = Column(VARCHAR(20))
+    comId = Column(Integer, primary_key=True, autoincrement=True)
     teaId = Column(VARCHAR(20))
