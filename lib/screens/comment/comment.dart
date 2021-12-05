@@ -16,6 +16,9 @@ class _ShowComment extends State<ShowComment>{
   Widget build(BuildContext context) {
     String courseId = (ModalRoute.of(context)!.settings.arguments).toString();
     return Scaffold(
+      appBar: AppBar(
+        title: Text("欢迎留下您的评论"),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -43,9 +46,9 @@ class _ShowComment extends State<ShowComment>{
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15.0))),
                 child: ListTile(
                   leading: const CircleAvatar(
-                    child: Icon(Icons.assignment),
+                    child: Icon(Icons.comment),
                   ),
-                  trailing: Icon(Icons.keyboard_arrow_right),
+                  trailing: Text(comment.commentScore),
                   title: Text(comment.userName),
                   subtitle: Text(comment.commentText),
                   // onTap: () => Navigator.of(context).push(

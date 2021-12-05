@@ -1,26 +1,33 @@
 import 'package:buaacourse/models/course.dart';
 import 'package:buaacourse/screens/course/course_detail.dart';
-import 'package:buaacourse/screens/course/http_service.dart';
 import 'package:flutter/material.dart';
+import 'package:buaacourse/main.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
-class Courses extends StatelessWidget{
+var body;
+var switchSelected;
+
+class SearchResult extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _SearchResult();
+}
+
+class _SearchResult extends State<SearchResult>{
   final Httpservice httpservice = Httpservice();
 
   @override
   Widget build(BuildContext context) {
+    body = (ModalRoute.of(context)!.settings.arguments).toString();
+    String temp = body.toString();
+    switchSelected = temp.substring(0, temp.indexOf('&')) == "false" ? "teacher" : "course" ;
+    body = temp.substring(temp.indexOf('&') + 1);
+    print(temp);
+    print("\n" + body);
+
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, "search_page");
-        },
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.search)
-            ]
-        ),
+      appBar: AppBar(
+        title: Text("您搜索的结果如下"),
       ),
       body: FutureBuilder(
         future: httpservice.getCourses(),
@@ -58,14 +65,28 @@ class Courses extends StatelessWidget{
   }
 }
 
-_postData() async{
-  var apiUrl="https://jsonplaceholder.typicode.com/posts";
+class Httpservice {
+  final String postsUrl = Global.baseUrl + "";
 
-  var result = await post(Uri.parse(apiUrl), body: json.encode({"username": "cms", "gender": "c"}));
-  if (result.statusCode == 201) {
-    print(json.decode(result.body));
-  }
-  else {
-    print(result.statusCode);
+  Future<List<Course>> getCourses() async {
+    Response response = await post(
+        Uri.parse(postsUrl),
+        body: json.encode({
+          "userId": Global.globalUser.userId,
+          "searchBody": body.toString(),
+          "switchSelected": switchSelected,
+        }),
+    );
+
+    if (response.statusCode == 200) {
+      List<dynamic> body = jsonDecode(response.body);
+
+      List<Course> courses =
+      body.map((dynamic item) => Course.fromJson(item)).toList();
+
+      return courses;
+    } else {
+      throw "Can't get posts.";
+    }
   }
 }

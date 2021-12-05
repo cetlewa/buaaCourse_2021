@@ -54,10 +54,12 @@ class User extends StatelessWidget{
               Column(
         children: <Widget>[
           Card(
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
             child: Column(
               children: [
                 GestureDetector(
                   child: Card(
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
                     child: Container(
                       color: Colors.white,
                       child: ListTile(
@@ -72,6 +74,7 @@ class User extends StatelessWidget{
                   },
                 ),
                 Card(
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
                   child: Container(
                     color: Colors.white,
                     child: ListTile(
@@ -82,6 +85,7 @@ class User extends StatelessWidget{
                   ),
                 ),
                 Card(
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
                   child: Container(
                     color: Colors.white,
                     child: ListTile(
@@ -92,6 +96,7 @@ class User extends StatelessWidget{
                   ),
                 ),
                 Card(
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
                   child: Container(
                     color: Colors.white,
                     child: ListTile(
@@ -118,32 +123,42 @@ class User extends StatelessWidget{
           // ),
           // SizedBox(height: 2.0),
           Card(
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
             child: Column(
               children: [
                 Container(
                   color: Colors.white,
-                  child: ListTile(
-                    title: Text("没有想好"),
-                    // iconName: "img/me_action.png",
-                    // onPressed: () {},
+                  child: Card(
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                    child: ListTile(
+                      title: Text("没有想好"),
+                      // iconName: "img/me_action.png",
+                      // onPressed: () {},
+                    ),
                   ),
                 ),
                 Container(
                   color: Colors.white,
-                  child: ListTile(
-                    title: Text("设置"),
-                    // iconName: "img/me_setting.png",
-                    // onPressed: () {
-                    // },
+                  child: Card(
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                    child: ListTile(
+                      title: Text("设置"),
+                      // iconName: "img/me_setting.png",
+                      // onPressed: () {
+                      // },
+                    ),
                   ),
                 ),
                 Container(
                   color: Colors.white,
-                  child: ListTile(
-                    title: Text("About"),
-                    // iconName: 'img/me_feedback.png',
-                    // onPressed: () {
-                    // },
+                  child: Card(
+                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                    child: ListTile(
+                      title: Text("About"),
+                      // iconName: 'img/me_feedback.png',
+                      // onPressed: () {
+                      // },
+                    ),
                   ),
                 ),
               ],

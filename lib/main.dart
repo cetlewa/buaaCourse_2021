@@ -1,6 +1,8 @@
 import 'package:buaacourse/models/user.dart';
 import 'package:buaacourse/screens/comment/add_comment.dart';
 import 'package:buaacourse/screens/comment/comment.dart';
+import 'package:buaacourse/screens/course/search.dart';
+import 'package:buaacourse/screens/course/search_result.dart';
 import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
         "userinfo_page": (context) => UserInfo(),
         "comments_page": (context) => ShowComment(),
         "add_comment": (context) => AddComments(),
+        "search_page": (context) => Search(),
+        "search_result_page": (context) => SearchResult(),
       },
       home: HomePage(),
       // home: LoginPage(),

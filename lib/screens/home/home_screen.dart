@@ -22,8 +22,6 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: buildAppBar(),
       bottomNavigationBar: buildBottomNavigationBar(),
-      // floatingActionButton: buildFloatingActionButton(),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: pageList[_selectedIndex],
     );
   }
@@ -42,7 +40,9 @@ class HomePageState extends State<HomePage> {
           icon: SvgPicture.asset(
             "assets/icons/search.svg",
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed("search_page");
+          },
         ),
         SizedBox(width: kDefaultPaddin / 2)
       ],

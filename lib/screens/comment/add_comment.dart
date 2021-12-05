@@ -16,7 +16,7 @@ class AddComments extends StatefulWidget {
 
 class AddComment extends State<AddComments>{
 
-  String ratingValue = "" ;
+  String ratingValue = "9" ;
 
   void _addPost(){
     _addPostComment();
@@ -68,84 +68,91 @@ class AddComment extends State<AddComments>{
     _courseId = (ModalRoute.of(context)!.settings.arguments).toString();
 
     return Scaffold(
-        body: Center(
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 300,),
-                    Row(
-                      children: <Widget>[
-                        Expanded(child: Container(),),
-                        SponRatingWidget(
-                          value: 9,
-                          size: 30,
-                          padding: 5,
-                          nomalImage: 'assets/images/star_nomal.png',
-                          selectImage: 'assets/images/star.png',
-                          selectAble: true,
-                          onRatingUpdate: (value) {
-                            ratingValue = value;
-                            setState(() {
+      appBar: AppBar(
+        title: Text("欢迎留下您的评论"),
+      ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 30,),
+                      Row(
+                        children: <Widget>[
+                          Expanded(child: Container(),),
+                          SponRatingWidget(
+                            value: 9,
+                            size: 30,
+                            padding: 5,
+                            nomalImage: 'assets/images/star_nomal.png',
+                            selectImage: 'assets/images/star.png',
+                            selectAble: true,
+                            onRatingUpdate: (value) {
+                              ratingValue = value;
+                              setState(() {
 
-                            });
-                          },
-                          maxRating: 10,
-                          count: 6,
-                        ),
-                        Expanded(child: Container(),)
-                      ],
-                    ),
-                    SizedBox(height: 10,),
-                    Text(value())
-                  ],
-                ),
-              ),
-              Card(
-                child: TextField(
-                  controller: _controller,
-                  maxLines: 5,
-                  keyboardType: TextInputType.multiline,
-                  decoration: InputDecoration(
-                    labelText: '有什么想说的咩~\no(*￣︶￣*)o',
-                    labelStyle: TextStyle(
-                        fontSize: 15.0,
-                        color: Color.fromARGB(255, 93, 93, 93)),
-                    border: InputBorder.none,
-                    suffixIcon: IconButton(
-                      icon: const Icon(
-                        Icons.close,
-                        color: Color.fromARGB(255, 126, 126, 126),
+                              });
+                            },
+                            maxRating: 10,
+                            count: 6,
+                          ),
+                          Expanded(child: Container(),)
+                        ],
                       ),
-                      onPressed: () {
-                        _controller.text = "";
-                      },
+                      SizedBox(height: 10,),
+                      Text(value())
+                    ],
+                  ),
+                ),
+                Card(
+                  child: TextField(
+                    controller: _controller,
+                    maxLines: 5,
+                    textInputAction: TextInputAction.send,
+                    keyboardType: TextInputType.multiline,
+                    decoration: InputDecoration(
+                      labelText: '有什么想说的咩~\no(*￣︶￣*)o',
+                      labelStyle: TextStyle(
+                          fontSize: 15.0,
+                          color: Color.fromARGB(255, 93, 93, 93)),
+                      border: InputBorder.none,
+                      suffixIcon: IconButton(
+                        icon: const Icon(
+                          Icons.close,
+                          color: Color.fromARGB(255, 126, 126, 126),
+                        ),
+                        onPressed: () {
+                          _controller.text = "";
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                height: 45.0,
-                margin: EdgeInsets.only(top: 40.0),
-                child: SizedBox.expand(
-                  child: RaisedButton(
-                    onPressed: _addPost,
-                    color: const Color.fromARGB(255, 61, 182, 203),
-                    child: const Text(
-                      '提交评论',
-                      style: TextStyle(
-                          fontSize: 14.0,
-                          color: Color.fromARGB(255, 255, 255, 255)),
+                Container(
+                  height: 45.0,
+                  margin: EdgeInsets.only(top: 20.0),
+                  child: SizedBox.expand(
+                    child: RaisedButton(
+                      onPressed: _addPost,
+                      color: const Color.fromARGB(255, 61, 182, 203),
+                      child: const Text(
+                        '提交评论',
+                        style: TextStyle(
+                            fontSize: 14.0,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(45.0)),
                     ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(45.0)),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        )
+        ),
     );
   }
 }
