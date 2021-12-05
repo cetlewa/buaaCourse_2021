@@ -1,17 +1,18 @@
 import 'package:buaacourse/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:buaacourse/main.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
 class UserInfo extends StatefulWidget{
-  final Httpservice httpservice = Httpservice();
-
   @override
   State<StatefulWidget> createState() => _UserInfo();
 }
 
 class _UserInfo extends State<UserInfo> {
+  final Httpservice httpservice = Httpservice();
+
   TextEditingController _controller = TextEditingController();
   TextEditingController _genderController = TextEditingController();
   TextEditingController _schoolController = TextEditingController();
@@ -27,66 +28,100 @@ class _UserInfo extends State<UserInfo> {
         title: Text("Your Information"),
       ),
       body: FutureBuilder(
+        future: httpservice.getUserInfo(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if(snapshot.hasData){
             User user = snapshot.data;
-            _genderController.text = user.userGender;
-            _schoolController.text = user.userSchool;
-            _gradeController.text = user.userGrade;
-            _locationController.text = user.userLocation;
-            _telController.text = user.userTel;
-            _mailController.text = user.userMail;
+            _genderController.text = user.userGender=="" ? "您还没有填写此信息" : user.userGender;
+            _schoolController.text = user.userSchool=="" ? "您还没有填写此信息" : user.userSchool;
+            _gradeController.text = user.userGrade=="" ? "您还没有填写此信息" : user.userGrade;
+            _locationController.text = user.userLocation=="" ? "您还没有填写此信息" : user.userLocation;
+            _telController.text = user.userTel=="" ? "您还没有填写此信息" : user.userTel;
+            _mailController.text = user.userMail=="" ? "您还没有填写此信息" : user.userMail;
 
             return SingleChildScrollView(
               child: Column(
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage('assets/images/placeholder_avatar.png'),
-                  ),
-                  Text(user.userId + "-" + user.userName),
-                  Row(
+                children: [
+                  Padding(
+                  padding: EdgeInsets.only(top: 30.0, bottom: 10.0),
+                  child: Column(
                     children: [
-                      Text("您的性别"),
-                      TextField(
-                        controller: _genderController,
-
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundImage: AssetImage('assets/images/placeholder_avatar.png'),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
+                        child: Text(
+                          user.userId + "-" + user.userName,
+                          style: TextStyle(
+                            fontSize: 25.0,
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Text("您的性别"),
-                      TextField(
-                        controller: _genderController,
-
-                      ),
-                    ],
                   ),
-                  Row(
-                    children: [
-                      Text("您的性别"),
-                      TextField(
-                        controller: _genderController,
+                  Column(
+                    children: <Widget>[
+                      ListTile(
+                        title: Text("您的性别:"),
+                        subtitle: TextField(
+                          controller: _genderController,
 
+                        ),
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text("您的性别"),
-                      TextField(
-                        controller: _genderController,
+                      ListTile(
+                        title: Text("您的电话"),
+                        subtitle: TextField(
+                          controller: _telController,
 
+                        ),
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text("您的性别"),
-                      TextField(
-                        controller: _genderController,
+                      ListTile(
+                        title: Text("您的邮箱"),
+                        subtitle: TextField(
+                          controller: _mailController,
 
+                        ),
+                      ),
+                      ListTile(
+                        title: Text("您的院系"),
+                        subtitle: TextField(
+                          controller: _schoolController,
+
+                        ),
+                      ),
+                      ListTile(
+                        title: Text("您的年级"),
+                        subtitle: TextField(
+                          controller: _gradeController,
+
+                        ),
+                      ),
+                      ListTile(
+                        title: Text("您所在的校区"),
+                        subtitle: TextField(
+                          controller: _locationController,
+                        ),
+                      ),
+                      Container(
+                        height: 45.0,
+                        margin: EdgeInsets.only(top: 40.0),
+                        child: SizedBox.expand(
+                          child: RaisedButton(
+                            onPressed: changeUserInfo,
+                            color: const Color.fromARGB(255, 61, 182, 203),
+                            child: const Text(
+                              '修改信息',
+                              style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Color.fromARGB(255, 255, 255, 255)),
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(45.0)),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -94,12 +129,41 @@ class _UserInfo extends State<UserInfo> {
               ),
             );
           }
+          print("debug");
           return const Center(
             child: CircularProgressIndicator(),
           );
         },
       ),
     );
+  }
+
+  void changeUserInfo() {
+    _changeUserInfo;
+  }
+
+  _changeUserInfo() async {
+    var changeUrl = Global.baseUrl + "";
+
+    var response = await post(
+      Uri.parse(changeUrl),
+      body: json.encode({
+      "userGender": _genderController.text,
+      "userSchool": _schoolController.text,
+      "userGrade": _gradeController.text,
+      "userLocation": _locationController.text,
+      "userTel": _telController.text,
+      "userMail": _mailController.text,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      toast("修改成功！");
+      Navigator.pushNamed(context, "home_screen_homePage");
+    }
+    else {
+      toast("发生了未知错误");
+    }
   }
 
 }
@@ -116,11 +180,25 @@ class Httpservice {
     );
 
     if (response.statusCode == 200) {
+      print(response.body);
     User user = User.fromJson(jsonDecode(response.body));
+    print(response.body);
 
       return user;
     } else {
+      print(response.statusCode.toString());
       throw "Can't get posts.";
     }
   }
+}
+
+void toast(String string) {
+  Fluttertoast.showToast(
+      msg: string,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.white,
+      textColor: Colors.red,
+      fontSize: 16.0);
 }

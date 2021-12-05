@@ -10,6 +10,8 @@ class Course {
   final int courseSelected; //已选 40
   final int courseCapacity; //容量 80
   final String courseIntroduction; //课程介绍
+  final String courseFile;
+  final double courseComScore;
   bool isStared;
 
   Course(
@@ -25,6 +27,8 @@ class Course {
     this.courseCapacity,
     this.courseIntroduction,
     this.isStared,
+    this.courseFile,
+    this.courseComScore,
   );
 
   Course.fromJson(Map<String, dynamic> json)
@@ -39,7 +43,9 @@ class Course {
         courseSelected = json["courseSelected"],
         courseCapacity = json["courseCapacity"],
         courseIntroduction = json["courseIntroduction"],
-        isStared = json["isStared"];
+        isStared = json["isStared"],
+        courseFile = json["courseFile"],
+        courseComScore = json["courseComScore"];
 
   Map<String, dynamic> toJson() =>
       <String, dynamic>{
@@ -54,6 +60,8 @@ class Course {
         "courseSelected": courseSelected,
         "courseCapacity": courseCapacity,
         "courseIntroduction": courseIntroduction,
+        "courseFile": courseFile,
+        "courseComScore": courseComScore,
         "isStared": isStared,
       };
 }

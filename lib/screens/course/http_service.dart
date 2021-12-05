@@ -17,6 +17,7 @@ class Httpservice {
 
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);
+      print(response.body);
 
       List<Course> courses =
           body.map((dynamic item) => Course.fromJson(item)).toList();
