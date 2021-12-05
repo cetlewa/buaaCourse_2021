@@ -14,16 +14,17 @@ class CourseDetail extends StatefulWidget {
 });
 
   @override
-  State<StatefulWidget> createState() => _CourseDetail(course: course);
+  State<StatefulWidget> createState() => _CourseDetail(course: course, favorite: course.isStared);
 
 }
 
 class _CourseDetail extends State<CourseDetail> {
   final Course course;
-  bool favorite = false;
+  bool favorite;
 
   _CourseDetail({
     required this.course,
+    this.favorite = true,
 });
 
   @override
@@ -77,6 +78,8 @@ class _CourseDetail extends State<CourseDetail> {
                       onTap: () {
                         setState(() {
                           favorite = !favorite;
+                          course.isStared = favorite;
+                          _changeStar;
                         });
                       },
                         // trailing: Icon(Icons.favorite_border),
@@ -129,6 +132,21 @@ class _CourseDetail extends State<CourseDetail> {
           ),
         ),
       ),
+    );
+  }
+
+  void _changeStar() {
+    _changeStarPost;
+  }
+
+  _changeStarPost() async {
+    var changeStarUrl = Global.baseUrl + "starCourse";
+    var result = await post(Uri.parse(changeStarUrl),
+      body: json.encode({
+        "userId": Global.globalUser.userId,
+        "courseId": course.courseId,
+        "isStared": course.isStared,
+      }),
     );
   }
 

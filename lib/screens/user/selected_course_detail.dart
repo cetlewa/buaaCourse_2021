@@ -20,7 +20,6 @@ class SelectedCourseDetail extends StatefulWidget {
 
 class _SelectedCourseDetail extends State<SelectedCourseDetail> {
   final Course course;
-  bool favorite = false;
 
   _SelectedCourseDetail({
     required this.course,
@@ -71,12 +70,12 @@ class _SelectedCourseDetail extends State<SelectedCourseDetail> {
                       title: Text("Course"),
                       subtitle: Text(course.courseName + "-" + course.courseId),
                       trailing: Icon(
-                        favorite ? Icons.favorite : Icons.favorite_border,
-                        color: favorite ? Colors.red : null,
+                        course.isStared ? Icons.favorite : Icons.favorite_border,
+                        color: course.isStared ? Colors.red : null,
                       ),
                       onTap: () {
                         setState(() {
-                          favorite = !favorite;
+                          course.isStared = !course.isStared;
                         });
                       },
                       // trailing: Icon(Icons.favorite_border),

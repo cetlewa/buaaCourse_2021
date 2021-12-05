@@ -8,7 +8,12 @@ class Httpservice {
   final String postsUrl = Global.baseUrl + "queryAllCourse";
 
   Future<List<Course>> getCourses() async {
-    Response response = await get(Uri.parse(postsUrl));
+    Response response = await post(
+        Uri.parse(postsUrl),
+        body: json.encode({
+          "userId": Global.globalUser.userId,
+        }),
+    );
 
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);
