@@ -131,7 +131,7 @@ class _SelectedCourseDetail extends State<SelectedCourseDetail> {
   }
 
   _subCourse() async {
-    var addCourseUrl = Global.baseUrl + "";
+    var addCourseUrl = Global.baseUrl + "dropCourse";
 
     var result = await post(Uri.parse(addCourseUrl),
       body: json.encode({
