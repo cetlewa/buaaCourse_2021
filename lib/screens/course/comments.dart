@@ -1,5 +1,4 @@
 import 'package:buaacourse/models/comment.dart';
-import 'package:buaacourse/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:buaacourse/main.dart';

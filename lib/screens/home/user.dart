@@ -80,7 +80,9 @@ class User extends StatelessWidget{
                     child: ListTile(
                       title: Text("已选课程"),
                       // iconName: "img/me_feedback.png",
-                      // onPressed: () {},
+                      onTap: (){
+                        Navigator.of(context).pushNamed("selected_courses_page");
+                      },
                     ),
                   ),
                 ),
@@ -92,6 +94,9 @@ class User extends StatelessWidget{
                       title: Text("我的收藏"),
                       // iconName: "img/me_coupon.png",
                       // onPressed: () {},
+                      onTap: (){
+                        Navigator.of(context).pushNamed("my_favorite_page");
+                      },
                     ),
                   ),
                 ),
@@ -103,6 +108,9 @@ class User extends StatelessWidget{
                       title: Text("我的评论"),
                       // iconName: "img/me_date.png",
                       // onPressed: () {},
+                      onTap: (){
+                        Navigator.of(context).pushNamed("my_comments_page");
+                      },
                     ),
                   ),
                 ),

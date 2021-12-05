@@ -6,7 +6,12 @@ import 'package:buaacourse/screens/course/search_result.dart';
 import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
+import 'package:buaacourse/screens/test/test.dart';
+import 'package:buaacourse/screens/test/testChart.dart';
 import 'package:buaacourse/screens/test/testTextField.dart';
+import 'package:buaacourse/screens/user/my_comments.dart';
+import 'package:buaacourse/screens/user/my_favorite.dart';
+import 'package:buaacourse/screens/user/selected_courses.dart';
 import 'package:buaacourse/screens/user/userInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:buaacourse/constants.dart';
@@ -37,10 +42,13 @@ class MyApp extends StatelessWidget {
         "add_comment": (context) => AddComments(),
         "search_page": (context) => Search(),
         "search_result_page": (context) => SearchResult(),
+        "selected_courses_page": (context) => SelectedCourses(),
+        "my_comments_page": (context) => MyShowComment(),
+        "my_favorite_page": (context) => MyFavorite(),
       },
       home: HomePage(),
       // home: LoginPage(),
-      // home: TestText(),
+      // home: TestChart(),
     );
   }
 }

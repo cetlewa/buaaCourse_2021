@@ -1,33 +1,30 @@
 import 'package:buaacourse/models/course.dart';
-import 'package:buaacourse/screens/course/course_detail.dart';
+import 'package:buaacourse/screens/user/selected_course_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:buaacourse/main.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
-var body;
-var switchSelected;
+import '../../main.dart';
 
-class SearchResult extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() => _SearchResult();
-}
-
-class _SearchResult extends State<SearchResult>{
+class MyFavorite extends StatelessWidget{
   final Httpservice httpservice = Httpservice();
 
   @override
   Widget build(BuildContext context) {
-    body = (ModalRoute.of(context)!.settings.arguments).toString();
-    String temp = body.toString();
-    switchSelected = temp.substring(0, temp.indexOf('&')) == "false" ? "teacher" : "course" ;
-    body = temp.substring(temp.indexOf('&') + 1);
-    print(temp);
-    print("\n" + body);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("您搜索的结果如下"),
+        title: Text("您收藏的课程"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, "search_page");
+        },
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.search)
+            ]
+        ),
       ),
       body: FutureBuilder(
         future: httpservice.getCourses(),
@@ -35,11 +32,6 @@ class _SearchResult extends State<SearchResult>{
           if(snapshot.hasData){
             List<Course> courses = snapshot.data;
 
-            if(courses.isEmpty || courses.length == 0){
-              return Center(
-                child: Text("查不到任何相关的课程呢~"),
-              );
-            }
             return ListView(
               children: courses.map((Course course) => Card(
                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15.0))),
@@ -53,7 +45,7 @@ class _SearchResult extends State<SearchResult>{
                       + "-" + course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
-                        builder: (context) => CourseDetail(
+                        builder: (context) => SelectedCourseDetail(
                           course: course,
                         )),
                   ),
@@ -71,15 +63,13 @@ class _SearchResult extends State<SearchResult>{
 }
 
 class Httpservice {
-  final String postsUrl = Global.baseUrl + "searchCourse";
+  final String postsUrl = Global.baseUrl + "";
 
   Future<List<Course>> getCourses() async {
     Response response = await post(
         Uri.parse(postsUrl),
         body: json.encode({
           "userId": Global.globalUser.userId,
-          "searchBody": body.toString(),
-          "switchSelected": switchSelected,
         }),
     );
 
@@ -93,5 +83,17 @@ class Httpservice {
     } else {
       throw "Can't get posts.";
     }
+  }
+}
+
+_postData() async{
+  var apiUrl="https://jsonplaceholder.typicode.com/posts";
+
+  var result = await post(Uri.parse(apiUrl), body: json.encode({"username": "cms", "gender": "c"}));
+  if (result.statusCode == 201) {
+    print(json.decode(result.body));
+  }
+  else {
+    print(result.statusCode);
   }
 }

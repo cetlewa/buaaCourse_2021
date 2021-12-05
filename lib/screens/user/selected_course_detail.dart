@@ -6,25 +6,25 @@ import 'package:buaacourse/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 
-class CourseDetail extends StatefulWidget {
+class SelectedCourseDetail extends StatefulWidget {
   final Course course;
 
-  CourseDetail({
+  SelectedCourseDetail({
     required this.course,
-});
+  });
 
   @override
-  State<StatefulWidget> createState() => _CourseDetail(course: course);
+  State<StatefulWidget> createState() => _SelectedCourseDetail(course: course);
 
 }
 
-class _CourseDetail extends State<CourseDetail> {
+class _SelectedCourseDetail extends State<SelectedCourseDetail> {
   final Course course;
   bool favorite = false;
 
-  _CourseDetail({
+  _SelectedCourseDetail({
     required this.course,
-});
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +40,12 @@ class _CourseDetail extends State<CourseDetail> {
               Card(
                 child:
                 Global.globalUser.userId == "" ?
-                      Column(
+                Column(
                   children: <Widget>[
                     ListTile(
-                      title: Text("Course"),
-                      subtitle: Text(course.courseName + "-" + course.courseId),
-                      trailing: Icon(Icons.favorite_border)
+                        title: Text("Course"),
+                        subtitle: Text(course.courseName + "-" + course.courseId),
+                        trailing: Icon(Icons.favorite_border)
                     ),
                     ListTile(
                       title: Text("Teacher"),
@@ -79,7 +79,7 @@ class _CourseDetail extends State<CourseDetail> {
                           favorite = !favorite;
                         });
                       },
-                        // trailing: Icon(Icons.favorite_border),
+                      // trailing: Icon(Icons.favorite_border),
                     ),
                     ListTile(
                       title: Text("Teacher"),
@@ -107,11 +107,9 @@ class _CourseDetail extends State<CourseDetail> {
                       ),
                       trailing: TextButton.icon(
                         icon: Icon(Icons.article),
-                        label: course.courseSelected < course.courseCapacity ?
-                                Text("选课")  : Text("人数已满，暂不能选课"),
+                        label: Text("退课"),
                         onPressed: (){
-                          course.courseSelected < course.courseCapacity ?
-                          _addCourse() : toast("该课程人数已满，暂不能选课，请联系教务老师呢~");
+                          _subCourse();
                         },
                       ),
                     ),
@@ -132,21 +130,21 @@ class _CourseDetail extends State<CourseDetail> {
     );
   }
 
-  _addCourse() async {
-    var addCourseUrl = Global.baseUrl + "selectCourse";
+  _subCourse() async {
+    var addCourseUrl = Global.baseUrl + "";
 
     var result = await post(Uri.parse(addCourseUrl),
-            body: json.encode({
-              "userId": Global.globalUser.userId,
-              "courseId": course.courseId,
-            }),
+      body: json.encode({
+        "userId": Global.globalUser.userId,
+        "courseId": course.courseId,
+      }),
     );
 
     if (result.statusCode == 200) {
       if (json.decode(result.body)["success"]) {
-        toast("选课成功！");
+        toast("退课成功，期待下次相遇");
       } else {
-        toast("再好的课程也不能选择两遍啊~");
+        toast("再不好的课程也不能退两遍啊~");
       }
     } else {
       toast("出现了错误(ノへ￣、)");
