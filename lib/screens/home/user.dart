@@ -6,7 +6,7 @@ class User extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xF281F8F8),
+        color: Color(0xD7D7D7F2),
         child: ListView(
           children: <Widget>[
             MeHeader(),
@@ -139,9 +139,12 @@ class User extends StatelessWidget{
                   child: Card(
                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
                     child: ListTile(
-                      title: Text("没有想好"),
+                      title: Text("修改密码"),
                       // iconName: "img/me_action.png",
                       // onPressed: () {},
+                      onTap: (){
+                        Navigator.pushNamed(context, "change_password_page");
+                      },
                     ),
                   ),
                 ),

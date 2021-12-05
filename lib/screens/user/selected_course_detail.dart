@@ -42,8 +42,10 @@ class _SelectedCourseDetail extends State<SelectedCourseDetail> {
                 Column(
                   children: <Widget>[
                     ListTile(
-                        title: Text("Course"),
-                        subtitle: Text(course.courseName + "-" + course.courseId),
+                        title: Text("Course/Score"),
+                        subtitle: course.score == -1 ?
+                        Text(course.courseName + "-" + course.courseId) :
+                        Text(course.courseName + "-" + course.courseId + "-" + course.score.toString()) ,
                         trailing: Icon(Icons.favorite_border)
                     ),
                     ListTile(
@@ -67,8 +69,10 @@ class _SelectedCourseDetail extends State<SelectedCourseDetail> {
                 Column(
                   children: <Widget>[
                     ListTile(
-                      title: Text("Course"),
-                      subtitle: Text(course.courseName + "-" + course.courseId),
+                      title: Text("Course/Score"),
+                      subtitle: course.score == -1 ?
+                      Text(course.courseName + "-" + course.courseId) :
+                      Text(course.courseName + "-" + course.courseId + "-" + course.score.toString()) ,
                       trailing: Icon(
                         course.isStared ? Icons.favorite : Icons.favorite_border,
                         color: course.isStared ? Colors.red : null,

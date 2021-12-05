@@ -38,6 +38,7 @@ dependencies:
   fluttertoast: ^8.0.8
   shared_preferences: ^2.0.9
   font_awesome_flutter: ^9.2.0
+#  flustars: ^2.0.1
 
 dev_dependencies:
   flutter_test:

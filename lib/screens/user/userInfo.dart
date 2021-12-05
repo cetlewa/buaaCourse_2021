@@ -139,15 +139,16 @@ class _UserInfo extends State<UserInfo> {
   }
 
   void changeUserInfo() {
-    _changeUserInfo;
+    _changeUserInfo();
   }
 
   _changeUserInfo() async {
-    var changeUrl = Global.baseUrl + "";
+    var changeUrl = Global.baseUrl + "changeUserInfo";
 
     var response = await post(
       Uri.parse(changeUrl),
       body: json.encode({
+      "userId": Global.globalUser.userId,
       "userGender": _genderController.text,
       "userSchool": _schoolController.text,
       "userGrade": _gradeController.text,
@@ -158,10 +159,12 @@ class _UserInfo extends State<UserInfo> {
     );
 
     if (response.statusCode == 200) {
+      print("修改成功！");
       toast("修改成功！");
       Navigator.pushNamed(context, "home_screen_homePage");
     }
     else {
+      print(response.statusCode);
       toast("发生了未知错误");
     }
   }

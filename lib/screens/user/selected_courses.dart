@@ -17,12 +17,12 @@ class SelectedCourses extends StatelessWidget{
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, "search_page");
+          Navigator.pushNamed(context, "add_score_page");
         },
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.search)
+              Icon(Icons.add)
             ]
         ),
       ),
@@ -40,9 +40,13 @@ class SelectedCourses extends StatelessWidget{
                     child: Icon(Icons.assignment),
                   ),
                   trailing: Icon(Icons.keyboard_arrow_right),
-                  title: Text(course.courseName + "-" + course.courseId),
-                  subtitle: Text(course.courseTeacher + "-" + course.coursePoint.toString()
-                      + "-" + course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
+                  title: course.score == -1 ?
+                  Text(course.courseName + " 成绩未知",
+                    style: TextStyle(fontSize: 15.0),) :
+                  Text(course.courseName + "-" + course.score.toString(),
+                    style: TextStyle(fontSize: 15.0),
+                  ),
+                  subtitle: Text(course.courseId),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (context) => SelectedCourseDetail(
@@ -74,6 +78,7 @@ class Httpservice {
     );
 
     if (response.statusCode == 200) {
+      print(response.body.toString());
       List<dynamic> body = jsonDecode(response.body);
 
       List<Course> courses =

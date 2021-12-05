@@ -29,7 +29,8 @@ class HomePageState extends State<HomePage> {
   //顶部AppBar
   AppBar buildAppBar() {
     return AppBar(
-      // backgroundColor: Colors.white,
+      backgroundColor: Color(0xD7D7D7F2),
+      // backgroundColor: Color(0xD7000000),
       elevation: 0,
       // leading: IconButton(
       //   icon: SvgPicture.asset("assets/icons/back.svg"),
