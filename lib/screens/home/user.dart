@@ -153,7 +153,10 @@ class User extends StatelessWidget{
                   child: Card(
                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
                     child: ListTile(
-                      title: Text("设置"),
+                      title: Text("智能推荐课表"),
+                      onTap: (){
+                        Navigator.pushNamed(context, "recommended_course");
+                      },
                       // iconName: "img/me_setting.png",
                       // onPressed: () {
                       // },

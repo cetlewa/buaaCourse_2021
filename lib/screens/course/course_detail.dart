@@ -57,6 +57,10 @@ class _CourseDetail extends State<CourseDetail> {
                       subtitle: Text(course.courseAttribute + "-" + course.courseType + "-" + course.courseLocation),
                     ),
                     ListTile(
+                      title: Text("ExamType"),
+                      subtitle: Text(course.courseExamType),
+                    ),
+                    ListTile(
                       title: Text("Introduction"),
                       subtitle: Text(course.courseIntroduction),
                     ),
@@ -69,8 +73,8 @@ class _CourseDetail extends State<CourseDetail> {
                 Column(
                   children: <Widget>[
                     ListTile(
-                      title: Text("Course"),
-                      subtitle: Text(course.courseName + "-" + course.courseId),
+                      title: Text("Course/Score"),
+                      subtitle: Text(course.courseName + "-" + course.courseId + "-" + course.courseComScore.toString()),
                       trailing: GestureDetector(
                         child: GestureDetector(
                           child: Icon(

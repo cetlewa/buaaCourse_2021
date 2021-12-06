@@ -17,6 +17,9 @@ class _RecommendedCourse extends State<RecommendedCourse> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("智能推荐课表"),
+      ),
       body: FutureBuilder(
         future: httpservice.getCourses(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
@@ -55,7 +58,7 @@ class _RecommendedCourse extends State<RecommendedCourse> {
 }
 
 class Httpservice {
-  final String postsUrl = Global.baseUrl + "";
+  final String postsUrl = Global.baseUrl + "queryRecomCourse";
 
   Future<List<Course>> getCourses() async {
     Response response = await post(

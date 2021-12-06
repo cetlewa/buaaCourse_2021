@@ -37,8 +37,8 @@ class Courses extends StatelessWidget{
                     child: Icon(Icons.assignment),
                   ),
                   trailing: Icon(Icons.keyboard_arrow_right),
-                  title: Text(course.courseName + "-" + course.courseId),
-                  subtitle: Text(course.courseTeacher + "-" + course.coursePoint.toString()
+                  title: Text(course.courseName + "-" + course.courseId + "/" + course.courseComScore.toString()),
+                  subtitle: Text(course.courseTeacher + "-" + course.coursePoint.toString() + "-" + course.courseExamType
                       + "-" + course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
