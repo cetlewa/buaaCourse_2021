@@ -63,9 +63,9 @@ class MyApp extends StatelessWidget {
         "recommended_course": (context) => RecommendedCourse(),
         "new_user_page": (context) => NewUser(),
       },
-      // home: HomePage(),
+      home: HomePage(),
       // home: LoginPage(),
-      home: NewUser(),
+      // home: NewUser(),
     );
   }
 }
