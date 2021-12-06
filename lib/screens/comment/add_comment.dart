@@ -24,6 +24,24 @@ class AddComment extends State<AddComments>{
 
   _addPostComment() async {
     var loginUrl = Global.baseUrl + "addCourseComment";
+    var nlpUrl = "http://maxseason.cn/validate?text='" + _controller.text + "'";
+    int isRecom = 0;
+
+    print("Coming into NLP");
+
+    var nlpResult = await post(
+      Uri.parse(nlpUrl),
+      body: json.encode({
+        "commentText": _controller.text,
+      }),
+    );
+
+    print(nlpResult.body.toString());
+    print("NLP Ending");
+
+    if(nlpResult.body == "recommended") {
+      isRecom = 1;
+    }
 
     var result = await post(Uri.parse(loginUrl),
         body: json.encode({
@@ -31,6 +49,7 @@ class AddComment extends State<AddComments>{
           "courseId": _courseId,
           "commentText": _controller.text,
           "commentScore": ratingValue.toString(),
+          "isRecom": isRecom,
         }));
     if (result.statusCode == 200) {
       if (json.decode(result.body)["success"]) {

@@ -6,7 +6,7 @@ class User extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xD7D7D7F2),
+        color: Color(0xFFE7E9EC),
         child: ListView(
           children: <Widget>[
             MeHeader(),

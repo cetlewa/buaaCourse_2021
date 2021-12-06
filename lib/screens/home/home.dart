@@ -10,7 +10,7 @@ class Home extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xD7D7D7F2),
+      backgroundColor: Color(0xFFE7E9EC),
       // body: SingleChildScrollView(
       //   child: Padding(
       //       padding: const EdgeInsets.all(12.0),

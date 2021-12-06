@@ -46,16 +46,21 @@ class _Register extends State<Register> {
   }
 
   _postData() async {
-    var loginUrl = Global.baseUrl + "register";
+    var registerUrl = Global.baseUrl + "register";
 
-    var result = await post(Uri.parse(loginUrl),
-        body: utf8.encode(json.encode({
+    print("Come into register");
+
+    var result = await post(Uri.parse(registerUrl),
+        body: json.encode({
           "userId": "${_userIdController.text}",
           "userPwd": "${_passWordController1.text}",
           "userName": "${_userNameController.text}",
           "userTel": "${_userTelController.text}",
-          "userSchool": "${_userSchoolController.text}"
-        })));
+          "userSchool": "${_userSchoolController.text}",
+          "userType": _switchSelected ? "teacher" : "student" ,
+        }));
+
+    print(result.body.toString());
     if (result.statusCode == 200) {
       if (json.decode(result.body)["success"]) {
         Global.globalUser.userId = "${_userIdController.text}";
@@ -109,14 +114,16 @@ class _Register extends State<Register> {
                       child: TextButton(
                     child: Text("学生"),
                     onPressed: (){
-
+                      _switchSelected = false;
                     },
                   )),
                   Expanded(
                     flex: 1,
                       child: TextButton(
                     child: Text("老师"),
-                    onPressed: (){},
+                    onPressed: (){
+                      _switchSelected = true;
+                    },
                   )),
                 ],
               ),

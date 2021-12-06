@@ -61,7 +61,7 @@ class PageState extends State<SyllabusPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xD7D7D7F2),
+      backgroundColor: Color(0xFFE7E9EC),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
