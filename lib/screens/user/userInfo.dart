@@ -65,6 +65,9 @@ class _UserInfo extends State<UserInfo> {
                   Column(
                     children: <Widget>[
                       ListTile(
+                        title: Text("您的GPA: " + user.userGPA.toString(), style: TextStyle(fontSize: 20.0),),
+                      ),
+                      ListTile(
                         title: Text("您的性别:"),
                         subtitle: TextField(
                           controller: _genderController,

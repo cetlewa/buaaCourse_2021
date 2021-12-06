@@ -9,6 +9,7 @@ class User {
   final String userTel;
   final String userMail;
   final String userType;
+  final double userGPA;
 
   User(
       this.userId,
@@ -21,6 +22,7 @@ class User {
       this.userTel,
       this.userMail,
       this.userType,
+      this.userGPA,
       );
 
   User.fromJson(Map<String, dynamic> json)
@@ -33,6 +35,7 @@ class User {
         userLocation = json["userLocation"]==null ? "": json["userLocation"],
         userTel = json["userTel"]==null ? "": json["userTel"],
         userType = json["userType"]==null ? "": json["userType"],
+        userGPA = json["userGPA"]==null ? 0.0 : json["userGPA"],
         userMail = json["userMail"]==null ? "": json["userMail"];
 
   Map<String, dynamic> toJson() =>
@@ -46,6 +49,7 @@ class User {
         "userLocation": userLocation,
         "userTel": userTel,
         "userMail": userMail,
+        "userGPA": userGPA,
         "userType": userType,
       };
 }
