@@ -73,7 +73,7 @@ class _MyShowComment extends State<MyShowComment>{
 }
 
 class Httpservice {
-  final String postsUrl = Global.baseUrl + "";
+  final String postsUrl = Global.baseUrl + "queryMyComment";
 
   Future<List<Comment>> getComments() async {
     Response response = await post(
