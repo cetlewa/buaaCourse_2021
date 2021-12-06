@@ -3,6 +3,7 @@ import 'package:buaacourse/screens/course/courses.dart';
 import 'package:buaacourse/screens/home/home.dart';
 import 'package:buaacourse/screens/home/user.dart';
 import 'package:buaacourse/screens/my_course/myCourse.dart';
+import 'package:buaacourse/screens/newUser/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
@@ -67,6 +68,9 @@ class HomePageState extends State<HomePage> {
       onTap: (int index){
         setState(() {
           _selectedIndex = index;
+          // if(_selectedIndex == 3){
+          //   Navigator.pushNamed(context, "new_user_page");
+          // }
         });
       },
       // onTap: _onItemTapped,

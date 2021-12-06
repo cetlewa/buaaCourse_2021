@@ -5,6 +5,7 @@ import 'package:buaacourse/screens/course/search.dart';
 import 'package:buaacourse/screens/course/search_result.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
+import 'package:buaacourse/screens/newUser/user.dart';
 import 'package:buaacourse/screens/recommended/recommended_course.dart';
 import 'package:buaacourse/screens/user/add_score.dart';
 import 'package:buaacourse/screens/user/change_password.dart';
@@ -60,10 +61,11 @@ class MyApp extends StatelessWidget {
         "add_score_page": (context) => AddScore(),
         "change_password_page": (context) => ChangePwd(),
         "recommended_course": (context) => RecommendedCourse(),
+        "new_user_page": (context) => NewUser(),
       },
-      home: HomePage(),
+      // home: HomePage(),
       // home: LoginPage(),
-      // home: NewUser(),
+      home: NewUser(),
     );
   }
 }
@@ -81,36 +83,3 @@ class Global {
 
   static String baseUrl = "https://service-dj0lsdex-1308473899.bj.apigw.tencentcs.com/release/";
 }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiProvider(
-//       providers: [
-//         ChangeNotifierProvider.value(value: DarkModeProvider()),
-//       ],
-//       child: Consumer<DarkModeProvider>(
-//         builder: (context, darkModeProvider, _) {
-//           return darkModeProvider.darkMode == 2
-//               ? MaterialApp(
-//             title: 'Flutter Demo',
-//             theme: ThemeData(
-//               primarySwatch: Colors.blue,
-//             ),
-//             darkTheme: ThemeData.dark(),
-//             home: MyHomePage(title: 'Flutter Challenge Demo'),
-//           )
-//               : MaterialApp(
-//             title: 'Flutter Demo',
-//             theme: darkModeProvider.darkMode == 1
-//                 ? ThemeData.dark()
-//                 : ThemeData(
-//               primarySwatch: Colors.blue,
-//             ),
-//             home: MyHomePage(title: 'Flutter Challenge Demo'),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }

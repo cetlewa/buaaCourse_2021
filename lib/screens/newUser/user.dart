@@ -1,6 +1,7 @@
 import 'package:buaacourse/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class NewUser extends StatefulWidget{
   @override
@@ -9,6 +10,13 @@ class NewUser extends StatefulWidget{
 }
 
 class _User extends State<NewUser> {
+  double midText = 10.0;
+  double midIcon = 25.0;
+  double topCard = 130.0;
+  // double midText = 175.0;
+  // double midIcon = 193.0;
+  // double topCard = 15.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,24 +59,29 @@ class _User extends State<NewUser> {
                     Positioned(
                       left: 13.0,
                       right: 13.0,
-                      top: 15.0,
+                      top: topCard,
                       height: 150.0,
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                        ),
-                        child: Center(
-                          child: ListTile(
-                            trailing: Icon(Icons.keyboard_arrow_right),
-                            title: Text("您的课程",style: TextStyle(fontSize: 20.0),),
-                            subtitle: Text("GPA"),
+                      child: GestureDetector(
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                          ),
+                          child: Center(
+                            child: ListTile(
+                              trailing: Icon(Icons.keyboard_arrow_right),
+                              title: Text("您的课程",style: TextStyle(fontSize: 20.0),),
+                              subtitle: Text("统计了您已选修过的课程"),
+                            ),
                           ),
                         ),
+                        onTap: (){
+                          Navigator.of(context).pushNamed("selected_courses_page");
+                        },
                       ),
                     ),
                     Positioned(
                       left: 13.0,
-                      top: 175.0,
+                      top: midText,
                       width: 84.0,
                       height: 110.0,
                       child: GestureDetector(
@@ -78,16 +91,19 @@ class _User extends State<NewUser> {
                           ),
                           child: Center(
                             child: Align(
-                              alignment: Alignment(0, 0.5),
+                              alignment: Alignment(0, 0.45),
                               child: Text("我的收藏", style: TextStyle(fontSize: 15.0),),
                             ),
                           ),
                         ),
+                        onTap: (){
+                          Navigator.of(context).pushNamed("my_favorite_page");
+                        },
                       ),
                     ),
                     Positioned(
                       left: 110.0,
-                      top: 175.0,
+                      top: midText,
                       width: 84.0,
                       height: 110.0,
                       child: GestureDetector(
@@ -96,15 +112,20 @@ class _User extends State<NewUser> {
                             borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           child: Center(
-                            child: Text("sssss", style: TextStyle(fontSize: 20.0),),
+                            child: Align(
+                              alignment: Alignment(0, 0.45),
+                              child: Text("我的评论", style: TextStyle(fontSize: 15.0),),
+                            ),
                           ),
                         ),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.of(context).pushNamed("my_comments_page");
+                        },
                       )
                     ),
                     Positioned(
                       right: 110.0,
-                      top: 175.0,
+                      top: midText,
                       width: 84.0,
                       height: 110.0,
                       child: GestureDetector(
@@ -113,14 +134,20 @@ class _User extends State<NewUser> {
                             borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           child: Center(
-                            child: Text("sssss", style: TextStyle(fontSize: 20.0),),
+                            child: Align(
+                              alignment: Alignment(0, 0.45),
+                              child: Text("修改密码", style: TextStyle(fontSize: 15.0),),
+                            ),
                           ),
                         ),
+                        onTap: (){
+                          Navigator.pushNamed(context, "change_password_page");
+                        },
                       ),
                     ),
                     Positioned(
                       right: 13.0,
-                      top: 175.0,
+                      top: midText,
                       width: 84.0,
                       height: 110.0,
                       child: GestureDetector(
@@ -129,24 +156,140 @@ class _User extends State<NewUser> {
                             borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           ),
                           child: Center(
-                            child: Text("sssss", style: TextStyle(fontSize: 20.0),),
+                            child: Align(
+                              alignment: Alignment(0, 0.45),
+                              child: Text("系统设置", style: TextStyle(fontSize: 15.0),),
+                            ),
                           ),
                         ),
+                        onTap: (){
+                          toast("暂时还没有东西呢");
+                        },
                       ),
                     ),
                     Positioned(
                       left: 37.0,
-                      top: 180.0,
-                      child: Icon(Icons.favorite, color: Colors.red, size: 35,),
+                      top: midIcon,
+                      child: GestureDetector(
+                        child: Icon(Icons.favorite, color: Colors.red, size: 37,),
+                        onTap: (){
+                          Navigator.of(context).pushNamed("my_favorite_page");
+                        },
+                      ),
+                    ),
+                    Positioned(
+                      left: 134.0,
+                      top: midIcon,
+                      child: GestureDetector(
+                        child: Icon(Icons.comment, color: Colors.red, size: 37,),
+                        onTap: (){
+                          Navigator.of(context).pushNamed("my_comments_page");
+                        },
+                      ),
+
+                    ),
+                    Positioned(
+                      left: 233.0,
+                      top: midIcon,
+                      child: GestureDetector(
+                        child: Icon(Icons.portrait, color: Colors.red, size: 37,),
+                        onTap: (){
+                          Navigator.of(context).pushNamed("change_password_page");
+                        },
+                      ),
+
+                    ),
+                    Positioned(
+                      right: 36,
+                      top: midIcon,
+                      child: GestureDetector(
+                        child: Icon(Icons.settings, color: Colors.red, size: 37,),
+                        onTap: (){
+                          toast("暂时还没有东西呢");
+                        },
+                      ),
+                    ),
+                    Positioned(
+                      left: 13.0,
+                      right: 13.0,
+                      top: 300.0,
+                      height: 200.0,
+                      child: GestureDetector(
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                          ),
+                          child: Center(
+                            child: ListTile(
+                              trailing: Icon(Icons.keyboard_arrow_right),
+                              title: Text("智能推荐课程",style: TextStyle(fontSize: 20.0),),
+                              subtitle: Text("基于NLP情感分析所给出的结果，绝对是您的不二之选"),
+                            ),
+                          ),
+                        ),
+                        onTap: (){
+                          Navigator.pushNamed(context, "recommended_course");
+                        },
+                      ),
                     ),
                   ],
                 ),
+              ),
+            ),
+            Positioned(
+              top: 60,
+              left: 40,
+              width: 60,
+              height: 60,
+              child: CircleAvatar(
+                backgroundColor: Color(0xFFFAAE62),
+                radius: 40,
+                backgroundImage: AssetImage('assets/images/placeholder_avatar.png'),
+              ),
+            ),
+            Positioned(
+              top: 75,
+              left: 120,
+              child: GestureDetector(
+                child: Global.globalUser.userId == "" ?
+                Text("点击登录",
+                  style: TextStyle(color: Colors.white, fontSize: 30.0),
+                ) :
+                Text("19373529",
+                  style: TextStyle(color: Colors.white, fontSize: 30.0),
+                ),
+                onTap: (){
+                  if(Global.globalUser.userId == "") {
+                    Navigator.pushNamed(context, "login_page");
+                  }
+                },
+              ),
+            ),
+            Positioned(
+              top: 75.0,
+              right: 20,
+              child: GestureDetector(
+                child: Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 37,),
+                onTap: (){
+                  Navigator.pushNamed(context, "userinfo_page");
+                },
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void toast(String string) {
+    Fluttertoast.showToast(
+        msg: string,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.white,
+        textColor: Colors.red,
+        fontSize: 16.0);
   }
 
 }
