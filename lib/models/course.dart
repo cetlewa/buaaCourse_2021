@@ -34,21 +34,21 @@ class Course {
   );
 
   Course.fromJson(Map<String, dynamic> json)
-      : courseId = json["courseId"],
-        courseName = json["courseName"],
-        courseAttribute = json["courseAttribute"],
-        courseLocation = json["courseLocation"],
-        courseTeacher = json["courseTeacher"],
-        courseType = json["courseType"],
-        courseSchool = json["courseSchool"],
-        coursePoint = json["coursePoint"],
-        courseSelected = json["courseSelected"],
-        courseCapacity = json["courseCapacity"],
-        courseIntroduction = json["courseIntroduction"],
-        isStared = json["isStared"],
-        courseFile = json["courseFile"],
+      : courseId = json["courseId"]==null ? "" : json["courseId"],
+        courseName = json["courseName"]==null ? "" : json["courseName"],
+        courseAttribute = json["courseAttribute"]==null ? "" : json["courseAttribute"],
+        courseLocation = json["courseLocation"]==null ? "" : json["courseLocation"],
+        courseTeacher = json["courseTeacher"]==null ? "" : json["courseTeacher"],
+        courseType = json["courseType"]==null ? "" : json["courseType"],
+        courseSchool = json["courseSchool"]==null ? "" : json["courseSchool"],
+        coursePoint = json["coursePoint"]==null ? 0.0 : json["coursePoint"],
+        courseSelected = json["courseSelected"]==null ? 0 : json["courseSelected"],
+        courseCapacity = json["courseCapacity"]==null ? 0 : json["courseCapacity"],
+        courseIntroduction = json["courseIntroduction"]==null ? "" : json["courseIntroduction"],
+        isStared = json["isStared"]==null ? false : json["isStared"],
+        courseFile = json["courseFile"]==null ? "" : json["courseFile"],
         score = json["score"]==null ? -1 : json["score"],
-        courseComScore = json["courseComScore"];
+        courseComScore = json["courseComScore"] == null ? 0 : json["courseComScore"];
 
   Map<String, dynamic> toJson() =>
       <String, dynamic>{

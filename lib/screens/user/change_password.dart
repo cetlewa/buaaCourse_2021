@@ -118,7 +118,7 @@ class _ChangePwd extends State<ChangePwd> {
 
   void changePwdPost() {
     if(_newPwd1.text == _newPwd2.text) {
-      _changePwdPost;
+      _changePwdPost();
     }
     else {
       toast("您两次输入的密码不一致，请检查！");
@@ -126,16 +126,24 @@ class _ChangePwd extends State<ChangePwd> {
   }
 
   _changePwdPost() async {
-    var loginUrl = Global.baseUrl + "changePwd";
+    var loginUrl = Global.baseUrl + "changePassword";
 
     var result = await post(Uri.parse(loginUrl),
         body: json.encode({
           "userId": Global.globalUser.userId,
-          "userPwd": _newPwd1.text,
+          "oldPwd": _oldPwd.text,
+          "newPwd": _newPwd1.text,
         }));
+
     if (result.statusCode == 200) {
-      Navigator.pushNamed(context, "login_page");
+      if(json.decode(result.body)["success"]){
+        Navigator.pushNamed(context, "login_page");
+      }
+      else{
+        toast("您的旧密码不正确呢");
+      }
     } else {
+      print("changePassword:" + result.statusCode.toString());
       print(result.statusCode);
     }
   }

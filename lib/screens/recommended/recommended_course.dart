@@ -1,31 +1,22 @@
 import 'package:buaacourse/models/course.dart';
-import 'package:buaacourse/screens/user/selected_course_detail.dart';
+import 'package:buaacourse/screens/course/course_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:buaacourse/main.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
-import '../../main.dart';
+class RecommendedCourse extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _RecommendedCourse();
 
-class SelectedCourses extends StatelessWidget{
+}
+
+class _RecommendedCourse extends State<RecommendedCourse> {
   final Httpservice httpservice = Httpservice();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("您已选择的课程"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, "add_score_page");
-        },
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.add)
-            ]
-        ),
-      ),
       body: FutureBuilder(
         future: httpservice.getCourses(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
@@ -40,16 +31,12 @@ class SelectedCourses extends StatelessWidget{
                     child: Icon(Icons.assignment),
                   ),
                   trailing: Icon(Icons.keyboard_arrow_right),
-                  title: course.score == -1 ?
-                  Text(course.courseName + " 成绩未知",
-                    style: TextStyle(fontSize: 15.0),) :
-                  Text(course.courseName + "-" + course.score.toString(),
-                    style: TextStyle(fontSize: 15.0),
-                  ),
-                  subtitle: Text(course.courseId),
+                  title: Text(course.courseName + "-" + course.courseId),
+                  subtitle: Text(course.courseTeacher + "-" + course.coursePoint.toString()
+                      + "-" + course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
-                        builder: (context) => SelectedCourseDetail(
+                        builder: (context) => CourseDetail(
                           course: course,
                         )),
                   ),
@@ -64,42 +51,30 @@ class SelectedCourses extends StatelessWidget{
       ),
     );
   }
+
 }
 
 class Httpservice {
-  final String postsUrl = Global.baseUrl + "querySelectedCourse";
+  final String postsUrl = Global.baseUrl + "";
 
   Future<List<Course>> getCourses() async {
     Response response = await post(
-        Uri.parse(postsUrl),
-        body: json.encode({
-          "userId": Global.globalUser.userId,
-        }),
+      Uri.parse(postsUrl),
+      body: json.encode({
+        "userId": Global.globalUser.userId,
+      }),
     );
 
     if (response.statusCode == 200) {
-      print(response.body.toString());
       List<dynamic> body = jsonDecode(response.body);
+      print(response.body);
 
       List<Course> courses =
       body.map((dynamic item) => Course.fromJson(item)).toList();
 
       return courses;
     } else {
-      print("querySelectedCourse:" + response.statusCode.toString());
       throw "Can't get posts.";
     }
-  }
-}
-
-_postData() async{
-  var apiUrl="https://jsonplaceholder.typicode.com/posts";
-
-  var result = await post(Uri.parse(apiUrl), body: json.encode({"username": "cms", "gender": "c"}));
-  if (result.statusCode == 201) {
-    print(json.decode(result.body));
-  }
-  else {
-    print(result.statusCode);
   }
 }

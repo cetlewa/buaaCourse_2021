@@ -5,6 +5,7 @@ import 'package:buaacourse/screens/course/search.dart';
 import 'package:buaacourse/screens/course/search_result.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
+import 'package:buaacourse/screens/newUser/user.dart';
 import 'package:buaacourse/screens/user/add_score.dart';
 import 'package:buaacourse/screens/user/change_password.dart';
 import 'package:buaacourse/screens/user/my_comments.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
       },
       home: HomePage(),
       // home: LoginPage(),
-      // home: TestChart(),
+      // home: NewUser(),
     );
   }
 }
