@@ -8,6 +8,7 @@ class User {
   final String userLocation;
   final String userTel;
   final String userMail;
+  final String userType;
 
   User(
       this.userId,
@@ -19,18 +20,20 @@ class User {
       this.userLocation,
       this.userTel,
       this.userMail,
+      this.userType,
       );
 
   User.fromJson(Map<String, dynamic> json)
-      : userId = json["userId"],
-        userName = json["userName"],
-        userPwd = json["userPwd"],
-        userGender = json["userGender"],
-        userSchool = json["userSchool"],
-        userGrade = json["userGrade"],
-        userLocation = json["userLocation"],
-        userTel = json["userTel"],
-        userMail = json["userMail"];
+      : userId = json["userId"]==null ? "": json["userId"],
+        userName = json["userName"]==null ? "": json["userName"],
+        userPwd = json["userPwd"]==null ? "": json["userPwd"],
+        userGender = json["userGender"]==null ? "": json["userGender"],
+        userSchool = json["userSchool"]==null ? "": json["userSchool"],
+        userGrade = json["userGrade"]==null ? "": json["userGrade"],
+        userLocation = json["userLocation"]==null ? "": json["userLocation"],
+        userTel = json["userTel"]==null ? "": json["userTel"],
+        userType = json["userType"]==null ? "": json["userType"],
+        userMail = json["userMail"]==null ? "": json["userMail"];
 
   Map<String, dynamic> toJson() =>
       <String, dynamic>{
@@ -43,5 +46,6 @@ class User {
         "userLocation": userLocation,
         "userTel": userTel,
         "userMail": userMail,
+        "userType": userType,
       };
 }

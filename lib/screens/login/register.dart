@@ -66,8 +66,11 @@ class _Register extends State<Register> {
         Global.globalUser.userId = "${_userIdController.text}";
         Navigator.pushNamed(context, "home_screen_homePage");
       }
+      else{
+        toast("当前学号已被注册！");
+      }
     } else {
-      toast("当前学号已被注册！");
+      toast("发生致命错误");
       print(result.statusCode);
     }
   }

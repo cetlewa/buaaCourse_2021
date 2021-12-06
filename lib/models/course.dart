@@ -13,6 +13,11 @@ class Course {
   final String courseFile;
   final double courseComScore;
   final int score;
+  final int cosLess60;
+  final int cos60to70;
+  final int cos70to80;
+  final int cos80to90;
+  final int cos90to100;
   bool isStared;
 
   Course(
@@ -31,6 +36,11 @@ class Course {
     this.courseFile,
     this.courseComScore,
     this.score,
+      this.cosLess60,
+      this.cos60to70,
+      this.cos70to80,
+      this.cos80to90,
+      this.cos90to100,
   );
 
   Course.fromJson(Map<String, dynamic> json)
@@ -48,6 +58,11 @@ class Course {
         isStared = json["isStared"]==null ? false : json["isStared"],
         courseFile = json["courseFile"]==null ? "" : json["courseFile"],
         score = json["score"]==null ? -1 : json["score"],
+        cosLess60 = json["cosLess60"]==null ? 0 : json["cosLess60"] ,
+        cos60to70 = json["cos60to70"]==null ? 0 : json["cos60to70"] ,
+        cos70to80 = json["cos70to80"]==null ? 0 : json["cos70to80"] ,
+        cos80to90 = json["cos80to90"]==null ? 0 : json["cos80to90"] ,
+        cos90to100 = json["cos90to100"]==null ? 0 : json["cos90to100"] ,
         courseComScore = json["courseComScore"] == null ? 0 : json["courseComScore"];
 
   Map<String, dynamic> toJson() =>
@@ -67,5 +82,10 @@ class Course {
         "courseComScore": courseComScore,
         "score": score,
         "isStared": isStared,
+        "cosLess60": cosLess60,
+        "cos60to70": cos60to70,
+        "cos70to80": cos70to80,
+        "cos80to90": cos80to90,
+        "cos90to100": cos90to100,
       };
 }

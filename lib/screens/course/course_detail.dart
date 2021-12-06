@@ -71,18 +71,21 @@ class _CourseDetail extends State<CourseDetail> {
                     ListTile(
                       title: Text("Course"),
                       subtitle: Text(course.courseName + "-" + course.courseId),
-                      trailing: Icon(
-                        favorite ? Icons.favorite : Icons.favorite_border,
-                        color: favorite ? Colors.red : null,
+                      trailing: GestureDetector(
+                        child: GestureDetector(
+                          child: Icon(
+                            favorite ? Icons.favorite : Icons.favorite_border,
+                            color: favorite ? Colors.red : null,
+                          ),
+                          onTap: () {
+                            setState(() {
+                              favorite = !favorite;
+                              course.isStared = favorite;
+                              _changeStar();
+                            });
+                          },
+                        ),
                       ),
-                      onTap: () {
-                        setState(() {
-                          favorite = !favorite;
-                          course.isStared = favorite;
-                          _changeStar;
-                        });
-                      },
-                        // trailing: Icon(Icons.favorite_border),
                     ),
                     ListTile(
                       title: Text("Teacher"),
@@ -124,8 +127,12 @@ class _CourseDetail extends State<CourseDetail> {
               Padding(
                 padding: EdgeInsets.all(10),
                 child: ColumnChart(
-                  data: [180.0, 98.0, 126.0, 64.0, 118.0],
-                  xAxis: ['一月', '二月', '三月', '四月', '五月'],
+                  data: [double.parse(course.cosLess60.toString()),
+                    double.parse(course.cos60to70.toString()),
+                    double.parse(course.cos70to80.toString()),
+                    double.parse(course.cos80to90.toString()),
+                    double.parse(course.cos90to100.toString())],
+                  xAxis: ['<60', '60~70', '70~80', '80~90', '>90'],
                 ),
               ),
             ],
@@ -136,11 +143,12 @@ class _CourseDetail extends State<CourseDetail> {
   }
 
   void _changeStar() {
-    _changeStarPost;
+    _changeStarPost();
   }
 
   _changeStarPost() async {
     var changeStarUrl = Global.baseUrl + "starCourse";
+    print("debug star");
     var result = await post(Uri.parse(changeStarUrl),
       body: json.encode({
         "userId": Global.globalUser.userId,
@@ -148,6 +156,10 @@ class _CourseDetail extends State<CourseDetail> {
         "isStared": course.isStared,
       }),
     );
+
+    print(course.isStared);
+    print(result.statusCode);
+    print(result.body);
   }
 
   _addCourse() async {

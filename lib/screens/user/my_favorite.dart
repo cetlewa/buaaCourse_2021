@@ -63,7 +63,7 @@ class MyFavorite extends StatelessWidget{
 }
 
 class Httpservice {
-  final String postsUrl = Global.baseUrl + "";
+  final String postsUrl = Global.baseUrl + "queryStaredCourse";
 
   Future<List<Course>> getCourses() async {
     Response response = await post(

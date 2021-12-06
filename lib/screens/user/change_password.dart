@@ -15,6 +15,7 @@ class _ChangePwd extends State<ChangePwd> {
   TextEditingController _oldPwd = TextEditingController();
   TextEditingController _newPwd1 = TextEditingController();
   TextEditingController _newPwd2 = TextEditingController();
+  bool isShowPassWord = false;
   bool isShowPassWord1 = false;
   bool isShowPassWord2 = false;
 
@@ -30,11 +31,24 @@ class _ChangePwd extends State<ChangePwd> {
             child: Column(
               children: [
                 Card(
-                  child: ListTile(
-                    title: Text("请输入您原来的密码"),
-                    subtitle: TextField(
-                      controller: _oldPwd,
-                    ),
+                  child: TextFormField(
+                    controller: _oldPwd,
+                    decoration: InputDecoration(
+                        labelText: '请输入您原来的密码',
+                        labelStyle: const TextStyle(
+                            fontSize: 15.0,
+                            color: Color.fromARGB(255, 93, 93, 93)),
+                        border: InputBorder.none,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            isShowPassWord
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: const Color.fromARGB(255, 126, 126, 126),
+                          ),
+                          onPressed: showPassWord,
+                        )),
+                    obscureText: !isShowPassWord,
                   ),
                 ),
                 Card(
@@ -102,6 +116,12 @@ class _ChangePwd extends State<ChangePwd> {
         ),
       ),
     );
+  }
+
+  void showPassWord() {
+    setState(() {
+      isShowPassWord = !isShowPassWord;
+    });
   }
 
   void showPassWord2() {
