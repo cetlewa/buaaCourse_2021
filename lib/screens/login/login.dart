@@ -164,7 +164,7 @@ class _Login extends State<Login> {
                         child: SizedBox.expand(
                           child: RaisedButton(
                             onPressed: checkLoginInfo,
-                            color: const Color.fromARGB(255, 61, 182, 203),
+                            color: Colors.blue,
                             child: const Text(
                               '登录',
                               style: TextStyle(
@@ -185,7 +185,7 @@ class _Login extends State<Login> {
                             Container(
                               child: RaisedButton(
                                 onPressed: router2Register,
-                                color: const Color.fromARGB(255, 61, 182, 203),
+                                color: Colors.blue,
                                 child: const Text(
                                   '注册账号',
                                   style: TextStyle(
@@ -198,7 +198,7 @@ class _Login extends State<Login> {
                             ),
                             RaisedButton(
                               onPressed: router2Register,
-                              color: const Color.fromARGB(255, 61, 182, 203),
+                              color: Colors.blue,
                               child: const Text(
                                 '忘记密码？',
                                 style: TextStyle(

@@ -88,249 +88,241 @@ class _Register extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "注册表单",
-      home: Scaffold(
-        appBar: AppBar(
-          title: IconButton(
-              icon: Icon(Icons.keyboard_arrow_left),
-              onPressed: () {
-                Navigator.pushNamed(context, "login_page");
-              }),
-        ),
-        // drawer: MyDrawer(),
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                  padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
-                  child: const Text(
-                    'LOGO',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 53, 53, 53), fontSize: 50.0),
-                  )),
-              Row(
-                children: [
-                  Expanded(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("请填写您的个人信息来完成注册"),
+      ),
+      // drawer: MyDrawer(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+                padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
+                child: const Text(
+                  'LOGO',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 53, 53, 53), fontSize: 50.0),
+                )),
+            Row(
+              children: [
+                Expanded(
                     flex: 1,
-                      child: TextButton(
-                    child: Text("学生"),
-                    onPressed: (){
-                      _switchSelected = false;
-                    },
-                  )),
-                  Expanded(
+                    child: TextButton(
+                      child: Text("学生"),
+                      onPressed: (){
+                        _switchSelected = false;
+                      },
+                    )),
+                Expanded(
                     flex: 1,
-                      child: TextButton(
-                    child: Text("老师"),
-                    onPressed: (){
-                      _switchSelected = true;
-                    },
-                  )),
-                ],
-              ),
-              Container(
-                padding: const EdgeInsets.all(16.0),
-                child: Form(
-                  key: _registerKey,
-                  autovalidate: true,
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromARGB(255, 240, 240, 240),
-                                    width: 1.0))),
-                        child: TextField(
-                          controller: _userIdController,
-                          decoration: InputDecoration(
-                            labelText: '请输入您的学号',
-                            labelStyle: TextStyle(
+                    child: TextButton(
+                      child: Text("老师"),
+                      onPressed: (){
+                        _switchSelected = true;
+                      },
+                    )),
+              ],
+            ),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                key: _registerKey,
+                autovalidate: true,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 240, 240, 240),
+                                  width: 1.0))),
+                      child: TextField(
+                        controller: _userIdController,
+                        decoration: InputDecoration(
+                          labelText: '请输入您的学号',
+                          labelStyle: TextStyle(
+                              fontSize: 15.0,
+                              color: Color.fromARGB(255, 93, 93, 93)),
+                          border: InputBorder.none,
+                          suffixIcon: IconButton(
+                            icon: const Icon(
+                              Icons.close,
+                              color: Color.fromARGB(255, 126, 126, 126),
+                            ),
+                            onPressed: () {
+                              _userIdController.text = "";
+                            },
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 240, 240, 240),
+                                  width: 1.0))),
+                      child: TextField(
+                        controller: _userNameController,
+                        decoration: InputDecoration(
+                          labelText: '请输入您的姓名',
+                          labelStyle: TextStyle(
+                              fontSize: 15.0,
+                              color: Color.fromARGB(255, 93, 93, 93)),
+                          border: InputBorder.none,
+                          suffixIcon: IconButton(
+                            icon: const Icon(
+                              Icons.close,
+                              color: Color.fromARGB(255, 126, 126, 126),
+                            ),
+                            onPressed: () {
+                              _userNameController.text = "";
+                            },
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 240, 240, 240),
+                                  width: 1.0))),
+                      child: TextFormField(
+                        controller: _passWordController1,
+                        decoration: InputDecoration(
+                            labelText: '请输入您的登录密码',
+                            labelStyle: const TextStyle(
                                 fontSize: 15.0,
                                 color: Color.fromARGB(255, 93, 93, 93)),
                             border: InputBorder.none,
                             suffixIcon: IconButton(
-                              icon: const Icon(
-                                Icons.close,
-                                color: Color.fromARGB(255, 126, 126, 126),
+                              icon: Icon(
+                                isShowPassWord1
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color:
+                                const Color.fromARGB(255, 126, 126, 126),
                               ),
                               onPressed: () {
-                                _userIdController.text = "";
+                                setState(() {
+                                  isShowPassWord1 = !isShowPassWord1;
+                                });
                               },
-                            ),
-                          ),
-                          keyboardType: TextInputType.number,
-                        ),
+                            )),
+                        obscureText: !isShowPassWord1,
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromARGB(255, 240, 240, 240),
-                                    width: 1.0))),
-                        child: TextField(
-                          controller: _userNameController,
-                          decoration: InputDecoration(
-                            labelText: '请输入您的姓名',
-                            labelStyle: TextStyle(
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 240, 240, 240),
+                                  width: 1.0))),
+                      child: TextFormField(
+                        controller: _passWordController2,
+                        decoration: InputDecoration(
+                            labelText: '请再重复输入一次您的密码',
+                            labelStyle: const TextStyle(
                                 fontSize: 15.0,
                                 color: Color.fromARGB(255, 93, 93, 93)),
                             border: InputBorder.none,
                             suffixIcon: IconButton(
-                              icon: const Icon(
-                                Icons.close,
-                                color: Color.fromARGB(255, 126, 126, 126),
+                              icon: Icon(
+                                isShowPassWord2
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color:
+                                const Color.fromARGB(255, 126, 126, 126),
                               ),
                               onPressed: () {
-                                _userNameController.text = "";
+                                setState(() {
+                                  isShowPassWord2 = !isShowPassWord2;
+                                });
                               },
+                            )),
+                        obscureText: !isShowPassWord2,
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 240, 240, 240),
+                                  width: 1.0))),
+                      child: TextField(
+                        controller: _userTelController,
+                        decoration: InputDecoration(
+                          labelText: '请输入您的电话',
+                          labelStyle: TextStyle(
+                              fontSize: 15.0,
+                              color: Color.fromARGB(255, 93, 93, 93)),
+                          border: InputBorder.none,
+                          suffixIcon: IconButton(
+                            icon: const Icon(
+                              Icons.close,
+                              color: Color.fromARGB(255, 126, 126, 126),
                             ),
-                          ),
-                          keyboardType: TextInputType.text,
-                        ),
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromARGB(255, 240, 240, 240),
-                                    width: 1.0))),
-                        child: TextFormField(
-                          controller: _passWordController1,
-                          decoration: InputDecoration(
-                              labelText: '请输入您的登录密码',
-                              labelStyle: const TextStyle(
-                                  fontSize: 15.0,
-                                  color: Color.fromARGB(255, 93, 93, 93)),
-                              border: InputBorder.none,
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  isShowPassWord1
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color:
-                                      const Color.fromARGB(255, 126, 126, 126),
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    isShowPassWord1 = !isShowPassWord1;
-                                  });
-                                },
-                              )),
-                          obscureText: !isShowPassWord1,
-                        ),
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromARGB(255, 240, 240, 240),
-                                    width: 1.0))),
-                        child: TextFormField(
-                          controller: _passWordController2,
-                          decoration: InputDecoration(
-                              labelText: '请再重复输入一次您的密码',
-                              labelStyle: const TextStyle(
-                                  fontSize: 15.0,
-                                  color: Color.fromARGB(255, 93, 93, 93)),
-                              border: InputBorder.none,
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  isShowPassWord2
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color:
-                                      const Color.fromARGB(255, 126, 126, 126),
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    isShowPassWord2 = !isShowPassWord2;
-                                  });
-                                },
-                              )),
-                          obscureText: !isShowPassWord2,
-                        ),
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromARGB(255, 240, 240, 240),
-                                    width: 1.0))),
-                        child: TextField(
-                          controller: _userTelController,
-                          decoration: InputDecoration(
-                            labelText: '请输入您的电话',
-                            labelStyle: TextStyle(
-                                fontSize: 15.0,
-                                color: Color.fromARGB(255, 93, 93, 93)),
-                            border: InputBorder.none,
-                            suffixIcon: IconButton(
-                              icon: const Icon(
-                                Icons.close,
-                                color: Color.fromARGB(255, 126, 126, 126),
-                              ),
-                              onPressed: () {
-                                _userTelController.text = "";
-                              },
-                            ),
-                          ),
-                          keyboardType: TextInputType.phone,
-                        ),
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromARGB(255, 240, 240, 240),
-                                    width: 1.0))),
-                        child: TextField(
-                          controller: _userSchoolController,
-                          decoration: InputDecoration(
-                            labelText: '请输入您的学院',
-                            labelStyle: TextStyle(
-                                fontSize: 15.0,
-                                color: Color.fromARGB(255, 93, 93, 93)),
-                            border: InputBorder.none,
-                            suffixIcon: IconButton(
-                              icon: const Icon(
-                                Icons.close,
-                                color: Color.fromARGB(255, 126, 126, 126),
-                              ),
-                              onPressed: () {
-                                _userSchoolController.text = "";
-                              },
-                            ),
-                          ),
-                          keyboardType: TextInputType.text,
-                        ),
-                      ),
-                      Container(
-                        height: 45.0,
-                        margin: EdgeInsets.only(top: 40.0),
-                        child: SizedBox.expand(
-                          child: RaisedButton(
-                            onPressed: post4Register,
-                            color: const Color.fromARGB(255, 61, 182, 203),
-                            child: const Text(
-                              '马上注册',
-                              style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: Color.fromARGB(255, 255, 255, 255)),
-                            ),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(45.0)),
+                            onPressed: () {
+                              _userTelController.text = "";
+                            },
                           ),
                         ),
+                        keyboardType: TextInputType.phone,
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: Color.fromARGB(255, 240, 240, 240),
+                                  width: 1.0))),
+                      child: TextField(
+                        controller: _userSchoolController,
+                        decoration: InputDecoration(
+                          labelText: '请输入您的学院',
+                          labelStyle: TextStyle(
+                              fontSize: 15.0,
+                              color: Color.fromARGB(255, 93, 93, 93)),
+                          border: InputBorder.none,
+                          suffixIcon: IconButton(
+                            icon: const Icon(
+                              Icons.close,
+                              color: Color.fromARGB(255, 126, 126, 126),
+                            ),
+                            onPressed: () {
+                              _userSchoolController.text = "";
+                            },
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                    ),
+                    Container(
+                      height: 45.0,
+                      margin: EdgeInsets.only(top: 40.0),
+                      child: SizedBox.expand(
+                        child: RaisedButton(
+                          onPressed: post4Register,
+                          color: Colors.blue,
+                          child: const Text(
+                            '马上注册',
+                            style: TextStyle(
+                                fontSize: 14.0,
+                                color: Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(45.0)),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -13,13 +13,14 @@ class UserInfo extends StatefulWidget{
 class _UserInfo extends State<UserInfo> {
   final Httpservice httpservice = Httpservice();
 
-  TextEditingController _controller = TextEditingController();
-  TextEditingController _genderController = TextEditingController();
-  TextEditingController _schoolController = TextEditingController();
-  TextEditingController _gradeController = TextEditingController();
-  TextEditingController _locationController = TextEditingController();
-  TextEditingController _telController = TextEditingController();
-  TextEditingController _mailController = TextEditingController();
+  String _controller = "";
+  String _genderController = "";
+  String _schoolController = "";
+  String _gradeController = "";
+  String _locationController = "";
+  String _telController = "";
+  String _mailController = "";
+  String temp = "\$\$\$";
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +33,12 @@ class _UserInfo extends State<UserInfo> {
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if(snapshot.hasData){
             User user = snapshot.data;
-            _genderController.text = user.userGender=="" ? "未填写" : user.userGender;
-            _schoolController.text = user.userSchool=="" ? "未填写" : user.userSchool;
-            _gradeController.text = user.userGrade=="" ? "未填写" : user.userGrade;
-            _locationController.text = user.userLocation=="" ? "未填写" : user.userLocation;
-            _telController.text = user.userTel=="" ? "未填写" : user.userTel;
-            _mailController.text = user.userMail=="" ? "未填写" : user.userMail;
+            _genderController = user.userGender=="" ? "未填写" : user.userGender;
+            _schoolController = user.userSchool=="" ? "未填写" : user.userSchool;
+            _gradeController = user.userGrade=="" ? "未填写" : user.userGrade;
+            _locationController = user.userLocation=="" ? "未填写" : user.userLocation;
+            _telController = user.userTel=="" ? "未填写" : user.userTel;
+            _mailController = user.userMail=="" ? "未填写" : user.userMail;
 
             return SingleChildScrollView(
               child: Column(
@@ -62,73 +63,125 @@ class _UserInfo extends State<UserInfo> {
                     ],
                   ),
                   ),
-                  Column(
-                    children: <Widget>[
-                      ListTile(
-                        title: Text("您的GPA: " + user.userGPA.toString(), style: TextStyle(fontSize: 20.0),),
-                      ),
-                      ListTile(
-                        title: Text("您的性别:"),
-                        // trailing: ,
-                        subtitle: TextField(
-                          controller: _genderController,
-
-                        ),
-                      ),
-                      ListTile(
-                        title: Text("您的电话"),
-                        subtitle: TextField(
-                          controller: _telController,
-
-                        ),
-                      ),
-                      ListTile(
-                        title: Text("您的邮箱"),
-                        subtitle: TextField(
-                          controller: _mailController,
-
-                        ),
-                      ),
-                      ListTile(
-                        title: Text("您的院系"),
-                        subtitle: TextField(
-                          controller: _schoolController,
-
-                        ),
-                      ),
-                      ListTile(
-                        title: Text("您的年级"),
-                        subtitle: TextField(
-                          controller: _gradeController,
-
-                        ),
-                      ),
-                      ListTile(
-                        title: Text("您所在的校区"),
-                        subtitle: TextField(
-                          controller: _locationController,
-                        ),
-                      ),
-                      Container(
-                        height: 45.0,
-                        margin: EdgeInsets.only(top: 40.0),
-                        child: SizedBox.expand(
-                          child: RaisedButton(
-                            onPressed: changeUserInfo,
-                            color: const Color.fromARGB(255, 61, 182, 203),
-                            child: const Text(
-                              '修改信息',
-                              style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: Color.fromARGB(255, 255, 255, 255)),
-                            ),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(45.0)),
+                  Card(
+                    child: Column(
+                      children: <Widget>[
+                        Card(
+                          child: ListTile(
+                            title: Text("您的GPA: " + user.userGPA.toString(), style: TextStyle(fontSize: 20.0),),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                        GestureDetector(
+                          child: Card(
+                            child: ListTile(
+                              trailing: Text(_genderController + ">", style: TextStyle(color: Colors.grey),
+                              ),
+                              title: Text("您的性别:"),
+                            ),
+                          ),
+                          onTap: (){
+                            Navigator.of(context).pushNamed("change_info_page",
+                                arguments: "1" + temp + _genderController + temp + _schoolController +
+                            temp + _gradeController + temp + _locationController + temp +
+                            _telController + temp + _mailController);
+                          },
+                        ),
+                        GestureDetector(
+                          child: Card(
+                            child: ListTile(
+                              trailing: Text(_telController + ">", style: TextStyle(color: Colors.grey),
+                              ),
+                              title: Text("您的电话:"),
+                            ),
+                          ),
+                          onTap: (){
+                            Navigator.of(context).pushNamed("change_info_page",
+                                arguments: "5" + temp + _genderController + temp + _schoolController +
+                                    temp + _gradeController + temp + _locationController + temp +
+                                    _telController + temp + _mailController);
+                          },
+                        ),
+                        GestureDetector(
+                          child: Card(
+                            child: ListTile(
+                              trailing: Text(_mailController + ">", style: TextStyle(color: Colors.grey),
+                              ),
+                              title: Text("您的邮箱:"),
+                            ),
+                          ),
+                          onTap: (){
+                            Navigator.of(context).pushNamed("change_info_page",
+                                arguments: "6" + temp + _genderController + temp + _schoolController +
+                                    temp + _gradeController + temp + _locationController + temp +
+                                    _telController + temp + _mailController);
+                          },
+                        ),
+                        GestureDetector(
+                          child: Card(
+                            child: ListTile(
+                              trailing: Text(_schoolController + ">", style: TextStyle(color: Colors.grey),
+                              ),
+                              title: Text("您的院系:"),
+                            ),
+                          ),
+                          onTap: (){
+                            Navigator.of(context).pushNamed("change_info_page",
+                                arguments: "2" + temp + _genderController + temp + _schoolController +
+                                    temp + _gradeController + temp + _locationController + temp +
+                                    _telController + temp + _mailController);
+                          },
+                        ),
+                        GestureDetector(
+                          child: Card(
+                            child: ListTile(
+                              trailing: Text(_gradeController + ">", style: TextStyle(color: Colors.grey),
+                              ),
+                              title: Text("您的年级:"),
+                            ),
+                          ),
+                          onTap: (){
+                            Navigator.of(context).pushNamed("change_info_page",
+                                arguments: "3" + temp + _genderController + temp + _schoolController +
+                                    temp + _gradeController + temp + _locationController + temp +
+                                    _telController + temp + _mailController);
+                          },
+                        ),
+                        GestureDetector(
+                          child: Card(
+                            child: ListTile(
+                              trailing: Text(_locationController + ">", style: TextStyle(color: Colors.grey),
+                              ),
+                              title: Text("您所在的校区:"),
+                            ),
+                          ),
+                          onTap: (){
+                            Navigator.of(context).pushNamed("change_info_page",
+                                arguments: "4" + temp + _genderController + temp + _schoolController +
+                                    temp + _gradeController + temp + _locationController + temp +
+                                    _telController + temp + _mailController);
+                          },
+                        ),
+                        // Container(
+                        //   height: 45.0,
+                        //   margin: EdgeInsets.only(top: 40.0),
+                        //   child: SizedBox.expand(
+                        //     child: RaisedButton(
+                        //       onPressed: changeUserInfo,
+                        //       color: const Color.fromARGB(255, 61, 182, 203),
+                        //       child: const Text(
+                        //         '修改信息',
+                        //         style: TextStyle(
+                        //             fontSize: 14.0,
+                        //             color: Color.fromARGB(255, 255, 255, 255)),
+                        //       ),
+                        //       shape: RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(45.0)),
+                        //     ),
+                        //   ),
+                        // ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             );
@@ -153,12 +206,12 @@ class _UserInfo extends State<UserInfo> {
       Uri.parse(changeUrl),
       body: json.encode({
       "userId": Global.globalUser.userId,
-      "userGender": _genderController.text,
-      "userSchool": _schoolController.text,
-      "userGrade": _gradeController.text,
-      "userLocation": _locationController.text,
-      "userTel": _telController.text,
-      "userMail": _mailController.text,
+      "userGender": _genderController,
+      "userSchool": _schoolController,
+      "userGrade": _gradeController,
+      "userLocation": _locationController,
+      "userTel": _telController,
+      "userMail": _mailController,
       }),
     );
 

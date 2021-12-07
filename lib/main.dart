@@ -5,6 +5,8 @@ import 'package:buaacourse/screens/course/search.dart';
 import 'package:buaacourse/screens/course/search_result.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
+import 'package:buaacourse/screens/newUser/changInfo.dart';
+import 'package:buaacourse/screens/newUser/settings.dart';
 import 'package:buaacourse/screens/newUser/user.dart';
 import 'package:buaacourse/screens/recommended/recommended_course.dart';
 import 'package:buaacourse/screens/user/add_score.dart';
@@ -62,6 +64,8 @@ class MyApp extends StatelessWidget {
         "change_password_page": (context) => ChangePwd(),
         "recommended_course": (context) => RecommendedCourse(),
         "new_user_page": (context) => NewUser(),
+        "change_info_page": (context) => ChangeInfo(),
+        "settings_page": (context) => Settings(),
       },
       home: HomePage(),
       // home: LoginPage(),

@@ -163,7 +163,7 @@ class _User extends State<NewUser> {
                           ),
                         ),
                         onTap: (){
-                          toast("暂时还没有东西呢");
+                          Navigator.of(context).pushNamed("settings_page");
                         },
                       ),
                     ),
@@ -205,7 +205,7 @@ class _User extends State<NewUser> {
                       child: GestureDetector(
                         child: Icon(Icons.settings, color: Color(0xF5808080), size: 37,),
                         onTap: (){
-                          toast("暂时还没有东西呢");
+                          Navigator.of(context).pushNamed("settings_page");
                         },
                       ),
                     ),
