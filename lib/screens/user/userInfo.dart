@@ -32,12 +32,12 @@ class _UserInfo extends State<UserInfo> {
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if(snapshot.hasData){
             User user = snapshot.data;
-            _genderController.text = user.userGender=="" ? "您还没有填写此信息" : user.userGender;
-            _schoolController.text = user.userSchool=="" ? "您还没有填写此信息" : user.userSchool;
-            _gradeController.text = user.userGrade=="" ? "您还没有填写此信息" : user.userGrade;
-            _locationController.text = user.userLocation=="" ? "您还没有填写此信息" : user.userLocation;
-            _telController.text = user.userTel=="" ? "您还没有填写此信息" : user.userTel;
-            _mailController.text = user.userMail=="" ? "您还没有填写此信息" : user.userMail;
+            _genderController.text = user.userGender=="" ? "未填写" : user.userGender;
+            _schoolController.text = user.userSchool=="" ? "未填写" : user.userSchool;
+            _gradeController.text = user.userGrade=="" ? "未填写" : user.userGrade;
+            _locationController.text = user.userLocation=="" ? "未填写" : user.userLocation;
+            _telController.text = user.userTel=="" ? "未填写" : user.userTel;
+            _mailController.text = user.userMail=="" ? "未填写" : user.userMail;
 
             return SingleChildScrollView(
               child: Column(
@@ -69,6 +69,7 @@ class _UserInfo extends State<UserInfo> {
                       ),
                       ListTile(
                         title: Text("您的性别:"),
+                        // trailing: ,
                         subtitle: TextField(
                           controller: _genderController,
 

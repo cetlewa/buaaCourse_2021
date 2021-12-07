@@ -1,7 +1,6 @@
 import 'package:buaacourse/main.dart';
 import 'package:buaacourse/screens/course/courses.dart';
 import 'package:buaacourse/screens/home/home.dart';
-import 'package:buaacourse/screens/home/user.dart';
 import 'package:buaacourse/screens/my_course/myCourse.dart';
 import 'package:buaacourse/screens/newUser/user.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +12,13 @@ import 'package:buaacourse/constants.dart';
 //底部的索引
 int _selectedIndex = 0;
 // 创建数组引入页面
-List pageList = [Home(),Courses(),SyllabusPage(),User()];
+List pageList = [Home(),Courses(),SyllabusPage(),NewUser()];
 
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: _selectedIndex != 3 ? buildAppBar() : null ,
       bottomNavigationBar: buildBottomNavigationBar(),
       body: pageList[_selectedIndex],
     );
@@ -28,6 +27,12 @@ class HomePageState extends State<HomePage> {
   //顶部AppBar
   AppBar buildAppBar() {
     return AppBar(
+      title: _selectedIndex == 0 ? Text("首页资讯", style: TextStyle(color: Colors.black),) :
+              _selectedIndex == 1 ? Text("课程列表", style: TextStyle(color: Colors.black),) :
+              _selectedIndex == 2 ? Text("我的课表", style: TextStyle(color: Colors.black),) : null ,
+      iconTheme: IconThemeData(
+        color: Colors.black, //修改颜色
+      ),
       backgroundColor: Color(0xFFE7E9EC),
       // backgroundColor: Color(0xD7000000),
       elevation: 0,

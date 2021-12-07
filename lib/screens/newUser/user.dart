@@ -60,7 +60,7 @@ class _User extends State<NewUser> {
                       left: 13.0,
                       right: 13.0,
                       top: topCard,
-                      height: 150.0,
+                      height: 130.0,
                       child: GestureDetector(
                         child: Card(
                           shape: RoundedRectangleBorder(
@@ -181,7 +181,7 @@ class _User extends State<NewUser> {
                       left: 134.0,
                       top: midIcon,
                       child: GestureDetector(
-                        child: Icon(Icons.comment, color: Colors.red, size: 37,),
+                        child: Icon(Icons.comment, color: Colors.lightBlueAccent, size: 37,),
                         onTap: (){
                           Navigator.of(context).pushNamed("my_comments_page");
                         },
@@ -192,7 +192,7 @@ class _User extends State<NewUser> {
                       left: 233.0,
                       top: midIcon,
                       child: GestureDetector(
-                        child: Icon(Icons.portrait, color: Colors.red, size: 37,),
+                        child: Icon(Icons.portrait, color: Color(0xF5BFA337), size: 37,),
                         onTap: (){
                           Navigator.of(context).pushNamed("change_password_page");
                         },
@@ -203,7 +203,7 @@ class _User extends State<NewUser> {
                       right: 36,
                       top: midIcon,
                       child: GestureDetector(
-                        child: Icon(Icons.settings, color: Colors.red, size: 37,),
+                        child: Icon(Icons.settings, color: Color(0xF5808080), size: 37,),
                         onTap: (){
                           toast("暂时还没有东西呢");
                         },
@@ -212,8 +212,8 @@ class _User extends State<NewUser> {
                     Positioned(
                       left: 13.0,
                       right: 13.0,
-                      top: 300.0,
-                      height: 200.0,
+                      top: 280.0,
+                      height: 180.0,
                       child: GestureDetector(
                         child: Card(
                           shape: RoundedRectangleBorder(
