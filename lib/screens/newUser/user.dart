@@ -36,14 +36,6 @@ class _User extends State<NewUser> {
         child: Stack(
           alignment:Alignment.center , //指定未定位或部分定位widget的对齐方式
           children: <Widget>[
-            // ListTile(
-            //   leading: CircleAvatar(
-            //     radius: 40,
-            //     backgroundImage: AssetImage('assets/images/placeholder_avatar.png'),
-            //   ),
-            //   title: Text("UserName"),
-            //   subtitle: Text("UserInfo"),
-            // ),
             Positioned(
               left: 0.0,
               right: 0.0,
@@ -85,7 +77,12 @@ class _User extends State<NewUser> {
                           ),
                         ),
                         onTap: (){
-                          Navigator.of(context).pushNamed("selected_courses_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.of(context).pushNamed("selected_courses_page");
+                          }
                         },
                       ),
                     ),
@@ -107,7 +104,12 @@ class _User extends State<NewUser> {
                           ),
                         ),
                         onTap: (){
-                          Navigator.of(context).pushNamed("my_favorite_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.of(context).pushNamed("my_favorite_page");
+                          }
                         },
                       ),
                     ),
@@ -129,7 +131,12 @@ class _User extends State<NewUser> {
                           ),
                         ),
                         onTap: (){
-                          Navigator.of(context).pushNamed("my_comments_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.of(context).pushNamed("my_comments_page");
+                          }
                         },
                       )
                     ),
@@ -151,7 +158,12 @@ class _User extends State<NewUser> {
                           ),
                         ),
                         onTap: (){
-                          Navigator.pushNamed(context, "change_password_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.pushNamed(context, "change_password_page");
+                          }
                         },
                       ),
                     ),
@@ -173,7 +185,12 @@ class _User extends State<NewUser> {
                           ),
                         ),
                         onTap: (){
-                          Navigator.of(context).pushNamed("settings_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.of(context).pushNamed("settings_page");
+                          }
                         },
                       ),
                     ),
@@ -183,7 +200,12 @@ class _User extends State<NewUser> {
                       child: GestureDetector(
                         child: Icon(Icons.favorite, color: Colors.red, size: 37,),
                         onTap: (){
-                          Navigator.of(context).pushNamed("my_favorite_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.of(context).pushNamed("my_favorite_page");
+                          }
                         },
                       ),
                     ),
@@ -193,7 +215,12 @@ class _User extends State<NewUser> {
                       child: GestureDetector(
                         child: Icon(Icons.comment, color: Colors.lightBlueAccent, size: 37,),
                         onTap: (){
-                          Navigator.of(context).pushNamed("my_comments_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.of(context).pushNamed("my_comments_page");
+                          }
                         },
                       ),
 
@@ -204,7 +231,12 @@ class _User extends State<NewUser> {
                       child: GestureDetector(
                         child: Icon(Icons.portrait, color: Color(0xF5BFA337), size: 37,),
                         onTap: (){
-                          Navigator.of(context).pushNamed("change_password_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.of(context).pushNamed("change_password_page");
+                          }
                         },
                       ),
 
@@ -215,7 +247,12 @@ class _User extends State<NewUser> {
                       child: GestureDetector(
                         child: Icon(Icons.settings, color: Color(0xF5808080), size: 37,),
                         onTap: (){
-                          Navigator.of(context).pushNamed("settings_page");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.of(context).pushNamed("settings_page");
+                          }
                         },
                       ),
                     ),
@@ -238,7 +275,12 @@ class _User extends State<NewUser> {
                           ),
                         ),
                         onTap: (){
-                          Navigator.pushNamed(context, "recommended_course");
+                          if(Global.globalUser.userId == ""){
+                            toast("请先登录");
+                          }
+                          else{
+                            Navigator.pushNamed(context, "recommended_course");
+                          }
                         },
                       ),
                     ),
@@ -265,7 +307,7 @@ class _User extends State<NewUser> {
                 Text("点击登录",
                   style: TextStyle(color: Colors.white, fontSize: 30.0),
                 ) :
-                Text("19373529",
+                Text(Global.globalUser.userId,
                   style: TextStyle(color: Colors.white, fontSize: 30.0),
                 ),
                 onTap: (){

@@ -21,22 +21,6 @@ class _MyShowComment extends State<MyShowComment>{
       appBar: AppBar(
         title: Text("这是您的足迹"),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Column(
-      //       mainAxisAlignment: MainAxisAlignment.center,
-      //       children: [
-      //         Icon(Icons.add)
-      //       ]
-      //   ),
-      //   onPressed: () async {
-      //     await Navigator.of(context).pushNamed("add_comment", arguments: courseId).then((newCourseId) {
-      //       setState(() {
-      //         print(newCourseId.toString());
-      //         courseId = newCourseId.toString();
-      //       });
-      //     });
-      //   },
-      // ),
       body: FutureBuilder(
         future: httpservice.getComments(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
@@ -51,14 +35,7 @@ class _MyShowComment extends State<MyShowComment>{
                     child: Icon(Icons.comment),
                   ),
                   trailing: Text(comment.commentScore),
-                  title: Text(comment.userName),
-                  subtitle: Text(comment.commentText),
-                  // onTap: () => Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //       builder: (context) => CourseDetail(
-                  //         courseId: courseId,
-                  //       )),
-                  // ),
+                  title: Text(comment.commentText),
                 ),
               )).toList(),
             );
@@ -76,12 +53,16 @@ class Httpservice {
   final String postsUrl = Global.baseUrl + "queryMyComment";
 
   Future<List<Comment>> getComments() async {
+    print("get comments begin");
     Response response = await post(
       Uri.parse(postsUrl),
       body: json.encode({
         "userId": Global.globalUser.userId,
       }),
     );
+
+    print(response.statusCode);
+    print(response.body.toString());
 
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);

@@ -12,10 +12,10 @@ class Comment {
   );
 
   Comment.fromJson(Map<String, dynamic> json)
-  : userId = json["userId"],
-    userName = json["userName"],
-    commentScore = json["commentScore"],
-    commentText = json["commentText"];
+  : userId = json["userId"]==null ? "" : json["userId"],
+    userName = json["userName"] == null ? "" : json["userName"],
+    commentScore = json["commentScore"]==null ? "" : json["commentScore"],
+    commentText = json["commentText"]==null ? "" : json["commentText"];
 
   Map<String, dynamic> toJson() =>
       <String, dynamic>{

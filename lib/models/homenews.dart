@@ -14,11 +14,11 @@ class Homenews {
       );
 
   Homenews.fromJson(Map<String, dynamic> json)
-  : uri = json["uri"],
-    title = json["title"],
-    author = json["author"],
-    body = json["body"],
-    time = json["time"];
+  : uri = json["uri"] == null ? "" : json["uri"],
+    title = json["title"] == null ? "" : json["title"],
+    author = json["author"] == null ? "" : json["author"],
+    body = json["body"] == null ? "" : json["body"],
+    time = json["time"] == null ? "" : json["time"];
 
   Map<String, dynamic> toJson() =>
     <String, dynamic>{

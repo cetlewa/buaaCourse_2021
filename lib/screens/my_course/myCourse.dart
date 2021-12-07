@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:buaacourse/main.dart';
 
 /**
  * desc:
@@ -60,7 +61,14 @@ class PageState extends State<SyllabusPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Global.globalUser.userId == "" ? Center(
+      child: TextButton(
+        child: Text("请您先登录呢", style: TextStyle(fontSize: 50.0),),
+        onPressed: (){
+          Navigator.pushNamed(context, "login_page");
+        },
+      ),
+    ) : Scaffold(
       backgroundColor: Color(0xFFE7E9EC),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,

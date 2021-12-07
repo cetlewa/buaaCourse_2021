@@ -119,11 +119,16 @@ class _SelectedCourseDetail extends State<SelectedCourseDetail> {
                   ],
                 ) ,
               ),
+              Text("学生成绩分布图", style: TextStyle(fontSize: 20.0),),
               Padding(
                 padding: EdgeInsets.all(10),
                 child: ColumnChart(
-                  data: [180.0, 98.0, 126.0, 64.0, 118.0],
-                  xAxis: ['一月', '二月', '三月', '四月', '五月'],
+                  data: [double.parse(course.cosLess60.toString()),
+                    double.parse(course.cos60to70.toString()),
+                    double.parse(course.cos70to80.toString()),
+                    double.parse(course.cos80to90.toString()),
+                    double.parse(course.cos90to100.toString())],
+                  xAxis: ['<60', '60~70', '70~80', '80~90', '>90'],
                 ),
               ),
             ],

@@ -3,6 +3,7 @@ import 'package:buaacourse/screens/comment/add_comment.dart';
 import 'package:buaacourse/screens/comment/comment.dart';
 import 'package:buaacourse/screens/course/search.dart';
 import 'package:buaacourse/screens/course/search_result.dart';
+import 'package:buaacourse/screens/login/forgetpassword.dart';
 import 'package:buaacourse/screens/login/login.dart';
 import 'package:buaacourse/screens/login/register.dart';
 import 'package:buaacourse/screens/newUser/changInfo.dart';
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
         "new_user_page": (context) => NewUser(),
         "change_info_page": (context) => ChangeInfo(),
         "settings_page": (context) => Settings(),
+        "forget_password_page": (context) => ForgetPwd(),
       },
       home: HomePage(),
       // home: LoginPage(),

@@ -72,6 +72,7 @@ class _Login extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    Global.globalUser.userId = "";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Form表单示例',
@@ -197,7 +198,7 @@ class _Login extends State<Login> {
                               ),
                             ),
                             RaisedButton(
-                              onPressed: router2Register,
+                              onPressed: forgetPwd,
                               color: Colors.blue,
                               child: const Text(
                                 '忘记密码？',
@@ -220,6 +221,10 @@ class _Login extends State<Login> {
         ),
       ),
     );
+  }
+
+  void forgetPwd() {
+    Navigator.pushNamed(context, "forget_password_page");
   }
 
   void router2Register() {

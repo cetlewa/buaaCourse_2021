@@ -1,5 +1,5 @@
 import 'package:buaacourse/models/course.dart';
-import 'package:buaacourse/screens/course/course_detail.dart';
+import 'package:buaacourse/screens/recommended/recourse_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:buaacourse/main.dart';
 import 'package:http/http.dart';
@@ -39,7 +39,7 @@ class _RecommendedCourse extends State<RecommendedCourse> {
                       + "-" + course.courseSelected.toString() + "/" + course.courseCapacity.toString()),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
-                        builder: (context) => CourseDetail(
+                        builder: (context) => ReCourseDetail(
                           course: course,
                         )),
                   ),

@@ -63,7 +63,7 @@ class _Register extends State<Register> {
     print(result.body.toString());
     if (result.statusCode == 200) {
       if (json.decode(result.body)["success"]) {
-        Global.globalUser.userId = "${_userIdController.text}";
+        Global.globalUser.userId = _userIdController.text;
         Navigator.pushNamed(context, "home_screen_homePage");
       }
       else{
@@ -88,6 +88,7 @@ class _Register extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    Global.globalUser.userId = "";
     return Scaffold(
       appBar: AppBar(
         title: Text("请填写您的个人信息来完成注册"),

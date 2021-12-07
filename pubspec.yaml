@@ -73,6 +73,7 @@ flutter:
     - assets/images/star.png
     - assets/images/star_nomal.png
     - assets/images/Login.jpg
+    - assets/images/sorry.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

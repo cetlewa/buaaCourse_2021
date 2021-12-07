@@ -6,26 +6,26 @@ import 'package:buaacourse/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 
-class CourseDetail extends StatefulWidget {
+class ReCourseDetail extends StatefulWidget {
   final Course course;
 
-  CourseDetail({
+  ReCourseDetail({
     required this.course,
-});
+  });
 
   @override
-  State<StatefulWidget> createState() => _CourseDetail(course: course, favorite: course.isStared);
+  State<StatefulWidget> createState() => _ReCourseDetail(course: course, favorite: course.isStared);
 
 }
 
-class _CourseDetail extends State<CourseDetail> {
+class _ReCourseDetail extends State<ReCourseDetail> {
   final Course course;
   bool favorite;
 
-  _CourseDetail({
+  _ReCourseDetail({
     required this.course,
     this.favorite = true,
-});
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +41,12 @@ class _CourseDetail extends State<CourseDetail> {
               Card(
                 child:
                 Global.globalUser.userId == "" ?
-                      Column(
+                Column(
                   children: <Widget>[
                     ListTile(
-                      title: Text("Course"),
-                      subtitle: Text(course.courseName + "-" + course.courseId),
-                      trailing: Icon(Icons.favorite_border)
+                        title: Text("Course"),
+                        subtitle: Text(course.courseName + "-" + course.courseId),
+                        trailing: Icon(Icons.favorite_border)
                     ),
                     ListTile(
                       title: Text("Teacher"),
@@ -115,15 +115,6 @@ class _CourseDetail extends State<CourseDetail> {
                           Navigator.of(context).pushNamed("comments_page", arguments: course.courseId);
                         },
                       ),
-                      trailing: TextButton.icon(
-                        icon: Icon(Icons.article),
-                        label: course.courseSelected < course.courseCapacity ?
-                                Text("选课")  : Text("人数已满，暂不能选课"),
-                        onPressed: (){
-                          course.courseSelected < course.courseCapacity ?
-                          _addCourse() : toast("该课程人数已满，暂不能选课，请联系教务老师呢~");
-                        },
-                      ),
                     ),
                   ],
                 ) ,
@@ -171,10 +162,10 @@ class _CourseDetail extends State<CourseDetail> {
     var addCourseUrl = Global.baseUrl + "selectCourse";
 
     var result = await post(Uri.parse(addCourseUrl),
-            body: json.encode({
-              "userId": Global.globalUser.userId,
-              "courseId": course.courseId,
-            }),
+      body: json.encode({
+        "userId": Global.globalUser.userId,
+        "courseId": course.courseId,
+      }),
     );
 
     if (result.statusCode == 200) {

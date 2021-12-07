@@ -27,6 +27,7 @@ class HomePageState extends State<HomePage> {
   //顶部AppBar
   AppBar buildAppBar() {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: _selectedIndex == 0 ? Text("首页资讯", style: TextStyle(color: Colors.black),) :
               _selectedIndex == 1 ? Text("课程列表", style: TextStyle(color: Colors.black),) :
               _selectedIndex == 2 ? Text("我的课表", style: TextStyle(color: Colors.black),) : null ,
