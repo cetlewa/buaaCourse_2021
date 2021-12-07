@@ -124,7 +124,7 @@ class _User extends State<NewUser> {
                       )
                     ),
                     Positioned(
-                      right: 110.0,
+                      left: 207.0,
                       top: midText,
                       width: 84.0,
                       height: 110.0,
@@ -146,7 +146,7 @@ class _User extends State<NewUser> {
                       ),
                     ),
                     Positioned(
-                      right: 13.0,
+                      left: 304.0,
                       top: midText,
                       width: 84.0,
                       height: 110.0,
@@ -189,7 +189,7 @@ class _User extends State<NewUser> {
 
                     ),
                     Positioned(
-                      left: 233.0,
+                      left: 231.0,
                       top: midIcon,
                       child: GestureDetector(
                         child: Icon(Icons.portrait, color: Color(0xF5BFA337), size: 37,),
@@ -200,7 +200,7 @@ class _User extends State<NewUser> {
 
                     ),
                     Positioned(
-                      right: 36,
+                      left: 328.0,
                       top: midIcon,
                       child: GestureDetector(
                         child: Icon(Icons.settings, color: Color(0xF5808080), size: 37,),
