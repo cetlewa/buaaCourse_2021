@@ -63,7 +63,7 @@ class _Search extends State<Search>{
                 child: SizedBox.expand(
                   child: RaisedButton(
                     onPressed: _searchCourse,
-                    color: const Color.fromARGB(255, 61, 182, 203),
+                    color: Colors.blue,
                     child: const Text(
                       "进行搜索",
                       style: TextStyle(

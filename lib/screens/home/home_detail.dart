@@ -12,7 +12,7 @@ class HomeDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HomeDetail"),
+        title: Text("资讯详情"),
       ),
       body: SingleChildScrollView(
         child: Padding(

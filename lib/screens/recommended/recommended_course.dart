@@ -18,7 +18,7 @@ class _RecommendedCourse extends State<RecommendedCourse> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("智能推荐课表"),
+        title: Text("系统为您智能推荐的课表"),
       ),
       body: FutureBuilder(
         future: httpservice.getCourses(),

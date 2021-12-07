@@ -23,7 +23,7 @@ class _ChangePwd extends State<ChangePwd> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Course"),
+        title: Text("修改您的密码"),
       ),
       body: SingleChildScrollView(
         child: Padding(

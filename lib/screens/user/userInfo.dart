@@ -26,7 +26,7 @@ class _UserInfo extends State<UserInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Your Information"),
+        title: Text("您的个人信息"),
       ),
       body: FutureBuilder(
         future: httpservice.getUserInfo(),

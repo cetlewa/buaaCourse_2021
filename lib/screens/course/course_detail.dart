@@ -31,7 +31,7 @@ class _CourseDetail extends State<CourseDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Course Detail"),
+        title: Text("课程详情"),
       ),
       body: SingleChildScrollView(
         child: Padding(
