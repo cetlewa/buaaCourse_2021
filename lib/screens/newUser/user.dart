@@ -271,7 +271,12 @@ class _User extends State<NewUser> {
               child: GestureDetector(
                 child: Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 37,),
                 onTap: (){
-                  Navigator.pushNamed(context, "userinfo_page");
+                  if(Global.globalUser.userId == ""){
+                    Navigator.pushNamed(context, "login_page");
+                  }
+                  else{
+                    Navigator.pushNamed(context, "userinfo_page");
+                  }
                 },
               ),
             ),
