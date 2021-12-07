@@ -19,6 +19,14 @@ class _User extends State<NewUser> {
 
   @override
   Widget build(BuildContext context) {
+    final size =MediaQuery.of(context).size;
+    final width1 =size.width;
+    final height1 =size.height;
+    final widthc = width1/57*13;
+    final spacew = width1/57;
+    double left1 = spacew;
+    double left2 = 2*spacew + widthc;
+
     return Scaffold(
       backgroundColor: Color(0xFFE7E9EC),
       body: ConstrainedBox(
@@ -80,7 +88,7 @@ class _User extends State<NewUser> {
                       ),
                     ),
                     Positioned(
-                      left: 13.0,
+                      left: left1,
                       top: midText,
                       width: 84.0,
                       height: 110.0,
@@ -102,7 +110,7 @@ class _User extends State<NewUser> {
                       ),
                     ),
                     Positioned(
-                      left: 110.0,
+                      left: left2,
                       top: midText,
                       width: 84.0,
                       height: 110.0,
@@ -124,7 +132,7 @@ class _User extends State<NewUser> {
                       )
                     ),
                     Positioned(
-                      left: 207.0,
+                      right: left2,
                       top: midText,
                       width: 84.0,
                       height: 110.0,
@@ -146,7 +154,7 @@ class _User extends State<NewUser> {
                       ),
                     ),
                     Positioned(
-                      left: 304.0,
+                      right: left1,
                       top: midText,
                       width: 84.0,
                       height: 110.0,
@@ -168,7 +176,7 @@ class _User extends State<NewUser> {
                       ),
                     ),
                     Positioned(
-                      left: 37.0,
+                      left: width1/57*4.3,
                       top: midIcon,
                       child: GestureDetector(
                         child: Icon(Icons.favorite, color: Colors.red, size: 37,),
@@ -178,7 +186,7 @@ class _User extends State<NewUser> {
                       ),
                     ),
                     Positioned(
-                      left: 134.0,
+                      left: width1/57*18.5,
                       top: midIcon,
                       child: GestureDetector(
                         child: Icon(Icons.comment, color: Colors.lightBlueAccent, size: 37,),
@@ -189,7 +197,7 @@ class _User extends State<NewUser> {
 
                     ),
                     Positioned(
-                      left: 231.0,
+                      right: width1/57*18.5,
                       top: midIcon,
                       child: GestureDetector(
                         child: Icon(Icons.portrait, color: Color(0xF5BFA337), size: 37,),
@@ -200,7 +208,7 @@ class _User extends State<NewUser> {
 
                     ),
                     Positioned(
-                      left: 328.0,
+                      right: width1/57*4.3,
                       top: midIcon,
                       child: GestureDetector(
                         child: Icon(Icons.settings, color: Color(0xF5808080), size: 37,),
