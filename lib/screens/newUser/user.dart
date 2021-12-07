@@ -21,11 +21,13 @@ class _User extends State<NewUser> {
   Widget build(BuildContext context) {
     final size =MediaQuery.of(context).size;
     final width1 =size.width;
+    print(width1);
     final height1 =size.height;
     final widthc = width1/57*13;
     final spacew = width1/57;
     double left1 = spacew;
     double left2 = 2*spacew + widthc;
+    double widthTemp = 84/411.42857142857144*width1;
 
     return Scaffold(
       backgroundColor: Color(0xFFE7E9EC),
@@ -90,7 +92,7 @@ class _User extends State<NewUser> {
                     Positioned(
                       left: left1,
                       top: midText,
-                      width: 84.0,
+                      width: widthTemp,
                       height: 110.0,
                       child: GestureDetector(
                         child: Card(
@@ -112,7 +114,7 @@ class _User extends State<NewUser> {
                     Positioned(
                       left: left2,
                       top: midText,
-                      width: 84.0,
+                      width: widthTemp,
                       height: 110.0,
                       child: GestureDetector(
                         child: Card(
@@ -134,7 +136,7 @@ class _User extends State<NewUser> {
                     Positioned(
                       right: left2,
                       top: midText,
-                      width: 84.0,
+                      width: widthTemp,
                       height: 110.0,
                       child: GestureDetector(
                         child: Card(
@@ -156,7 +158,7 @@ class _User extends State<NewUser> {
                     Positioned(
                       right: left1,
                       top: midText,
-                      width: 84.0,
+                      width: widthTemp,
                       height: 110.0,
                       child: GestureDetector(
                         child: Card(
@@ -186,7 +188,7 @@ class _User extends State<NewUser> {
                       ),
                     ),
                     Positioned(
-                      left: width1/57*18.5,
+                      left: width1/57*18.3,
                       top: midIcon,
                       child: GestureDetector(
                         child: Icon(Icons.comment, color: Colors.lightBlueAccent, size: 37,),
@@ -197,7 +199,7 @@ class _User extends State<NewUser> {
 
                     ),
                     Positioned(
-                      right: width1/57*18.5,
+                      right: width1/57*18.3,
                       top: midIcon,
                       child: GestureDetector(
                         child: Icon(Icons.portrait, color: Color(0xF5BFA337), size: 37,),
